@@ -17,9 +17,22 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "noUnusedLocals": true,
+    "paths": {
+      "@vuehook/core": ["./packages/core/index.ts"],
+      "@vuehook/core/*": ["./packages/core/*"],
+      "@vuehook/docs-utils": ["./packages/.vitepress/plugins/utils.ts"],
+      "@vuehook/shared": ["./packages/shared/index.ts"],
+      "@vuehook/shared/*": ["./packages/shared/*"]
+    },
+    "types": ["vitest", "vitest/globals", "@types/web-bluetooth"]
   },
   "include": [
     "packages",
+    "packages/.vitepress/components/*.vue",
+    "packages/.vitepress/*.ts",
+    "meta",
+    "vitest.config.ts",
+    "playground/**/*.vue"
   ],
   "exclude": [
     "node_modules",
