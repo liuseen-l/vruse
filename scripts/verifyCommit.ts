@@ -1,4 +1,3 @@
-// @ts-check
 import { readFileSync } from 'fs'
 import path from 'path'
 import chalk from 'chalk'

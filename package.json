@@ -1,38 +1,28 @@
 {
-  "name": "vruse",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@vruse/monorepo",
   "type": "module",
+  "version": "1.0.0",
+  "packageManager": "pnpm@7.6.0",
+  "description": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
   "scripts": {
     "docs:dev": "pnpm --filter @vruse/docs docs:dev",
     "test:unit": "vitest -c vitest.unit.config.ts",
     "check": "tsc --incremental --noEmit",
-    "preinstall": "node ./scripts/preinstall.js",
+    "preinstall": "node --loader @esbuild-kit/esm-loader ./scripts/preinstall.ts",
     "postinstall": "simple-git-hooks"
   },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged",
-    "commit-msg": "node scripts/verifyCommit.js"
-  },
-  "lint-staged": {
-    "*.{js,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "eslint --cache --fix",
-      "prettier --parser=typescript --write"
-    ]
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.2",
+    "@esbuild-kit/esm-loader": "^2.5.5",
+    "@types/node": "^18.14.0",
     "@types/web-bluetooth": "^0.0.16",
     "chalk": "^5.2.0",
     "eslint": "^8.34.0",
     "lint-staged": "^13.1.2",
+    "pnpm": "^7.27.1",
     "prettier": "^2.8.4",
     "rimraf": "^4.1.2",
     "rollup": "^3.15.0",
@@ -42,5 +32,18 @@
     "vite-plugin-inspect": "^0.7.15",
     "vitest": "^0.28.4",
     "vue": "^3.2.47"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "node --loader @esbuild-kit/esm-loader ./scripts/verifyCommit.ts"
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint --cache --fix",
+      "prettier --parser=typescript --write"
+    ]
   }
 }
