@@ -45,15 +45,16 @@ Refer to [functions list](https://vueuse.org/functions) or [documentations](http
 
 ## 📦 Install
 
-> 🎩 From v4.0, it works for Vue 2 & 3 **within a single package** by the power of [vue-demi](https://github.com/vueuse/vue-demi)!
+> 🎩 From v4.0, it works for Vue 3 & React 18 **within a single package** by the power of [vue-demi](https://github.com/vueuse/vue-demi)!
 
 ```bash
-npm i @vueuse/core
+npm i @vruse/core
 ```
 
 [Add ons](https://vueuse.org/add-ons.html) | [Nuxt Module](https://vueuse.org/guide/index.html#nuxt)
 
-> From v6.0, VueUse requires `vue` >= v3.2 or `@vue/composition-api` >= v1.1
+> From v6.0, vruse requires `vue` >= v3.2 or `@vue/composition-api` >= v1.1
+> From v6.0, vruse requires `react` >= v16.8 
 
 ###### Demos
 
