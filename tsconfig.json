@@ -17,13 +17,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "noUnusedLocals": true,
-    "paths": {
-      "@vruse/core": ["packages/core/vue/index.ts"],
-      "@vruse/core/*": ["./packages/core/*"],
-      "@vruse/docs-utils": ["./packages/.vitepress/plugins/utils.ts"],
-      "@vruse/shared": ["./packages/shared/index.ts"],
-      "@vruse/shared/*": ["./packages/shared/*"]
-    },
+    "paths": {},
     "types": ["vitest", "vitest/globals", "@types/web-bluetooth"]
   },
   "include": [
@@ -32,8 +26,7 @@
     "packages/.vitepress/*.ts",
     "meta",
     "vitest.config.ts",
-    "playgrounds/vite/vue/**/*.vue",
-    "playgrounds/vite/react/**/*.tsx"
+    "playgrounds/vite/vue/**/*.vue"
   ],
   "exclude": [
     "node_modules",
