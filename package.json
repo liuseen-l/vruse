@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "docs:dev": "pnpm --filter @vruse/docs docs:dev",
-    "test:unit": "vitest",
+    "test:unit": "vitest -c vitest.unit.config.ts",
     "check": "tsc --incremental --noEmit",
     "preinstall": "node ./scripts/preinstall.js",
     "postinstall": "simple-git-hooks"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged && pnpm check",
+    "pre-commit": "npx lint-staged",
     "commit-msg": "node scripts/verifyCommit.js"
   },
   "lint-staged": {
@@ -19,7 +20,7 @@
       "prettier --write"
     ],
     "*.ts?(x)": [
-      "eslint",
+      "eslint --cache --fix",
       "prettier --parser=typescript --write"
     ]
   },
@@ -28,6 +29,7 @@
   "license": "ISC",
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.2",
+    "@types/web-bluetooth": "^0.0.16",
     "chalk": "^5.2.0",
     "eslint": "^8.34.0",
     "lint-staged": "^13.1.2",
