@@ -1,28 +1,3 @@
-<p align="center">
-<a href="https://github.com/vueuse/vueuse#gh-light-mode-only">
-  <img src="https://raw.githubusercontent.com/vueuse/vueuse/main/packages/public/logo-vertical.png#gh-light-mode-only" alt="VueUse - Collection of essential Vue Composition Utilities" width="300">
-</a>
-<a href="https://github.com/vueuse/vueuse#gh-dark-mode-only">
-  <img src="https://raw.githubusercontent.com/vueuse/vueuse/main/packages/public/logo-vertical-dark.png#gh-dark-mode-only" alt="VueUse - Collection of essential Vue Composition Utilities" width="300">
-</a>
-<br>
-Collection of essential Vue Composition Utilities
-</p>
-
-<p align="center">
-<a href="https://www.npmjs.com/package/@vueuse/core" target="__blank"><img src="https://img.shields.io/npm/v/@vueuse/core?color=a1b858&label=" alt="NPM version"></a>
-<a href="https://www.npmjs.com/package/@vueuse/core" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@vueuse/core?color=50a36f&label="></a>
-<a href="https://vueuse.org" target="__blank"><img src="https://img.shields.io/static/v1?label=&message=docs%20%26%20demos&color=1e8a7a" alt="Docs & Demos"></a>
-<img alt="Function Count" src="https://vueuse.org/badge-function-count.svg">
-<br>
-<a href="https://github.com/vueuse/vueuse" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/vueuse/vueuse?style=social"></a>
-</p>
-
-<p align="center">
-  <a href="https://cdn.jsdelivr.net/gh/antfu/static/sponsors.svg">
-    <img src='https://cdn.jsdelivr.net/gh/antfu/static/sponsors.svg'>
-  </a>
-</p>
 
 ## 🚀 Features
 
