@@ -54,7 +54,8 @@ npm i @vruse/core
 [Add ons](https://vueuse.org/add-ons.html) | [Nuxt Module](https://vueuse.org/guide/index.html#nuxt)
 
 > From v6.0, vruse requires `vue` >= v3.2 or `@vue/composition-api` >= v1.1
-> From v6.0, vruse requires `react` >= v16.8 
+> <br/>
+> From v6.0, vruse requires `react` >= v16.8
 
 ###### Demos
 
