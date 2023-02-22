@@ -1,4 +1,3 @@
-
 ## 🚀 Features
 
 - 🎪 [**Interactive docs & demos**](https://vueuse.org)
@@ -13,23 +12,31 @@
 ## 🦄 Usage
 
 ```ts
-import { useLocalStorage, useMouse, usePreferredDark } from "@vueuse/core";
+import { usePick } from "@vruse/core";
 
 export default {
   setup() {
-    // tracks mouse position
-    const { x, y } = useMouse();
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-    // is user prefers dark theme
-    const isDark = usePreferredDark();
+    const r = reactive<number[]>([]);
 
-    // persist state in localStorage
-    const store = useLocalStorage("my-storage", {
-      name: "Apple",
-      color: "red",
-    });
+    const hook = usePick(
+      {
+        data: arr,
+        pickCount: 5,
+        previewCount: 10,
+        previewDelay: 60,
+        pickDelay: 1000,
+        excludes: 4, // [4,2]
+      },
+      (v, _, l) => {
+        r[l as number] = v;
+      }
+    );
 
-    return { x, y, isDark, store };
+    hook.run();
+
+    return { r };
   },
 };
 ```
@@ -62,5 +69,3 @@ It will be exposed to global as `window.VueUse`
 ## 🪴 Project Activity
 
 ![Alt](https://repobeats.axiom.co/api/embed/a406ba7461a6a087dbdb14d4395046c948d44c51.svg "Repobeats analytics image")
-
-
