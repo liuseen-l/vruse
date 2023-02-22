@@ -1,4 +1,4 @@
-# 🔨 vuehook 是什么?
+# 🔨 vruse 是什么?
 
 一个交互型、功能型的 hook 三方库。
 
@@ -29,7 +29,7 @@ npm i vuehook
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import { usePick } from "@vuehook/core";
+import { usePick } from "@vruse/core";
 const arr = reactive([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
 const r = reactive<number[]>([]);

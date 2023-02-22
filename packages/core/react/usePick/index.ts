@@ -1,4 +1,6 @@
 import { toRaw } from 'vue-demi'
+import { sleep } from '@vruse/shared'
+
 
 export interface UsePickOptions<T> {
   /**
@@ -44,9 +46,6 @@ function pick<T>(data: T[], limit: number = data.length - 1) {
   return data[limit]
 }
 
-function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
 
 function normalizeExcludes<T>(e: T | T[] | undefined) {
   if (!e)
@@ -95,11 +94,14 @@ class PickRef<T> {
     let picked
     for (let i = 0; i < this.pickCount; i++) {
       let previewCount = this.previewCount
+
       while (previewCount--) {
         await sleep(this.previewDelay)
         picked = pick(data, data.length - 1 - i)
+
         this.cb!(picked, this.pickedList, this.pickedList.length as number)
       }
+
       await sleep(this.pickDelay)
       this.pickedList.push(picked as T)
     }

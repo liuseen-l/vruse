@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-import { usePick } from "@vuehook/core";
-const arr = reactive([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+import { usePick } from "@vruse/core/vue/vue";
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const r = reactive<number[]>([]);
 

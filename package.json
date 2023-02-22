@@ -1,10 +1,10 @@
 {
-  "name": "vuehook",
+  "name": "vruse",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "pnpm --filter @vuehook/docs docs:dev",
+    "docs:dev": "pnpm --filter @vruse/docs docs:dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

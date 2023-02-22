@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: vuehook
-  text: 高阶交互Hook.
+  name: VRuse
+  text: 一款功能型hook仓库
   tagline: 为开发提供组件库
   image:
     src: ./logo.png
