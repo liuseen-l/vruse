@@ -1,12 +1,23 @@
+import { entries } from '../../scripts/aliases'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
-import { entries } from '../../scripts/aliases'
 
-export default defineConfig({
-  plugins: [
-    Vue(),
-  ],
-  resolve: {
-    alias: entries,
+const modeResolver = {
+  "vue": () => {
+    return ({
+      plugins: [
+        Vue(),
+      ],
+      resolve: {
+        alias: entries
+      }
+    })
   },
+  'react': () => {
+
+  }
+}
+
+export default defineConfig(({ command, mode }) => {
+  return modeResolver[mode]()
 })

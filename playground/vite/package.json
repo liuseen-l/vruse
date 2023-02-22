@@ -1,15 +1,19 @@
 {
-  "private": true,
+  "name": "vite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "dev:v": "vite vue -c vite.config.ts --mode vue",
+    "dev:r": "vite react -c vite.config.ts --mode react" ,
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "vue": "^3.2.47"
-  },
-  "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
-    "vite": "^4.1.1"
+    "vite": "^4.1.1",
+    "vue": "^3.2.47"
   }
 }
