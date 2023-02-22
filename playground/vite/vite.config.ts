@@ -1,6 +1,7 @@
 import { entries } from '../../scripts/aliases'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
+import React from '@vitejs/plugin-react'
 
 const modeResolver = {
   "vue": () => {
@@ -14,7 +15,14 @@ const modeResolver = {
     })
   },
   'react': () => {
-
+    return ({
+      plugins: [
+        React(),
+      ],
+      resolve: {
+        alias: entries
+      }
+    })
   }
 }
 
