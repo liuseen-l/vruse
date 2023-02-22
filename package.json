@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-unit": "vitest",
+    "test:unit": "vitest",
     "docs:dev": "pnpm --filter @vruse/docs docs:dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
