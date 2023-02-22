@@ -18,7 +18,7 @@
     "skipDefaultLibCheck": true,
     "noUnusedLocals": true,
     "paths": {
-      "@vruse/core": ["packages/core/vue/index.tsts"],
+      "@vruse/core": ["packages/core/vue/index.ts"],
       "@vruse/core/*": ["./packages/core/*"],
       "@vruse/docs-utils": ["./packages/.vitepress/plugins/utils.ts"],
       "@vruse/shared": ["./packages/shared/index.ts"],
