@@ -1,6 +1,8 @@
 // import { resolve } from 'path'
+import type { UserConfig } from 'vitest/config'
 import { defineConfig } from 'vitest/config'
 
+// ts-expect-error let me do it
 export default defineConfig({
   resolve: {
     dedupe: ['vue', 'vue-demi', '@vue/runtime-core'],
@@ -19,4 +21,4 @@ export default defineConfig({
       inline: ['@vue/composition-api', 'vue-demi'],
     },
   },
-})
+}) as UserConfig
