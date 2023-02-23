@@ -6,7 +6,6 @@ types/
 cache/
 docs/
 scripts/
-!packages/.vitepress
 !/.eslintrc.js
 !/rollup.config.js
 !.test

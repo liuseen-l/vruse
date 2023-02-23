@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "docs:dev": "pnpm --filter @vruse/docs docs:dev",
-    "test:unit": "vitest -c vitest.unit.config.ts",
+    "docs-dev": "pnpm --filter @vruse/docs docs:dev",
+    "test-unit": "vitest -c vitest.unit.config.ts",
     "check": "tsc --incremental --noEmit",
     "preinstall": "node ./scripts/preinstall.js",
     "postinstall": "simple-git-hooks"
