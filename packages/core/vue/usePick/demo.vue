@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import { usePick } from "./index";
-const arr = reactive([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+import { reactive } from 'vue'
+import { usePick } from './index'
+const arr = reactive([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
-const r = reactive<number[]>([]);
+const r = reactive<number[]>([])
 
 const hook = usePick(
   {
@@ -15,11 +15,11 @@ const hook = usePick(
     excludes: 4, // [4,2]
   },
   (v, _, l) => {
-    r[l as number] = v;
-  }
-);
+    r[l as number] = v
+  },
+)
 
-hook.run();
+hook.run()
 </script>
 
 <template>

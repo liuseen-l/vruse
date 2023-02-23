@@ -7,15 +7,15 @@ const modeResolver = {
   vue: () => ({
     plugins: [Vue()],
     resolve: {
-      alias: entries
-    }
+      alias: entries,
+    },
   }),
   react: () => ({
     plugins: [React()],
     resolve: {
-      alias: entries
-    }
-  })
+      alias: entries,
+    },
+  }),
 }
 
 export default defineConfig(({ mode }) => {
