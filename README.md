@@ -9,10 +9,10 @@
 - 🔩 **Flexible**: Configurable event filters and targets
 <!-- - 🔌 **Optional [Add-ons](https://vueuse.org/add-ons)**: Router, Firebase, RxJS, etc. -->
 
-## 🦄 Usage
+## 🦄 Usage in Vue3
 
 ```ts
-import { usePick } from "@vruse/core";
+import { usePick } from '@vruse/core'
 
 export default {
   setup() {
@@ -31,13 +31,44 @@ export default {
       },
       (v, _, l) => {
         r[l as number] = v
-      }
+      },
     )
 
     hook.run()
 
     return { r }
   },
+}
+```
+
+## 🦄 Usage in React18
+
+```tsx
+import React, { useState } from 'react'
+import { usePick } from '@vruse/core'
+
+function App() {
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  const [r, useR] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+  const hook = usePick(
+    {
+      data: arr,
+      pickCount: 5,
+      previewCount: 10,
+      previewDelay: 60,
+      pickDelay: 1000,
+      excludes: 4, // [4,2]
+    },
+    (v, _, l) => {
+      r[l as number] = v
+    },
+  )
+
+  hook.run()
+
+  return <div>{{ r }}</div>
 }
 ```
 
@@ -53,9 +84,7 @@ npm i @vruse/core
 
 [Add ons](https://vueuse.org/add-ons.html) | [Nuxt Module](https://vueuse.org/guide/index.html#nuxt)
 
-> From v6.0, vruse requires `vue` >= v3.2 or `@vue/composition-api` >= v1.1
-> <br/>
-> From v6.0, vruse requires `react` >= v16.8
+> From v6.0, vruse requires `vue` >= v3.2 or `@vue/composition-api` >= v1.1 <br/> From v6.0, vruse requires `react` >= v16.8
 
 ###### Demos
 
@@ -70,4 +99,4 @@ It will be exposed to global as `window.VRuse`
 
 ## 🪴 Project Activity
 
-![Alt](https://repobeats.axiom.co/api/embed/a406ba7461a6a087dbdb14d4395046c948d44c51.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/5e5d5e4eb735ba967883654fe8ef48d8eaa8958c.svg "Repobeats analytics image")
