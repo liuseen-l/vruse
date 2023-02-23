@@ -63,7 +63,7 @@ importers:
   packages/vue:
     specifiers:
       '@vruse/shared': workspace:^1.0.0
-      vue-demi: '*'
+      vue-demi: ^0.13.11
     dependencies:
       '@vruse/shared': link:../shared
       vue-demi: 0.13.11

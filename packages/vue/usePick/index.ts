@@ -113,7 +113,7 @@ class PickRef<T> {
   }
 }
 
-export function usePick<T>(
+export default function usePick<T>(
   options: UsePickOptions<T>,
   cb: UsePickCallback<T> | null = null,
 ) {

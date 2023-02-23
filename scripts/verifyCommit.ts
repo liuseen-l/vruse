@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs'
-import path from 'path'
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 import chalk from 'chalk'
 
 const msgPath = path.resolve('.git/COMMIT_EDITMSG')

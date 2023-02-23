@@ -1,1 +1,1 @@
-export * from './usePick'
+export { default as usePick } from './usePick'
