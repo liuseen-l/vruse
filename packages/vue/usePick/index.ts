@@ -1,11 +1,10 @@
 import { toRaw } from 'vue-demi'
 import { sleep } from '@vruse/shared'
 
-
 export interface UsePickOptions<T> {
   /**
-  * Search List
-  */
+   * Search List
+   */
   data: T[]
 
   /**
@@ -37,19 +36,17 @@ export interface UsePickOptions<T> {
 export type UsePickCallback<V = any> = (
   value: V,
   PickList?: V[],
-  PlickListLength?: number
+  PlickListLength?: number,
 ) => any
 
 function pick<T>(data: T[], limit: number = data.length - 1) {
-  const picked = Math.floor(Math.random() * limit);
-  [data[picked], data[limit]] = [data[limit], data[picked]]
+  const picked = Math.floor(Math.random() * limit)
+  ;[data[picked], data[limit]] = [data[limit], data[picked]]
   return data[limit]
 }
 
-
 function normalizeExcludes<T>(e: T | T[] | undefined) {
-  if (!e)
-    return []
+  if (!e) return []
   return Array.isArray(e) ? e : [e]
 }
 
@@ -76,9 +73,9 @@ class PickRef<T> {
 
   constructor(
     options: UsePickOptions<T>,
-    private cb: UsePickCallback<T> | null) {
-    if (options.excludes)
-      this.excludes = normalizeExcludes(options.excludes)
+    private cb: UsePickCallback<T> | null,
+  ) {
+    if (options.excludes) this.excludes = normalizeExcludes(options.excludes)
 
     this.rawData = toRaw(options.data)
     this.previewDelay = options.previewDelay ? options.previewDelay : 60
@@ -89,7 +86,7 @@ class PickRef<T> {
   }
 
   async raffle() {
-    const data = this.rawData.filter(item => this.excludes!.includes(item))
+    const data = this.rawData.filter((item) => this.excludes!.includes(item))
 
     let picked
     for (let i = 0; i < this.pickCount; i++) {
@@ -116,6 +113,9 @@ class PickRef<T> {
   }
 }
 
-export function usePick<T>(options: UsePickOptions<T>, cb: UsePickCallback<T> | null = null) {
+export function usePick<T>(
+  options: UsePickOptions<T>,
+  cb: UsePickCallback<T> | null = null,
+) {
   return new PickRef<T>(options, cb)
 }
