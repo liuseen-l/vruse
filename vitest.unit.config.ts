@@ -5,6 +5,6 @@ export default defineConfig({
   ...config,
   test: {
     ...config.test,
-    exclude: [...configDefaults.exclude, '**/e2e/**']
-  }
+    exclude: [...configDefaults.exclude, '**/e2e/**'],
+  },
 })
