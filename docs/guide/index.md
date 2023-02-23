@@ -1,6 +1,6 @@
 # 🔨 vruse 是什么?
 
-一个交互型、功能型的 hook 三方库。
+一款功能型、业务型的现代化快速开发 hook 仓库
 
 ## Features
 
@@ -16,23 +16,23 @@
 ## Install
 
 ```bash
-npm i vuehook
+npm i @vruse/core
 ```
 
 ## Quick Start
 
+for vue
 ```vue
 <template>
   <div>{{ r }}</div>
 </template>
 
-
 <script setup lang="ts">
-import { reactive } from "vue";
-import { usePick } from "@vruse/core";
-const arr = reactive([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+import { reactive } from 'vue'
+import { usePick } from '@vruse/core'
+const arr = reactive([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
-const r = reactive<number[]>([]);
+const r = reactive<number[]>([])
 
 const hook = usePick(
   {
@@ -44,13 +44,43 @@ const hook = usePick(
     excludes: 4, // [4,2]
   },
   (v, _, l) => {
-    r[l as number] = v;
-  }
-);
+    r[l as number] = v
+  },
+)
 
-hook.run();
+hook.run()
 </script>
+```
 
+
+> 🎩 for react
+```tsx
+import React, { useState } from 'react'
+import { usePick } from '@vruse/core'
+
+function App() {
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  const [r, useR] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+  const hook = usePick(
+    {
+      data: arr,
+      pickCount: 5,
+      previewCount: 10,
+      previewDelay: 60,
+      pickDelay: 1000,
+      excludes: 4, // [4,2]
+    },
+    (v, _, l) => {
+      r[l as number] = v
+    },
+  )
+
+  hook.run()
+
+  return <div>{{ r }}</div>
+}
 ```
 
 ## Browser Support

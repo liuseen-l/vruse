@@ -3,18 +3,18 @@ layout: home
 
 hero:
   name: VRuse
-  text: 一款功能型hook仓库
-  tagline: 为开发提供组件库
+  text: 一款现代化快速开发 hook 仓库
+  tagline: 为开发提供 hook
   image:
     src: ./logo.png
-    alt: Zs
+    alt: LiuSeen
   actions:
     - theme: brand
       text: 起步
       link: /guide/         
     - theme: alt
       text: View on github
-      link: https://github.com/code-ManL/vuehook
+      link: https://github.com/code-ManL/VRuse
 
 features:
   - icon: 💡

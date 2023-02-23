@@ -1,48 +1,100 @@
-const sidebar = {
-  "/": [
-    { text: "介绍", link: "/" },
-    {
-      text: "通用",
-      collapsible: true,
-      collapsed: false,
-      items: [
-        { text: "usePick", link: "/hook/usePick/" },
-      ],
-    },
-    { text: "导航" },
-    { text: "反馈" },
-    { text: "数据录入" },
-    { text: "数据展示" },
-    { text: "布局" },
-  ],
-};
-const socialLinks = [
-    {
-        icon:"github",
-        link:"https://github.com/message163/zs-design-ui"
-    }
+import { defineConfig } from 'vitepress'
+import {
+  categoryNames,
+  coreCategoryNames,
+  metadata,
+  _categories,
+} from '../metadata/metadata'
+
+// guide
+const Guide = [{ text: '开始', link: '/guide/' }]
+
+// useHook
+const CoreCategories = coreCategoryNames.map((c) => ({
+  text: c,
+  activeMatch: '___', // never active
+  link: `/hooks/functions#category=${c}`,
+}))
+
+const DefaultSideBar = [
+  { text: '指南', items: Guide },
+  { text: '核心hook', items: CoreCategories },
 ]
+
+const FunctionsSideBar = getFunctionsSideBar()
+
 const editLink = {
-  pattern: "https://github.com/message163/zs-design-ui/tree/main/docs/:path",
-  text: "Suggest changes to this page",
-};
-const config = {
-  base:"/vuehook/temp/",
-  title: "🔨  vuehook",
-  description: "组件库搭建的教学模型",
+  pattern: 'https://github.com/code-ManL/VRuse/tree/main/docs/:path',
+  text: 'Suggest changes to this page',
+}
+
+// export default config;
+export default defineConfig({
+  base: '/vuehook/temp/',
+  title: '🔨  vrhook',
+  description: '一款现代化快速开发 hook 仓库',
+  lang: 'en-US',
+  ignoreDeadLinks: true,
   lastUpdated: true,
+
   themeConfig: {
-    sidebar,
-    socialLinks,
+    sidebar: {
+      '/guide/': DefaultSideBar,
+      '/hooks/': FunctionsSideBar,
+    },
+    socialLinks: [
+      {
+        icon: 'github',
+        link: 'https://github.com/code-ManL/VRuse',
+      },
+    ],
     editLink,
   },
+
   markdown: {
     config: (md) => {
-      // 这里可以使用 markdown-it 插件，vitepress-theme-demoblock就是基于此开发的
-      const { demoBlockPlugin } = require("vitepress-theme-demoblock");
-      md.use(demoBlockPlugin);
+      const { demoBlockPlugin } = require('vitepress-theme-demoblock')
+      md.use(demoBlockPlugin)
     },
   },
-};
+})
 
-export default config;
+function getFunctionsSideBar() {
+  const links: any = []
+
+  for (let i = 0; i < _categories.length; i++) {
+    const name = _categories[i]
+
+    const functions = (metadata.functions as any)[name]
+
+    if (name.startsWith('_') || functions.length === 0) continue
+
+    links.push({
+      text: categoryNames[i],
+      items: functions.map((i) => ({
+        text: i.name,
+        link: `/hooks/${i.category}/${i.name}/`,
+      })),
+    })
+  }
+
+  // for (const name of _categories) {
+
+  //   const functions = (metadata.functions as any)[name]
+
+  //   console.log(functions);
+
+  //   if (name.startsWith('_') || functions.length === 0)
+  //     continue
+
+  //   links.push({
+  //     text: categoryNames[i],
+  //     items: functions.map(i => ({
+  //       text: i.name,
+  //       link: `/hooks/${i.category}/${i.name}/`,
+  //     })),
+  //   })
+
+  // }
+  return links
+}

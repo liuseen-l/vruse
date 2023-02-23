@@ -8,7 +8,7 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "docs-dev": "pnpm --filter @vruse/docs docs:dev",
+    "docs-dev": "pnpm --filter @vruse/docs docs-dev",
     "test-unit": "vitest -c vitest.unit.config.ts",
     "check": "tsc --incremental --noEmit",
     "preinstall": "node --loader @esbuild-kit/esm-loader ./scripts/preinstall.ts",
