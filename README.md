@@ -7,7 +7,7 @@
 - 🔋 **SSR Friendly**
 - 🌎 **No bundler required**: Usable via CDN
 - 🔩 **Flexible**: Configurable event filters and targets
-- 🔌 **Optional [Add-ons](https://vueuse.org/add-ons)**: Router, Firebase, RxJS, etc.
+<!-- - 🔌 **Optional [Add-ons](https://vueuse.org/add-ons)**: Router, Firebase, RxJS, etc. -->
 
 ## 🦄 Usage
 
@@ -16,9 +16,9 @@ import { usePick } from "@vruse/core";
 
 export default {
   setup() {
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    const r = reactive<number[]>([]);
+    const r = reactive<number[]>([])
 
     const hook = usePick(
       {
@@ -30,15 +30,15 @@ export default {
         excludes: 4, // [4,2]
       },
       (v, _, l) => {
-        r[l as number] = v;
+        r[l as number] = v
       }
-    );
+    )
 
-    hook.run();
+    hook.run()
 
-    return { r };
+    return { r }
   },
-};
+}
 ```
 
 Refer to [functions list](https://vueuse.org/functions) or [documentations](https://vueuse.org/) for more details.
