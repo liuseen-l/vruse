@@ -11,7 +11,7 @@
     "docs-dev": "pnpm --filter @vruse/docs docs-dev",
     "test-unit": "vitest -c vitest.unit.config.ts",
     "check": "tsc --incremental --noEmit",
-    "preinstall": "node --loader @esbuild-kit/esm-loader ./scripts/preinstall.ts",
+    "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks"
   },
   "devDependencies": {
