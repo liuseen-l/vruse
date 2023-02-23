@@ -1,15 +1,16 @@
 {
-  "name": "@core/vue",
+  "name": "@vruse/vue",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "./index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "vue-demi": "*"
+    "@vruse/shared": "workspace:^1.0.0",
+    "vue-demi": "^0.13.11"
   }
 }

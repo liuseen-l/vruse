@@ -6,8 +6,8 @@ const resolveEntryForPkg = (p) =>
   path.resolve(fileURLToPath(import.meta.url), `../../packages/${p}/index.ts`)
 
 const entries = {
-  '@vruse/core': resolveEntryForPkg('core'),
-  '@vruse/shared': resolveEntryForPkg('shared'),
+  '@vruse/vue': resolveEntryForPkg('vue'),
+  '@vruse/react': resolveEntryForPkg('react'),
 }
 
 export { entries }

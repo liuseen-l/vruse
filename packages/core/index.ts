@@ -1,2 +1,1 @@
-export * from '../vue'
-// export * from './react'
+export { name, version } from 'package.json'
