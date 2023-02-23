@@ -66,7 +66,7 @@ npm i @vruse/core
 
 ### CDN
 
-It will be exposed to global as `window.VueUse`
+It will be exposed to global as `window.VRuse`
 
 ## 🪴 Project Activity
 
