@@ -28,18 +28,18 @@ const contributorList = (contributors as string[]).reduce((acc, name) => {
 
 const coreTeamMembers: CoreTeam[] = [
   {
-    avatar: contributorsAvatars.code_ManL,
+    avatar: contributorsAvatars['code-ManL'],
     name: 'LiuSeen',
-    github: 'LiuSeen',
+    github: 'code-ManL',
     twitter: '--',
     sponsors: false,
-    description: 'VRuse contributor',
+    description:
+      'Open source enthusiast<br>loves new things<br>is the founder of VRuse',
     packages: ['core'],
   },
-
   {
-    avatar: contributorsAvatars.Jie,
-    name: 'DimplesY',
+    avatar: contributorsAvatars.DimplesY,
+    name: 'Jie',
     github: 'DimplesY',
     twitter: '--',
     sponsors: false,

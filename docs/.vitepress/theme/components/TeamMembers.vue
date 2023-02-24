@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CoreTeam } from '../../../contributors'
 
-defineProps<{
+const props = defineProps<{
   data: CoreTeam
 }>()
 </script>
@@ -39,7 +39,16 @@ defineProps<{
         target="_blank"
         rel="noopener noreferrer"
         :aria-label="`${data.name} on Twitter`" />
+      <a
+        v-if="data.sponsors"
+        class="i-carbon-favorite-filled inline-block mya text-current op30 hover:op100 transition duration-200"
+        :href="`https://github.com/sponsors/${data.github}`"
+        target="_blank"
+        rel="noopener noreferrer"
+        :title="`Sponsor ${data.name}`"
+        :aria-label="`Sponsor ${data.name}`" />
     </div>
+
     <div
       v-if="data.functions || data.packages"
       bg-gray:5
