@@ -1,5 +1,6 @@
 ---
 layout: home
+sidebar: false
 
 hero:
   name: VRuse
@@ -11,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 起步
-      link: /guide/         
+      link: /guide/
     - theme: alt
       text: View on github
       link: https://github.com/code-ManL/VRuse
@@ -37,3 +38,4 @@ features:
     details: Flexible programmatic APIs with full TypeScript typing.
 ---
 
+<Home />
