@@ -30,8 +30,8 @@ const editLink = {
 
 // export default config;
 export default defineConfig({
-  base: '/vuehook/temp/',
-  title: '🔨  vrhook',
+  base: '/vruse',
+  title: '🔨  VRuse',
   description: '一款现代化快速开发 hook 仓库',
   lang: 'en-US',
   ignoreDeadLinks: true,
