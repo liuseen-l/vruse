@@ -1,4 +1,4 @@
-# 🔨 vruse 是什么?
+# 🔨 VRuse 是什么?
 
 一款功能型、业务型的现代化快速开发 hook 仓库
 
@@ -13,15 +13,27 @@
 - 🌍 I18n ready
 - 🚘 CI/CD with GithubActions
 
-## Install
+## Installation
 
 ```bash
 npm i @vruse/core
 ```
 
-## Quick Start
+> From v6.0, vruse requires `vue` >= v3.2 or `@vue/composition-api` >= v1.1 <br/> From v6.0, vruse requires `react` >= v16.8
 
-for vue
+###### Demos
+
+- Vite + Vue 3
+- Webpack + Vue 3
+- vite + Reat 18
+- Creat React App + React 18
+
+## Usage Example
+
+> 🎩 Vue
+
+Simply importing the functions you need from `@vueuse/vue`
+
 ```vue
 <template>
   <div>{{ r }}</div>
@@ -52,8 +64,10 @@ hook.run()
 </script>
 ```
 
+> 🎩 React
 
-> 🎩 for react
+Simply importing the functions you need from `@vueuse/react`
+
 ```tsx
 import React, { useState } from 'react'
 import { usePick } from '@vruse/core'

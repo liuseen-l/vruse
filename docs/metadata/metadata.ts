@@ -1,7 +1,7 @@
 import type { PackageIndexes } from './types'
 import _metadata from './index.json'
 
-export const metadata = _metadata as PackageIndexes
+export const metadata = _metadata
 
 export const _categories = ['biz']
 

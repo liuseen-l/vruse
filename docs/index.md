@@ -1,21 +1,21 @@
 ---
 layout: home
+sidebar: false
 
 hero:
   name: VRuse
   text: 一款现代化快速开发 hook 仓库
   tagline: 为开发提供 hook
-  image:
-    src: ./logo.png
-    alt: LiuSeen
+  # image:
+  #   src: ./logo.png
+  #   alt: LiuSeen
   actions:
     - theme: brand
       text: 起步
-      link: /guide/         
+      link: /guide/
     - theme: alt
       text: View on github
       link: https://github.com/code-ManL/VRuse
-
 features:
   - icon: 💡
     title: Instant Server Start
@@ -37,3 +37,5 @@ features:
     details: Flexible programmatic APIs with full TypeScript typing.
 ---
 
+
+<Home />
