@@ -5,6 +5,7 @@ import {
   metadata,
   _categories,
 } from '../metadata/metadata'
+import { demoBlockPlugin } from 'vitepress-theme-demoblock'
 
 // guide
 const Guide = [{ text: '开始', link: '/guide/' }]
@@ -30,13 +31,12 @@ const editLink = {
 
 // export default config;
 export default defineConfig({
-  base: '/vruse',
   title: '🔨  VRuse',
   description: '一款现代化快速开发 hook 仓库',
   lang: 'en-US',
   ignoreDeadLinks: true,
   lastUpdated: true,
-
+  outDir: './dist',
   themeConfig: {
     sidebar: {
       '/guide/': DefaultSideBar,
@@ -53,7 +53,6 @@ export default defineConfig({
 
   markdown: {
     config: (md) => {
-      const { demoBlockPlugin } = require('vitepress-theme-demoblock')
       md.use(demoBlockPlugin)
     },
   },

@@ -18,3 +18,4 @@ types
 coverage
 .eslintcache
 .vitepress/cache
+.eslintcache
