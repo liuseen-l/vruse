@@ -9,6 +9,7 @@
   "main": "index.js",
   "scripts": {
     "docs-dev": "pnpm --filter @vruse/docs docs-dev",
+    "docs-build": "pnpm --filter @vruse/docs docs-build",
     "test-unit": "vitest -c vitest.unit.config.ts",
     "check": "tsc --incremental --noEmit",
     "preinstall": "npx only-allow pnpm",

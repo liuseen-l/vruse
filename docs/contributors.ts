@@ -34,7 +34,7 @@ const coreTeamMembers: CoreTeam[] = [
     twitter: '--',
     sponsors: false,
     description:
-      'Open source enthusiast<br>loves new things<br>is the founder of VRuse',
+      'Open source enthusiast<br/>loves new things<br/>is the founder of VRuse',
     packages: ['core'],
   },
   {
