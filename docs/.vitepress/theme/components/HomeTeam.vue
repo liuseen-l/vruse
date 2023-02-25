@@ -4,7 +4,7 @@ import { coreTeamMembers } from '../../../contributors'
 
 <template>
   <div class="vp-doc">
-    <h2 op50 font-normal pt-5 pb-2>Meet The Team</h2>
+    <h2 op50 font-normal pt-5 pb-2>VRuse Team</h2>
   </div>
   <div
     grid="~ sm:cols-2 md:cols-3 lg:cols-4 gap-x-3 gap-y-20 items-center"

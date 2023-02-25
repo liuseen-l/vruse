@@ -5,7 +5,6 @@
 *.log
 components.d.ts
 dist
-index.json
 indexes.json
 node_modules
 cache

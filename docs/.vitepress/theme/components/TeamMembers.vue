@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CoreTeam } from '../../../contributors'
 
-const props = defineProps<{
+defineProps<{
   data: CoreTeam
 }>()
 </script>
