@@ -71,6 +71,11 @@ class PickRef<T> {
 
   private pickDelay: number
 
+  /**
+   * use run() in React useEffect would be trigger twice
+   */
+  private flush = false
+
   constructor(
     options: UsePickOptions<T>,
     private cb: UsePickCallback<T> | null,
@@ -78,6 +83,7 @@ class PickRef<T> {
     if (options.excludes) this.excludes = normalizeExcludes(options.excludes)
 
     this.rawData = toRaw(options.data)
+
     this.previewDelay = options.previewDelay ? options.previewDelay : 60
     this.previewCount = options.previewCount ? options.previewCount : 10
 
@@ -86,26 +92,27 @@ class PickRef<T> {
   }
 
   async raffle() {
-    const data = this.rawData.filter((item) => this.excludes!.includes(item))
+    const data = this.rawData.filter((item) => !this.excludes!.includes(item))
 
     let picked
     for (let i = 0; i < this.pickCount; i++) {
       let previewCount = this.previewCount
-
       while (previewCount--) {
         await sleep(this.previewDelay)
         picked = pick(data, data.length - 1 - i)
-
         this.cb!(picked, this.pickedList, this.pickedList.length as number)
       }
-
       await sleep(this.pickDelay)
       this.pickedList.push(picked as T)
     }
   }
 
   async run() {
-    await this.raffle()
+    if (this.flush === false) {
+      this.flush = true
+      await this.raffle()
+      this.flush = false
+    }
   }
 
   get value() {

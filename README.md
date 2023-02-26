@@ -44,13 +44,14 @@ export default {
 ## 🦄 Usage in React18
 
 ```tsx
-import React, { useState } from 'react'
-import { usePick } from '@vruse/core'
+import React, { useEffect, useState } from 'react'
+import { usePick } from '@vruse/vue'
 
 function App() {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-  const [r, useR] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+  const [r, useR] = useState([])
+  const n = []
 
   const hook = usePick(
     {
@@ -62,13 +63,16 @@ function App() {
       excludes: 4, // [4,2]
     },
     (v, _, l) => {
-      r[l as number] = v
+      n[l as number] = v
+      useR([...n])
     },
   )
 
-  hook.run()
+  useEffect(() => {
+    hook.run()
+  }, [])
 
-  return <div>{{ r }}</div>
+  return <div>{r}</div>
 }
 ```
 

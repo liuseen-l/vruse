@@ -50,7 +50,6 @@ export default defineConfig({
     ],
     editLink,
   },
-
   markdown: {
     config: (md) => {
       md.use(demoBlockPlugin)
@@ -77,23 +76,5 @@ function getFunctionsSideBar() {
     })
   }
 
-  // for (const name of _categories) {
-
-  //   const functions = (metadata.functions as any)[name]
-
-  //   console.log(functions);
-
-  //   if (name.startsWith('_') || functions.length === 0)
-  //     continue
-
-  //   links.push({
-  //     text: categoryNames[i],
-  //     items: functions.map(i => ({
-  //       text: i.name,
-  //       link: `/hooks/${i.category}/${i.name}/`,
-  //     })),
-  //   })
-
-  // }
   return links
 }
