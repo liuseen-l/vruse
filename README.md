@@ -45,7 +45,7 @@ export default {
 
 ```tsx
 import React, { useEffect, useState } from 'react'
-import { usePick } from '@vruse/vue'
+import { usePick } from '@vruse/core'
 
 function App() {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
