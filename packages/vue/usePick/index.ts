@@ -1,5 +1,4 @@
-import { toRaw } from 'vue-demi'
-import { sleep } from '@vruse/shared'
+import { isSameArray, sleep } from '@vruse/shared'
 
 export interface UsePickOptions<T> {
   /**
@@ -33,11 +32,11 @@ export interface UsePickOptions<T> {
   previewCount?: number
 }
 
-export type UsePickCallback<V = any> = (
+export type UsePickCallback<V = unknown> = (
   value: V,
   PickList?: V[],
   PickListLength?: number,
-) => any
+) => unknown
 
 function pick<T>(data: T[], limit: number = data.length - 1) {
   const picked = Math.floor(Math.random() * limit)
@@ -45,8 +44,7 @@ function pick<T>(data: T[], limit: number = data.length - 1) {
   return data[limit]
 }
 
-function normalizeExcludes<T>(e: T | T[] | undefined) {
-  if (!e) return []
+function normalizeExcludes<T>(e: T | T[] = []) {
   return Array.isArray(e) ? e : [e]
 }
 
@@ -80,15 +78,16 @@ class PickRef<T> {
     options: UsePickOptions<T>,
     private cb: UsePickCallback<T> | null,
   ) {
-    if (options.excludes) this.excludes = normalizeExcludes(options.excludes)
-
-    this.rawData = toRaw(options.data)
-
     this.previewDelay = options.previewDelay || 60
     this.previewCount = options.previewCount || 10
-
     this.pickDelay = options.pickDelay || 60
     this.pickCount = options.pickCount
+    this.rawData = options.data || []
+    if (options.excludes) {
+      this.excludes = normalizeExcludes(options.excludes)
+    }
+    isSameArray(this.excludes, this.rawData) &&
+      console.error('excludes can not be the same as data, please check!')
   }
 
   async raffle() {
@@ -99,7 +98,8 @@ class PickRef<T> {
       while (previewCount--) {
         await sleep(this.previewDelay)
         picked = pick(data, data.length - 1 - i)
-        this.cb!(picked, this.pickedList, this.pickedList.length as number)
+        this.cb &&
+          this.cb(picked, this.pickedList, this.pickedList.length as number)
       }
       await sleep(this.pickDelay)
       this.pickedList.push(picked as T)
