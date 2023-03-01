@@ -22,6 +22,8 @@
     "@types/web-bluetooth": "^0.0.16",
     "chalk": "^5.2.0",
     "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "jsdom": "^21.1.0",
     "lint-staged": "^13.1.2",
     "pnpm": "^7.27.1",

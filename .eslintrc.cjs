@@ -20,7 +20,8 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: '@antfu',
+  extends: ['@antfu', 'prettier'],
+  plugins: ['prettier'],
   rules: {
     'vue/no-deprecated-functional-template': 'off',
     'vue/one-component-per-file': 'off',
