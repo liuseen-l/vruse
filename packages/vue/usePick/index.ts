@@ -36,7 +36,7 @@ export interface UsePickOptions<T> {
 export type UsePickCallback<V = any> = (
   value: V,
   PickList?: V[],
-  PlickListLength?: number,
+  PickListLength?: number,
 ) => any
 
 function pick<T>(data: T[], limit: number = data.length - 1) {
@@ -84,16 +84,15 @@ class PickRef<T> {
 
     this.rawData = toRaw(options.data)
 
-    this.previewDelay = options.previewDelay ? options.previewDelay : 60
-    this.previewCount = options.previewCount ? options.previewCount : 10
+    this.previewDelay = options.previewDelay || 60
+    this.previewCount = options.previewCount || 10
 
-    this.pickDelay = options.pickDelay ? options.pickDelay : 60
+    this.pickDelay = options.pickDelay || 60
     this.pickCount = options.pickCount
   }
 
   async raffle() {
-    const data = this.rawData.filter((item) => !this.excludes!.includes(item))
-
+    const data = this.rawData.filter((item) => !this.excludes?.includes(item))
     let picked
     for (let i = 0; i < this.pickCount; i++) {
       let previewCount = this.previewCount
@@ -108,7 +107,7 @@ class PickRef<T> {
   }
 
   async run() {
-    if (this.flush === false) {
+    if (!this.flush) {
       this.flush = true
       await this.raffle()
       this.flush = false
