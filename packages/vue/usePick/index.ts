@@ -1,6 +1,6 @@
 import { isRef, reactive, toRaw } from 'vue-demi'
 import { isNumber, isSameArray, sleep } from '@vruse/shared'
-import type { Tpick, TrawValue, UsePickCallback } from './types'
+import type { Titem, Tpick, TrawValue, UsePickCallback } from './types'
 
 export interface UsePickOptions<T extends Tpick> {
   /**
@@ -11,7 +11,7 @@ export interface UsePickOptions<T extends Tpick> {
   /**
    * Excludes List
    */
-  excludes?: TrawValue<T>
+  excludes?: TrawValue<T> | Titem<TrawValue<T>>
 
   /**
    * Pick Interval
@@ -35,8 +35,8 @@ function pick<T>(target: T[], limit: number = target.length - 1) {
   return target[limit]
 }
 
-function normalizeExcludes<T>(e: T) {
-  return Array.isArray(e) ? e : [e]
+function normalizeExcludes<K>(e: TrawValue<K> | Titem<TrawValue<K>>) {
+  return Array.isArray(e) ? (e as TrawValue<K>) : ([e] as Titem<TrawValue<K>>[])
 }
 
 class PickRef<P extends Tpick> {
@@ -50,7 +50,7 @@ class PickRef<P extends Tpick> {
 
   private pickCount: number
 
-  private excludes: unknown[] = []
+  private excludes: TrawValue<P> | Titem<TrawValue<P>>[] | [] = []
 
   private pickDelay = 60
 
@@ -73,7 +73,7 @@ class PickRef<P extends Tpick> {
       this.pickCount = options
     } else {
       if (options.excludes) {
-        this.excludes = normalizeExcludes(options.excludes)
+        this.excludes = normalizeExcludes<P>(options.excludes)
         isSameArray(this.excludes, this._rawValue) &&
           console.error('excludes can not be the same as target, please check!')
       }
@@ -92,9 +92,12 @@ class PickRef<P extends Tpick> {
   }
 
   async raffle() {
-    const original = this._rawValue.filter(
-      (item) => !this.excludes!.includes(item),
-    )
+    const original =
+      this.excludes.length > 0
+        ? this._rawValue.filter(
+            (item) => !this.excludes.includes(item as never),
+          )
+        : this._rawValue
 
     let picked
     for (let i = 0; i < this.pickCount; i++) {

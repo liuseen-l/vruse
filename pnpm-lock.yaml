@@ -12,6 +12,7 @@ importers:
       eslint: ^8.34.0
       eslint-config-prettier: ^8.6.0
       eslint-plugin-prettier: ^4.2.1
+      fast-glob: ^3.2.12
       jsdom: ^21.1.0
       lint-staged: ^13.1.2
       pnpm: ^7.27.1
@@ -33,6 +34,7 @@ importers:
       eslint: 8.34.0
       eslint-config-prettier: 8.6.0_eslint@8.34.0
       eslint-plugin-prettier: 4.2.1_u5wnrdwibbfomslmnramz52buy
+      fast-glob: 3.2.12
       jsdom: 21.1.0
       lint-staged: 13.1.2
       pnpm: 7.27.1
