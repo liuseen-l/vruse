@@ -81,8 +81,10 @@ class PickRef<P extends Tpick> {
       this.initPreView(options)
     }
 
-    if (cb)
+    if (cb){
+
       this.cb = cb
+    }
   }
 
   initPreView(options: UsePickOptions<P>) {
