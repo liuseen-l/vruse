@@ -1,6 +1,6 @@
-import type { Ref } from 'vue-demi'
 import { isRef, reactive, toRaw } from 'vue-demi'
 import { isNumber, isSameArray, sleep } from '@vruse/shared'
+import type { Tpick, UsePickCallback } from './types'
 
 export interface UsePickOptions {
   /**
@@ -29,11 +29,6 @@ export interface UsePickOptions {
   previewCount?: number
 }
 
-export type UsePickCallback<V = unknown> = (
-  value: V,
-  PlickListLength?: number,
-) => unknown
-
 function pick<T>(data: T[], limit: number = data.length - 1) {
   const picked = Math.floor(Math.random() * limit)
   ;[data[picked], data[limit]] = [data[limit], data[picked]]
@@ -43,8 +38,6 @@ function pick<T>(data: T[], limit: number = data.length - 1) {
 function normalizeExcludes<T>(e: T | T[] = []) {
   return Array.isArray(e) ? e : [e]
 }
-
-type Tpick = Ref<any[]> | any[]
 
 class PickRef<P extends Tpick> {
   pickedList: any[] = []
@@ -63,14 +56,14 @@ class PickRef<P extends Tpick> {
 
   private flush = false
 
-  cb?: UsePickCallback<Tcalled<P>>
+  cb?: UsePickCallback<P>
 
   constructor(
     target: P,
     options: UsePickOptions | number,
-    cb?: UsePickCallback<Tcalled<P>>,
+    cb?: UsePickCallback<P>,
   ) {
-    // 存储原始值
+    // 存储原始值,用于过滤
     this._rawValue = isRef(target)
       ? toRaw(target.value)
       : (toRaw(target) as any[])
@@ -81,7 +74,7 @@ class PickRef<P extends Tpick> {
       this.pickCount = options
     } else {
       this.pickCount = options.pickCount
-      // 对象类型设置动画
+      // options为对象类型时设置动画
       this.initPreView(options)
     }
 
@@ -133,14 +126,6 @@ class PickRef<P extends Tpick> {
   }
 }
 
-type Tcalled<K> = K extends Ref<infer Z>
-  ? Z extends Array<infer U>
-    ? U
-    : Z
-  : K extends Array<infer U>
-  ? U
-  : K
-
 export function usePick<T extends Tpick>(target: T, options: number): PickRef<T>
 export function usePick<T extends Tpick>(
   target: T,
@@ -149,17 +134,17 @@ export function usePick<T extends Tpick>(
 export function usePick<T extends Tpick>(
   target: T,
   options: number,
-  cb: UsePickCallback<Tcalled<T>>,
+  cb: UsePickCallback<T>,
 ): PickRef<T>
 export function usePick<T extends Tpick>(
   target: T,
   options: UsePickOptions,
-  cb: UsePickCallback<Tcalled<T>>,
+  cb: UsePickCallback<T>,
 ): PickRef<T>
 export function usePick<T extends Tpick, O extends UsePickOptions | number>(
   target: T,
   options: O,
-  cb?: UsePickCallback<Tcalled<T>>,
+  cb?: UsePickCallback<T>,
 ) {
   if (cb) return new PickRef<T>(target, options, cb)
   return new PickRef<T>(target, options)
