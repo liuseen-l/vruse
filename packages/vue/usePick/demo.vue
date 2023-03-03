@@ -1,28 +1,16 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-import usePick from './index'
+import { ref } from 'vue'
+import { usePick } from './index'
 
-const arr = reactive([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+const r = ref<number>(0)
+const p = usePick([1, 2, 3, 6, 7, 8, 9, 10], 5, (v) => {
+  r.value = v
+})
 
-const r = reactive<number[]>([])
-
-const hook = usePick(
-  {
-    data: arr,
-    pickCount: 5,
-    previewCount: 10,
-    previewDelay: 60,
-    pickDelay: 1000,
-    excludes: 4, // [4,2]
-  },
-  (v, _, l) => {
-    r[l as number] = v
-  },
-)
-
-hook.run()
+p.run()
 </script>
 
 <template>
+  <div>{{ p.pickedList }}</div>
   <div>{{ r }}</div>
 </template>
