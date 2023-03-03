@@ -86,7 +86,7 @@ class PickRef<P extends Tpick> {
       this.excludes = normalizeExcludes(options.excludes)
     }
     isSameArray(this.excludes, this._rawValue) &&
-      console.error('excludes can not be the same as data, please check!')
+      console.error('excludes can not be the same as target, please check!')
 
     options.previewDelay && (this.previewDelay = options.previewDelay)
     options.previewCount && (this.previewCount = options.previewCount)
