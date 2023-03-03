@@ -77,7 +77,6 @@ class PickRef<P extends Tpick> {
         isSameArray(this.excludes, this._rawValue) &&
           console.error('excludes can not be the same as target, please check!')
       }
-
       this.pickCount = options.pickCount
       this.initPreView(options)
     }
