@@ -180,7 +180,7 @@ type Tpick = Ref<any[]> | any[]
 class PickRef<P extends Tpick> {
   pickedList: any[] = []
 
-  rawValue: any[]
+  private _rawValue: any[]
 
   private previewDelay = 60
 
@@ -202,7 +202,7 @@ class PickRef<P extends Tpick> {
     cb?: UsePickCallback<Tcalled<P>>,
   ) {
     // 存储原始值
-    this.rawValue = isRef(target)
+    this._rawValue = isRef(target)
       ? toRaw(target.value)
       : (toRaw(target) as any[])
     this.pickedList = reactive([])
