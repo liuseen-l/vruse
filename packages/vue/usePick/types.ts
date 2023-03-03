@@ -9,4 +9,4 @@ export type UsePickCallback<V> = (
   PlickListLength?: number,
 ) => unknown
 
-export type TrawValue<K> = K extends Ref<infer Z> ? Z : K
+export type Tunwrap<K> = K extends Ref<infer Z> ? Z : K

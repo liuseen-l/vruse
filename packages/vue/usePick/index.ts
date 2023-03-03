@@ -1,6 +1,6 @@
 import { isRef, reactive, toRaw } from 'vue-demi'
 import { isNumber, isSameArray, sleep } from '@vruse/shared'
-import type { Titem, Tpick, TrawValue, UsePickCallback } from './types'
+import type { Titem, Tpick, Tunwrap, UsePickCallback } from './types'
 
 export interface UsePickOptions<T extends Tpick> {
   /**
@@ -11,7 +11,7 @@ export interface UsePickOptions<T extends Tpick> {
   /**
    * Excludes List
    */
-  excludes?: TrawValue<T> | Titem<TrawValue<T>>
+  excludes?: Tunwrap<T> | Titem<Tunwrap<T>>
 
   /**
    * Pick Interval
@@ -35,14 +35,14 @@ function pick<T>(target: T[], limit: number = target.length - 1) {
   return target[limit]
 }
 
-function normalizeExcludes<K>(e: TrawValue<K> | Titem<TrawValue<K>>) {
-  return Array.isArray(e) ? (e as TrawValue<K>) : ([e] as Titem<TrawValue<K>>[])
+function normalizeExcludes<K>(e: Tunwrap<K> | Titem<Tunwrap<K>>) {
+  return Array.isArray(e) ? (e as Tunwrap<K>) : ([e] as Titem<Tunwrap<K>>[])
 }
 
 class PickRef<P extends Tpick> {
   pickedList: any[] = []
 
-  private _rawValue: TrawValue<P>
+  private _rawValue: Tunwrap<P>
 
   private previewDelay = 60
 
@@ -50,7 +50,7 @@ class PickRef<P extends Tpick> {
 
   private pickCount: number
 
-  private excludes: TrawValue<P> | Titem<TrawValue<P>>[] | [] = []
+  private excludes: Tunwrap<P> | Titem<Tunwrap<P>>[] | [] = []
 
   private pickDelay = 60
 
@@ -65,7 +65,7 @@ class PickRef<P extends Tpick> {
   ) {
     this._rawValue = (
       isRef(target) ? toRaw(target.value) : toRaw(target)
-    ) as TrawValue<P>
+    ) as Tunwrap<P>
 
     this.pickedList = reactive([])
 
