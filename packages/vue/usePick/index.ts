@@ -81,8 +81,8 @@ class PickRef<P extends Tpick> {
       this.initPreView(options)
     }
 
-    if (cb) 
-this.cb = cb
+    if (cb)
+      this.cb = cb
   }
 
   initPreView(options: UsePickOptions<P>) {
@@ -147,7 +147,7 @@ export function usePick<T extends Tpick, O extends UsePickOptions<T> | number>(
   options: O,
   cb?: UsePickCallback<T>,
 ) {
-  if (cb) 
-return new PickRef<T>(target, options, cb)
+  if (cb)
+    return new PickRef<T>(target, options, cb)
   return new PickRef<T>(target, options)
 }
