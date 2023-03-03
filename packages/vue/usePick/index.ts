@@ -31,7 +31,7 @@ export interface UsePickOptions<T extends Tpick> {
 
 function pick<T>(target: T[], limit: number = target.length - 1) {
   const picked = Math.floor(Math.random() * limit)
-    ;[target[picked], target[limit]] = [target[limit], target[picked]]
+  ;[target[picked], target[limit]] = [target[limit], target[picked]]
   return target[limit]
 }
 
@@ -81,8 +81,7 @@ class PickRef<P extends Tpick> {
       this.initPreView(options)
     }
 
-    if (cb){
-
+    if (cb) {
       this.cb = cb
     }
   }
@@ -97,8 +96,8 @@ class PickRef<P extends Tpick> {
     const original =
       this.excludes.length > 0
         ? this._rawValue.filter(
-          (item) => !this.excludes.includes(item as never),
-        )
+            (item) => !this.excludes.includes(item as never),
+          )
         : this._rawValue
 
     let picked
@@ -149,7 +148,6 @@ export function usePick<T extends Tpick, O extends UsePickOptions<T> | number>(
   options: O,
   cb?: UsePickCallback<T>,
 ) {
-  if (cb)
-    return new PickRef<T>(target, options, cb)
+  if (cb) return new PickRef<T>(target, options, cb)
   return new PickRef<T>(target, options)
 }
