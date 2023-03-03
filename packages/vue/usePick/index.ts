@@ -148,6 +148,8 @@ export function usePick<T extends Tpick, O extends UsePickOptions<T> | number>(
   options: O,
   cb?: UsePickCallback<T>,
 ) {
-  if (cb) return new PickRef<T>(target, options, cb)
+  if (cb) {
+    return new PickRef<T>(target, options, cb)
+  }
   return new PickRef<T>(target, options)
 }
