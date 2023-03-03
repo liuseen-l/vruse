@@ -1,8 +1,8 @@
 import { isRef, reactive, toRaw } from 'vue-demi'
 import { isNumber, isSameArray, sleep } from '@vruse/shared'
-import type { Tpick, UsePickCallback } from './types'
+import type { Tpick, TrawValue, UsePickCallback } from './types'
 
-export interface UsePickOptions {
+export interface UsePickOptions<T extends Tpick> {
   /**
    * Pick Count
    */
@@ -11,7 +11,7 @@ export interface UsePickOptions {
   /**
    * Excludes List
    */
-  excludes?: any[]
+  excludes?: TrawValue<T>
 
   /**
    * Pick Interval
@@ -35,14 +35,14 @@ function pick<T>(target: T[], limit: number = target.length - 1) {
   return target[limit]
 }
 
-function normalizeExcludes<T>(e: T | T[] = []) {
+function normalizeExcludes<T>(e: T) {
   return Array.isArray(e) ? e : [e]
 }
 
 class PickRef<P extends Tpick> {
   pickedList: any[] = []
 
-  private _rawValue: any[]
+  private _rawValue: TrawValue<P>
 
   private previewDelay = 60
 
@@ -50,7 +50,7 @@ class PickRef<P extends Tpick> {
 
   private pickCount: number
 
-  private excludes: any[] = []
+  private excludes: unknown[] = []
 
   private pickDelay = 60
 
@@ -60,34 +60,32 @@ class PickRef<P extends Tpick> {
 
   constructor(
     target: P,
-    options: UsePickOptions | number,
+    options: UsePickOptions<P> | number,
     cb?: UsePickCallback<P>,
   ) {
-    // 存储原始值,用于过滤
-    this._rawValue = isRef(target)
-      ? toRaw(target.value)
-      : (toRaw(target) as any[])
+    this._rawValue = (
+      isRef(target) ? toRaw(target.value) : toRaw(target)
+    ) as TrawValue<P>
+
     this.pickedList = reactive([])
 
-    // 判断是否是传的数值
     if (isNumber(options)) {
       this.pickCount = options
     } else {
+      if (options.excludes) {
+        this.excludes = normalizeExcludes(options.excludes)
+        isSameArray(this.excludes, this._rawValue) &&
+          console.error('excludes can not be the same as target, please check!')
+      }
+
       this.pickCount = options.pickCount
-      // options为对象类型时设置动画
       this.initPreView(options)
     }
 
     if (cb) this.cb = cb
   }
 
-  initPreView(options: UsePickOptions) {
-    if (options.excludes) {
-      this.excludes = normalizeExcludes(options.excludes)
-    }
-    isSameArray(this.excludes, this._rawValue) &&
-      console.error('excludes can not be the same as target, please check!')
-
+  initPreView(options: UsePickOptions<P>) {
     options.previewDelay && (this.previewDelay = options.previewDelay)
     options.previewCount && (this.previewCount = options.previewCount)
     options.pickDelay && (this.pickDelay = options.pickDelay)
@@ -126,11 +124,11 @@ class PickRef<P extends Tpick> {
   }
 }
 
-export function usePick<T extends Tpick>(target: T, options: number): PickRef<T>
 export function usePick<T extends Tpick>(
   target: T,
-  options: UsePickOptions,
+  options: UsePickOptions<T>,
 ): PickRef<T>
+export function usePick<T extends Tpick>(target: T, options: number): PickRef<T>
 export function usePick<T extends Tpick>(
   target: T,
   options: number,
@@ -138,10 +136,10 @@ export function usePick<T extends Tpick>(
 ): PickRef<T>
 export function usePick<T extends Tpick>(
   target: T,
-  options: UsePickOptions,
+  options: UsePickOptions<T>,
   cb: UsePickCallback<T>,
 ): PickRef<T>
-export function usePick<T extends Tpick, O extends UsePickOptions | number>(
+export function usePick<T extends Tpick, O extends UsePickOptions<T> | number>(
   target: T,
   options: O,
   cb?: UsePickCallback<T>,
