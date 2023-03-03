@@ -29,10 +29,10 @@ export interface UsePickOptions {
   previewCount?: number
 }
 
-function pick<T>(data: T[], limit: number = data.length - 1) {
+function pick<T>(target: T[], limit: number = target.length - 1) {
   const picked = Math.floor(Math.random() * limit)
-  ;[data[picked], data[limit]] = [data[limit], data[picked]]
-  return data[limit]
+  ;[target[picked], target[limit]] = [target[limit], target[picked]]
+  return target[limit]
 }
 
 function normalizeExcludes<T>(e: T | T[] = []) {
