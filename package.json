@@ -22,6 +22,7 @@
     "@antfu/eslint-config": "^0.35.2",
     "@esbuild-kit/esm-loader": "^2.5.5",
     "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
     "@types/node": "^18.14.0",
     "@types/web-bluetooth": "^0.0.16",
     "chalk": "^5.2.0",
