@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "build": "esno scripts/build.ts",
-    "build:rollup": "rollup -c",
+    "build:rollup": "rollup -c --bundleConfigAsCjs",
     "docs-dev": "pnpm --filter @vruse/docs docs-dev",
     "docs-build": "pnpm --filter @vruse/docs docs-build",
     "test-unit": "vitest -c vitest.unit.config.ts",

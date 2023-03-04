@@ -126,11 +126,11 @@ class PickRef<P extends Tpick> {
   }
 }
 
+export function usePick<T extends Tpick>(target: T, options: number): PickRef<T>
 export function usePick<T extends Tpick>(
   target: T,
   options: UsePickOptions<T>,
 ): PickRef<T>
-export function usePick<T extends Tpick>(target: T, options: number): PickRef<T>
 export function usePick<T extends Tpick>(
   target: T,
   options: number,
@@ -141,9 +141,9 @@ export function usePick<T extends Tpick>(
   options: UsePickOptions<T>,
   cb: UsePickCallback<T>,
 ): PickRef<T>
-export function usePick<T extends Tpick, O extends UsePickOptions<T> | number>(
+export function usePick<T extends Tpick>(
   target: T,
-  options: O,
+  options: UsePickOptions<T> | number,
   cb?: UsePickCallback<T>,
 ) {
   if (cb) {

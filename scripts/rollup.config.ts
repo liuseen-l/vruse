@@ -127,7 +127,6 @@ for (const {
         },
       )
     }
-
     configs.push({
       input,
       output,
