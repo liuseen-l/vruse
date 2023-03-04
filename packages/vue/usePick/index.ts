@@ -117,13 +117,26 @@ class PickRef<P extends Tpick> {
     }
   }
 
-  async run() {
-    if (!this.flush) {
-      this.flush = true
-      await this.raffle()
-      this.flush = false
-    }
+  // async run() {
+  //   if (!this.flush) {
+  //     this.flush = true
+  //     await this.raffle()
+  //     this.flush = false
+  //   }
+  // }
+}
+
+async function run(this: any) {
+  if (!this.flush) {
+    this.flush = true
+    await this.raffle()
+    this.flush = false
   }
+}
+
+function wrapRun<T>(v: T): T {
+  v.run = run.bind(v)
+  return v
 }
 
 export function usePick<T extends Tpick>(
@@ -141,7 +154,7 @@ export function usePick<T extends Tpick>(
   cb?: UsePickCallback<T>,
 ): PickRef<T> {
   if (cb) {
-    return new PickRef<T>(target, options, cb)
+    return wrapRun(new PickRef<T>(target, options, cb))
   }
-  return new PickRef<T>(target, options)
+  return wrapRun(new PickRef<T>(target, options))
 }

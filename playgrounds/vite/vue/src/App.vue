@@ -6,6 +6,8 @@ const r = ref<number>(0)
 const p = usePick([1, 2, 3, 6, 7, 8, 9, 10], {
   pickCount: 5,
   excludes: [1],
+}, (v) => {
+  r.value = v
 })
 
 
