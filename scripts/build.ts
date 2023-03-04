@@ -1,7 +1,7 @@
 import assert from 'node:assert'
 import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { execSync as exec } from 'child_process'
+import { execSync as exec } from 'node:child_process'
 import consola from 'consola'
 
 const __filename = fileURLToPath(import.meta.url)
