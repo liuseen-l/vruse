@@ -91,7 +91,10 @@ importers:
     specifiers: {}
 
   packages/react:
-    specifiers: {}
+    specifiers:
+      '@vruse/shared': workspace:^1.0.0
+    dependencies:
+      '@vruse/shared': link:../shared
 
   packages/shared:
     specifiers: {}
