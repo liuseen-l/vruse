@@ -7,17 +7,15 @@ import json from '@rollup/plugin-json'
 import { PluginPure as pure } from 'rollup-plugin-pure'
 import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
 import fg from 'fast-glob'
+import terser from '@rollup/plugin-terser'
 import { packages } from '../meta/packages'
 
-// 拿到vue-demi的模块路径
 const VUE_DEMI_IIFE = fs.readFileSync(
   require.resolve('vue-demi/lib/index.iife.js'),
   'utf-8',
 )
-// 打包配置数组
 const configs: RollupOptions[] = []
 
-// 注入vueDemi
 const injectVueDemi: Plugin = {
   name: 'inject-vue-demi',
   renderChunk(code) {
@@ -90,6 +88,7 @@ for (const {
       output.push({
         file: `packages/${name}/dist/${fn}.mjs`,
         format: 'es',
+        plugins: [terser()],
       })
     }
 
