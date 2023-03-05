@@ -12,7 +12,7 @@
     "build:rollup": "rollup -c --bundleConfigAsCjs",
     "docs:dev": "pnpm --filter @vruse/docs docs:dev",
     "docs:build": "pnpm --filter @vruse/docs docs:build",
-    "test": "vitest -c vitest.unit.config.ts ",
+    "test": "vitest",
     "test:cov": "vitest --coverage",
     "test:ui": "vitest --ui",
     "test:v": "vitest --mode v",
