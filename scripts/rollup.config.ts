@@ -73,9 +73,7 @@ for (const {
         .map((i) => i.split('/')[0]),
     )
 
-  // index
   for (const fn of functionNames) {
-    // packages/core/index.ts
     const input =
       fn === 'index'
         ? `packages/${name}/index.ts`
@@ -83,7 +81,6 @@ for (const {
 
     const output: OutputOptions[] = []
 
-    // build to es
     if (mjs !== false) {
       output.push({
         file: `packages/${name}/dist/${fn}.mjs`,
@@ -92,7 +89,6 @@ for (const {
       })
     }
 
-    // build to cjs
     if (cjs !== false) {
       output.push({
         file: `packages/${name}/dist/${fn}.cjs`,
@@ -100,7 +96,6 @@ for (const {
       })
     }
 
-    // build to iife
     if (iife !== false) {
       output.push(
         {

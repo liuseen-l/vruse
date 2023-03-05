@@ -107,12 +107,12 @@ class PickRef<P> {
       while (previewCount--) {
         await sleep(this.previewDelay)
         picked = pick(original, original.length - 1 - i)
-        this.setPickedList([...temp, picked])
+        this.setPickedList([...this.pickedList, picked])
         // console.log(this.pickedList);
         this.cb && this.cb(picked, this.pickedList.length)
       }
       await sleep(this.pickDelay)
-      temp.push(picked)
+      // temp.push(picked)
     }
   }
 
