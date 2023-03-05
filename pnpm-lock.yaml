@@ -113,6 +113,7 @@ importers:
       '@types/react-dom': ^18.0.11
       '@vitejs/plugin-react': ^3.1.0
       '@vitejs/plugin-vue': ^4.0.0
+      '@vruse/react': workspace:^1.0.0
       '@vruse/vue': workspace:^1.0.0
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -121,6 +122,7 @@ importers:
       vue: ^3.2.47
       vue-tsc: ^1.0.24
     dependencies:
+      '@vruse/react': link:../../packages/react
       '@vruse/vue': link:../../packages/vue
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0

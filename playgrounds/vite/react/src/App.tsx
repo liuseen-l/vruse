@@ -1,32 +1,28 @@
-// import React, { useEffect, useState } from 'react'
-// import { usePick } from '@vruse/vue'
+import { usePick } from '@vruse/react'
+import React, { useEffect, useState } from 'react'
 
-// function App() {
-//   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+function App() {
+  const [r, setR] = useState(0)
 
-//   const [r, useR] = useState([])
-//   const n = []
+  const { run, pickedList } = usePick(
+    [1, 2, 3, 6, 7, 8, 9, 10],
+    {
+      pickCount: 5,
+    },
+    (v) => {
+      // setR(v)
+    },
+  )
 
-//   const hook = usePick(
-//     {
-//       data: arr,
-//       pickCount: 5,
-//       previewCount: 10,
-//       previewDelay: 60,
-//       pickDelay: 1000,
-//       excludes: 4, // [4,2]
-//     },
-//     (v, _, l) => {
-//       n[l as number] = v
-//       useR([...n])
-//     },
-//   )
+  useEffect(() => {
+    run()
+  }, [])
 
-//   useEffect(() => {
-//     hook.run()
-//   }, [])
-
-//   return <div>{r}</div>
-// }
-
-// export default App
+  return (
+    <>
+      <div>{pickedList}</div>
+      <div>{r}</div>
+    </>
+  )
+}
+export default App

@@ -1,7 +1,8 @@
-import { isNumber, isRef, isSameArray, sleep } from '@vruse/shared'
+import { isNumber, isRef, sleep } from '@vruse/shared'
+import { useState } from 'react'
 import type { Titem, Tpick, Tunwrap, UsePickCallback } from './types'
 
-export interface UsePickOptions<T extends Tpick> {
+export interface UsePickOptions<T> {
   /**
    * Pick Count
    */
@@ -38,10 +39,12 @@ function normalizeExcludes<K>(e: Tunwrap<K> | Titem<Tunwrap<K>>) {
   return Array.isArray(e) ? (e as Tunwrap<K>) : ([e] as Titem<Tunwrap<K>>[])
 }
 
-class PickRef<P extends Tpick> {
+class PickRef<P> {
   pickedList: any[] = []
 
-  private _rawValue: Tunwrap<P>
+  private setPickedList: any
+
+  private _rawValue: any[]
 
   private previewDelay = 60
 
@@ -58,21 +61,23 @@ class PickRef<P extends Tpick> {
   cb?: UsePickCallback<P>
 
   constructor(
-    target: P,
+    target: Tpick,
     options: UsePickOptions<P> | number,
     cb?: UsePickCallback<P>,
   ) {
     this._rawValue = isRef(target) ? target.current : target
 
-    this.pickedList = reactive([])
+    const s = useState([])
+    this.pickedList = s[0]
+    this.setPickedList = s[1]
 
     if (isNumber(options)) {
       this.pickCount = options
     } else {
       if (options.excludes) {
         this.excludes = normalizeExcludes<P>(options.excludes)
-        isSameArray(this.excludes, this._rawValue) &&
-          console.error('excludes can not be the same as target, please check!')
+        // isSameArray(this.excludes, this._rawValue) &&
+        //   console.error('excludes can not be the same as target, please check!')
       }
       this.pickCount = options.pickCount
       this.initPreView(options)
@@ -89,28 +94,25 @@ class PickRef<P extends Tpick> {
 
   async raffle() {
     const original =
-      this.excludes.length > 0
+      (this.excludes as []).length > 0
         ? this._rawValue.filter(
-            (item) => !this.excludes.includes(item as never),
+            (item) => !(this.excludes as []).includes(item as never),
           )
         : this._rawValue
 
     let picked
+    const temp = []
     for (let i = 0; i < this.pickCount; i++) {
       let previewCount = this.previewCount
-      let flag = true
       while (previewCount--) {
         await sleep(this.previewDelay)
         picked = pick(original, original.length - 1 - i)
-        if (flag) {
-          this.pickedList.push(picked)
-          flag = false
-        } else {
-          this.pickedList[this.pickedList.length - 1] = picked
-        }
+        this.setPickedList([...temp, picked])
+        // console.log(this.pickedList);
         this.cb && this.cb(picked, this.pickedList.length)
       }
       await sleep(this.pickDelay)
+      temp.push(picked)
     }
   }
 
@@ -123,22 +125,35 @@ class PickRef<P extends Tpick> {
   }
 }
 
-export function usePick<T extends Tpick>(
-  target: T,
+async function run(this: any) {
+  if (!this.flush) {
+    this.flush = true
+    await this.raffle()
+    this.flush = false
+  }
+}
+
+function wrapRun(v: any) {
+  v.run = run.bind(v)
+  return v
+}
+
+export function usePick<T>(
+  target: Tpick,
   options: UsePickOptions<T> | number,
 ): PickRef<T>
-export function usePick<T extends Tpick>(
-  target: T,
+export function usePick<T>(
+  target: Tpick,
   options: UsePickOptions<T> | number,
   cb: UsePickCallback<T>,
 ): PickRef<T>
-export function usePick<T extends Tpick>(
-  target: T,
+export function usePick<T>(
+  target: Tpick,
   options: UsePickOptions<T> | number,
   cb?: UsePickCallback<T>,
 ): PickRef<T> {
   if (cb) {
-    return new PickRef<T>(target, options, cb)
+    return wrapRun(new PickRef<T>(target, options, cb))
   }
-  return new PickRef<T>(target, options)
+  return wrapRun(new PickRef<T>(target, options))
 }

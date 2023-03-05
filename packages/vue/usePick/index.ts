@@ -39,8 +39,16 @@ function normalizeExcludes<K>(e: Tunwrap<K> | Titem<Tunwrap<K>>) {
   return Array.isArray(e) ? (e as Tunwrap<K>) : ([e] as Titem<Tunwrap<K>>[])
 }
 
+interface IpickRef {
+  run: () => void
+}
+
 class PickRef<P extends Tpick> {
   pickedList: any[] = []
+
+  private flush = false
+
+  private cb?: UsePickCallback<P>
 
   private _rawValue: Tunwrap<P>
 
@@ -53,10 +61,6 @@ class PickRef<P extends Tpick> {
   private excludes: Tunwrap<P> | Titem<Tunwrap<P>>[] | [] = []
 
   private pickDelay = 60
-
-  private flush = false
-
-  cb?: UsePickCallback<P>
 
   constructor(
     target: P,
@@ -84,13 +88,13 @@ class PickRef<P extends Tpick> {
     cb && (this.cb = cb)
   }
 
-  initPreView(options: UsePickOptions<P>) {
+  private initPreView(options: UsePickOptions<P>) {
     options.previewDelay && (this.previewDelay = options.previewDelay)
     options.previewCount && (this.previewCount = options.previewCount)
     options.pickDelay && (this.pickDelay = options.pickDelay)
   }
 
-  async raffle() {
+  private async raffle() {
     const original =
       this.excludes.length > 0
         ? this._rawValue.filter(
@@ -116,14 +120,6 @@ class PickRef<P extends Tpick> {
       await sleep(this.pickDelay)
     }
   }
-
-  // async run() {
-  //   if (!this.flush) {
-  //     this.flush = true
-  //     await this.raffle()
-  //     this.flush = false
-  //   }
-  // }
 }
 
 async function run(this: any) {
@@ -134,7 +130,7 @@ async function run(this: any) {
   }
 }
 
-function wrapRun<T>(v: T): T {
+function wrapRun(v: any) {
   v.run = run.bind(v)
   return v
 }
@@ -142,17 +138,17 @@ function wrapRun<T>(v: T): T {
 export function usePick<T extends Tpick>(
   target: T,
   options: UsePickOptions<T> | number,
-): PickRef<T>
+): PickRef<T> & IpickRef
 export function usePick<T extends Tpick>(
   target: T,
   options: UsePickOptions<T> | number,
   cb: UsePickCallback<T>,
-): PickRef<T>
+): PickRef<T> & IpickRef
 export function usePick<T extends Tpick>(
   target: T,
   options: UsePickOptions<T> | number,
   cb?: UsePickCallback<T>,
-): PickRef<T> {
+): PickRef<T> & IpickRef {
   if (cb) {
     return wrapRun(new PickRef<T>(target, options, cb))
   }

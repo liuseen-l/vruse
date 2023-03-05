@@ -1,5 +1,5 @@
-interface IMutableRefObject<T = any> {
-  current: T
+export interface IMutableRefObject {
+  current: any[]
 }
 
 export function isRef(v: any): v is IMutableRefObject {
