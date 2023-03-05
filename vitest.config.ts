@@ -1,8 +1,7 @@
-// import { resolve } from 'path'
+import { resolve } from 'node:path'
 import type { UserConfig } from 'vitest/config'
 import { defineConfig } from 'vitest/config'
 
-// ts-expect-error let me do it
 export default defineConfig({
   resolve: {
     dedupe: ['vue', 'vue-demi', '@vue/runtime-core'],
@@ -10,7 +9,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    // setupFiles: [resolve(__dirname, 'packages/.test/setup.ts')],
+    setupFiles: [resolve(__dirname, './scripts/setupVitest.ts')],
     reporters: 'dot',
     include: ['packages/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   },

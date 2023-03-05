@@ -14,6 +14,12 @@ describe('usePick', () => {
     const original = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const pickCount = 5
 
-    const
+    const { run } = usePick(original, pickCount)
+
+    run()
+    run()
+    expect(
+      'Please call it again after the execution is complete',
+    ).toHaveBeenWarned()
   })
 })

@@ -127,6 +127,8 @@ async function run(this: any) {
     this.flush = true
     await this.raffle()
     this.flush = false
+  } else {
+    console.warn('Please call it again after the execution is complete')
   }
 }
 
