@@ -22,10 +22,10 @@
     "check": "tsc --incremental --noEmit",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
-    "clean": "rimraf packages/vue/dist"
+    "clean": "rimraf packages/*/dist"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.35.2",
+    "@antfu/eslint-config": "^0.36.0",
     "@esbuild-kit/esm-loader": "^2.5.5",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-terser": "^0.4.0",

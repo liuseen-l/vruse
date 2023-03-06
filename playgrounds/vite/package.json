@@ -7,8 +7,8 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "dev:v": "vite vue -c vite.config.ts --mode vue",
-    "dev:r": "vite react -c vite.config.ts --mode react"
+    "dev:v": "vite vue --mode vue",
+    "dev:r": "vite react --mode react"
   },
   "dependencies": {
     "@vruse/react": "workspace:*",

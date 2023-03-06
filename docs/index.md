@@ -18,23 +18,23 @@ hero:
       link: https://github.com/code-ManL/VRuse
 features:
   - icon: 💡
-    title: Instant Server Start
-    details: On demand file serving over native ESM, no bundling required!
+    title: 丰富的业务函数
+    details: 这里有大量的业务函数来支持项目中的业务逻辑
   - icon: ⚡️
-    title: Lightning Fast HMR
-    details: Hot Module Replacement (HMR) that stays fast regardless of app size.
+    title: 无缝迁移
+    details: 兼容 vue 和 react 项目
   - icon: 🛠️
-    title: Rich Features
-    details: Out-of-the-box support for TypeScript, JSX, CSS and more.
+    title: 按需加载
+    details: 只会加载在项目中使用过的 hook
   - icon: 📦
-    title: Optimized Build
-    details: Pre-configured Rollup build with multi-page and library mode support.
+    title: 类型提示
+    details: 内置丰富的 Ts 声明文件，在开发过程中能够给予友好的类型提示.
   - icon: 🔩
-    title: Universal Plugins
-    details: Rollup-superset plugin interface shared between dev and build.
+    title: 不依赖第三方 bundlers
+    details: 可以通过 CDN 使用，无需多余的 bundlers
   - icon: 🔑
-    title: Fully Typed APIs
-    details: Flexible programmatic APIs with full TypeScript typing.
+    title: 支持SSR应用
+    details: 与服务器端渲染/生成完美配合
 ---
 
 

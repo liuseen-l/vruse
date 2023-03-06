@@ -35,7 +35,7 @@ const coreTeamMembers: CoreTeam[] = [
     sponsors: false,
     description:
       'Open source enthusiast<br/>loves new things<br/>is the founder of VRuse',
-    packages: ['core'],
+    packages: ['monorepo'],
   },
   {
     avatar: contributorsAvatars.DimplesY,
@@ -44,7 +44,7 @@ const coreTeamMembers: CoreTeam[] = [
     twitter: '--',
     sponsors: false,
     description: 'VRuse contributor',
-    packages: ['core'],
+    packages: ['monorepo'],
   },
 ].sort(
   (pre, cur) =>

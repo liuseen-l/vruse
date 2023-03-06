@@ -14,6 +14,7 @@ const VUE_DEMI_IIFE = fs.readFileSync(
   require.resolve('vue-demi/lib/index.iife.js'),
   'utf-8',
 )
+
 const configs: RollupOptions[] = []
 
 const injectVueDemi: Plugin = {
