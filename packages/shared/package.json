@@ -1,12 +1,44 @@
 {
   "name": "@vruse/shared",
   "version": "1.0.0",
-  "description": "",
-  "author": "",
-  "license": "ISC",
-  "keywords": [],
-  "main": "index.js",
+  "description": "VRuse Shared utilities",
+  "author": "LiuSeen <https://github.com/code-ManL>",
+  "license": "MIT",
+  "homepage": "https://github.com/code-ManL/VRuse",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-ManL/VRuse",
+    "directory": "packages/vue"
+  },
+  "bugs": {
+    "url": "https://github.com/code-ManL/VRuse/issues"
+  },
+  "keywords": [
+    "vue",
+    "react",
+    "vruse",
+    "utils",
+    "hook"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.cjs",
+      "import": "./index.mjs"
+    },
+    "./*": "./*"
+  },
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "types": "./index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

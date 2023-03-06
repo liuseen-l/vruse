@@ -46,7 +46,7 @@ interface IpickRef {
 class PickRef<P extends Tpick> {
   pickedList: any[] = []
 
-  private flush = false
+  protected flush = false
 
   private cb?: UsePickCallback<P>
 
@@ -94,7 +94,7 @@ class PickRef<P extends Tpick> {
     options.pickDelay && (this.pickDelay = options.pickDelay)
   }
 
-  private async raffle() {
+  protected async raffle() {
     const original =
       this.excludes.length > 0
         ? this._rawValue.filter(

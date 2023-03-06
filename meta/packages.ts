@@ -1,10 +1,13 @@
 import type { PackageManifest } from '../docs/metadata'
 
 export const packages: PackageManifest[] = [
-  // {
-  //   name: 'shared',
-  //   display: 'Shared utilities',
-  // },
+  {
+    name: 'shared',
+    display: 'VRuse Shared utilities',
+    iife: true,
+    cjs: true,
+    mjs: true,
+  },
   // {
   //   name: 'core',
   //   display: 'VRuse',
@@ -15,7 +18,7 @@ export const packages: PackageManifest[] = [
     display: 'vue',
     description: 'Collection of essential Vue Composition Utilities',
     iife: true,
-    cjs: false,
+    cjs: true,
     mjs: true,
     external: ['@vueuse/shared'],
   },

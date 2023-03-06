@@ -1,16 +1,48 @@
 {
   "name": "@vruse/vue",
-  "version": "1.0.0",
-  "description": "",
-  "author": "",
-  "license": "ISC",
-  "keywords": [],
-  "main": "./index.ts",
+  "version": "1.0.1",
+  "description": "Collection of essential Vue and React Composition Utilities",
+  "author": "LiuSeen <https://github.com/code-ManL>",
+  "license": "MIT",
+  "homepage": "https://github.com/code-ManL/VRuse",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-ManL/VRuse",
+    "directory": "packages/vue"
+  },
+  "bugs": {
+    "url": "https://github.com/code-ManL/VRuse/issues"
+  },
+  "keywords": [
+    "vue",
+    "react",
+    "vruse",
+    "utils",
+    "hook"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.cjs",
+      "import": "./index.mjs"
+    },
+    "./*": "./*"
+  },
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "types": "./index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@vruse/shared": "workspace:^1.0.0",
     "vue-demi": "^0.13.11"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
