@@ -8,11 +8,6 @@ export const packages: PackageManifest[] = [
     cjs: true,
     mjs: true,
   },
-  // {
-  //   name: 'core',
-  //   display: 'VRuse',
-  //   description: 'Collection of essential Utilities',
-  // },
   {
     name: 'vue',
     display: 'vue',
@@ -22,13 +17,4 @@ export const packages: PackageManifest[] = [
     mjs: true,
     external: ['@vueuse/shared'],
   },
-  // {
-  //   name: 'react',
-  //   display: 'react',
-  //   description: 'Collection of essential React Composition Utilities',
-  //   external: [
-  //     '@vueuse/shared',
-  //     '@vueuse/core',
-  //   ],
-  // },
 ]

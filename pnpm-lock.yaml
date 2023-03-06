@@ -105,8 +105,8 @@ importers:
 
   packages/vue:
     specifiers:
-      '@vruse/shared': workspace:^1.0.0
-      vue-demi: ^0.13.11
+      '@vruse/shared': workspace:*
+      vue-demi: '*'
     dependencies:
       '@vruse/shared': link:../shared
       vue-demi: 0.13.11
@@ -117,8 +117,8 @@ importers:
       '@types/react-dom': ^18.0.11
       '@vitejs/plugin-react': ^3.1.0
       '@vitejs/plugin-vue': ^4.0.0
-      '@vruse/react': workspace:^1.0.0
-      '@vruse/vue': workspace:^0.0.1
+      '@vruse/react': workspace:*
+      '@vruse/vue': workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
       typescript: ^4.9.5

@@ -11,8 +11,8 @@
     "dev:r": "vite react -c vite.config.ts --mode react"
   },
   "dependencies": {
-    "@vruse/react": "workspace:^1.0.0",
-    "@vruse/vue": "workspace:^0.0.1",
+    "@vruse/react": "workspace:*",
+    "@vruse/vue": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "vite": "^4.1.1",
