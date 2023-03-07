@@ -1,33 +1,21 @@
 ---
-category: biz
+category: 业务型
 ---
 
 # usePick
 
-一个抽奖的函数
+A hook with lottery function.
 
-## 使用方式
+## Usage
 
-```html
-<script setup lang="ts">
-import { usePick } from '@vruse/vue'
+```ts
 import { ref } from 'vue'
+import { usePick } from './index'
 
 const r = ref<number>(0)
-const { run, pickedList } = usePick([1, 2, 3, 6, 7, 8, 9, 10], {
-  pickCount: 5,
-  excludes: [1],
-}, (v) => {
+const p = usePick([1, 2, 3, 6, 7, 8, 9, 10], 5, (v) => {
   r.value = v
 })
 
-
-run()
-</script>
-
-<template>
-  <div>{{ pickedList }}</div>
-  <div>{{ r }}</div>
-</template>
-
+p.run()
 ```

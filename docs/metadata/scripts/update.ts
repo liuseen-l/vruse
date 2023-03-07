@@ -61,8 +61,22 @@ export async function readMetadata() {
       hooks.map(async (fnName) => {
         // hook md path
         const mdPath = join(dir, fnName, 'index.md')
+
         // hook code path
         const tsPath = join(dir, fnName, 'index.ts')
+
+        // make directory
+        if (['vue', 'react', 'shared'].includes(pkg.name)) {
+          const dirPath = resolve(DIR_ROOT, 'docs', pkg.name)
+          const hookDir = resolve(dirPath, fnName)
+          if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath)
+            if (!fs.existsSync(hookDir)) {
+              fs.mkdirSync(hookDir)
+            }
+          }
+          await fs.copyFile(mdPath, join(hookDir, 'index.md'))
+        }
 
         // hook info
         const fn: VueUseFunction = {
@@ -76,7 +90,6 @@ export async function readMetadata() {
           fn.component = true
         if (fs.existsSync(join(dir, fnName, 'directive.ts')))
           fn.directive = true
-
         if (!fs.existsSync(mdPath)) {
           fn.internal = true
           indexes.functions.push(fn)
@@ -151,6 +164,8 @@ export async function readMetadata() {
 
   return indexes
 }
+
+async function mkDir() {}
 
 async function run() {
   const indexes = await readMetadata()
