@@ -1,29 +1,66 @@
+import { demoBlockPlugin } from 'vitepress-theme-demoblock'
 import { defineConfig } from 'vitepress'
 import {
+  addonCategoryNames,
   categoryNames,
   coreCategoryNames,
   metadata,
-  _categories,
 } from '../metadata/metadata'
-import { demoBlockPlugin } from 'vitepress-theme-demoblock'
+import { currentVersion, versions } from '../../meta/versions'
 
 // guide
 const Guide = [{ text: '开始', link: '/guide/' }]
 
-// useHook
+/**
+ * guide 目录
+ */
+// 二级目录
 const CoreCategories = coreCategoryNames.map((c) => ({
   text: c,
   activeMatch: '___', // never active
-  link: `/hooks/functions#category=${c}`,
+  link: `/hooks#category=${c}`,
 }))
-
+// 一级目录
 const DefaultSideBar = [
   { text: '指南', items: Guide },
-  { text: '核心hook', items: CoreCategories },
+  { text: '核心函数', items: CoreCategories },
 ]
+
+/**
+ *
+ * vruse目录
+ */
+function getFunctionsSideBar() {
+  const links = []
+
+  for (const name of categoryNames) {
+    if (name.startsWith('_')) continue
+
+    // 获取隶属于当前目录下的函数
+    const functions = metadata.functions.filter(
+      (i) => i.category === name && !i.internal,
+    )
+
+    links.push({
+      text: name, // 一级目录
+      items: functions.map((i) => ({
+        // 二级目录
+        text: i.name,
+        link: i.external || `/${i.package}/${i.name}/`,
+      })),
+      link: name.startsWith('@')
+        ? functions[0].external || `/${functions[0].package}/README`
+        : undefined,
+    } as never)
+  }
+  return links
+}
 
 const FunctionsSideBar = getFunctionsSideBar()
 
+/**
+ *
+ */
 const editLink = {
   pattern: 'https://github.com/code-ManL/VRuse/tree/main/docs/:path',
   text: 'Suggest changes to this page',
@@ -40,7 +77,8 @@ export default defineConfig({
   themeConfig: {
     sidebar: {
       '/guide/': DefaultSideBar,
-      '/hooks/': FunctionsSideBar,
+      '/vue/': FunctionsSideBar,
+      '/hooks': FunctionsSideBar,
     },
     socialLinks: [
       {
@@ -56,25 +94,3 @@ export default defineConfig({
     },
   },
 })
-
-function getFunctionsSideBar() {
-  const links: any = []
-
-  for (let i = 0; i < _categories.length; i++) {
-    const name = _categories[i]
-
-    const functions = (metadata.functions as any)[name]
-
-    if (name.startsWith('_') || functions.length === 0) continue
-
-    links.push({
-      text: categoryNames[i],
-      items: functions.map((i) => ({
-        text: i.name,
-        link: `/hooks/${i.category}/${i.name}/`,
-      })),
-    })
-  }
-
-  return links
-}

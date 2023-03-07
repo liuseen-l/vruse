@@ -1,4 +1,3 @@
-// these aliases are shared between vitest and rollup
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 

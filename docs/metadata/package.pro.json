@@ -1,0 +1,33 @@
+{
+  "name": "@vruse/metadata",
+  "version": "1.0.1",
+  "description": "Metadata for VRuse functions",
+  "author": "LiuSeen<https://github.com/code-ManL>",
+  "license": "MIT",
+  "homepage": "https://github.com/code-ManL/VRus",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-ManL/VRuse",
+    "directory": "packages/metadata"
+  },
+  "bugs": {
+    "url": "https://github.com/code-ManL/VRuse/issues"
+  },
+  "keywords": ["vue", "react", "vruse-use"],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.cjs",
+      "import": "./index.mjs"
+    },
+    "./*": "./*"
+  },
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
+  "files": ["index.*"],
+  "scripts": {
+    "update": "esno scripts/update.ts"
+  }
+}

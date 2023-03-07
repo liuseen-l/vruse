@@ -1,10 +1,33 @@
 {
-  "functions": {
-    "biz": [
-      {
-        "category": "biz",
-        "name": "usePick"
-      }
-    ]
-  }
+  "packages": {
+    "shared": {
+      "name": "shared",
+      "display": "VRuse Shared utilities",
+      "iife": true,
+      "cjs": true,
+      "mjs": true,
+      "dir": "packages/shared"
+    },
+    "vue": {
+      "name": "vue",
+      "display": "vue",
+      "description": "Collection of essential Vue and React Composition Utilities",
+      "iife": true,
+      "cjs": true,
+      "mjs": true,
+      "external": ["@vueuse/shared"],
+      "dir": "packages/vue"
+    }
+  },
+  "categories": ["业务型"],
+  "functions": [
+    {
+      "name": "usePick",
+      "package": "vue",
+      "lastUpdated": 1678078835000,
+      "docs": "https://vueuse.org/vue/usePick/",
+      "category": "业务型",
+      "description": "a hook with lottery function"
+    }
+  ]
 }

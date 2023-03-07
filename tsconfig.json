@@ -29,11 +29,5 @@
     "playgrounds/vite/vue/**/*.vue",
     "playgrounds/vite/react/**/*.tsx"
   ],
-  "exclude": [
-    "node_modules",
-    "**/*.md",
-    "**/dist",
-    "packages/.test",
-    "packages/_docs"
-  ]
+  "exclude": ["node_modules", "**/*.md", "**/dist", "packages/.test"]
 }
