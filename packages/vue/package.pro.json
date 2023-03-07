@@ -1,11 +1,11 @@
 {
   "name": "@vruse/vue",
-  "version": "1.0.0",
-  "description": "Collection of essential Vue and React Composition Utilities",
+  "version": "1.0.1",
+  "description": "Collection of essential Vue Composition Utilities",
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
   "funding": "https://github.com/code-ManL",
-  "homepage": "https://github.com/code-ManL/VRuse",
+  "homepage": "https://github.com/code-ManL/VRus",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/code-ManL/VRuse",
