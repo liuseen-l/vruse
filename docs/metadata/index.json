@@ -11,12 +11,22 @@
     "vue": {
       "name": "vue",
       "display": "vue",
-      "description": "Collection of essential Vue and React Composition Utilities",
+      "description": "Collection of essential Vue Composition Utilities",
       "iife": true,
       "cjs": true,
       "mjs": true,
       "external": ["@vueuse/shared"],
       "dir": "packages/vue"
+    },
+    "react": {
+      "name": "react",
+      "display": "react",
+      "description": "Collection of essential React Composition Utilities",
+      "iife": true,
+      "cjs": true,
+      "mjs": true,
+      "external": ["@vueuse/shared", "vue-demi"],
+      "dir": "packages/react"
     }
   },
   "categories": ["业务型"],
@@ -28,6 +38,13 @@
       "docs": "https://vueuse.org/vue/usePick/",
       "category": "业务型",
       "description": "抽奖函数"
+    },
+    {
+      "name": "usePick",
+      "package": "react",
+      "lastUpdated": 1678014236000,
+      "docs": "https://vueuse.org/react/usePick/",
+      "description": ""
     }
   ]
 }

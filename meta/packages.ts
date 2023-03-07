@@ -11,11 +11,20 @@ export const packages: PackageManifest[] = [
   {
     name: 'vue',
     display: 'vue',
-    description: 'Collection of essential Vue and React Composition Utilities',
+    description: 'Collection of essential Vue Composition Utilities',
     iife: true,
     cjs: true,
     mjs: true,
     external: ['@vueuse/shared'],
+  },
+  {
+    name: 'react',
+    display: 'react',
+    description: 'Collection of essential React Composition Utilities',
+    iife: true,
+    cjs: true,
+    mjs: true,
+    external: ['@vueuse/shared', 'vue-demi'],
   },
   {
     name: 'metadata',

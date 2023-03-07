@@ -100,6 +100,8 @@ for (const {
     }
 
     if (iife !== false) {
+      const doInject = name === 'react' ? [] : injectVueDemi
+
       output.push(
         {
           file: `${packageDir}/${name}/dist/${fn}.iife.js`,
@@ -107,7 +109,7 @@ for (const {
           name: iifeName,
           extend: true,
           globals: iifeGlobals,
-          plugins: [injectVueDemi],
+          plugins: [doInject],
         },
         {
           file: `${packageDir}/${name}/dist/${fn}.iife.min.js`,
@@ -116,7 +118,7 @@ for (const {
           extend: true,
           globals: iifeGlobals,
           plugins: [
-            injectVueDemi,
+            doInject,
             esbuildMinifer({
               minify: true,
             }),
