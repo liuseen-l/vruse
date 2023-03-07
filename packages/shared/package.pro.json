@@ -13,12 +13,19 @@
   "bugs": {
     "url": "https://github.com/code-ManL/VRuse/issues"
   },
-  "keywords": [
-    "vue",
-    "react",
-    "vr-use",
-    "utils"
-  ],
+  "keywords": ["vue", "react", "vr-use", "utils"],
   "sideEffects": false,
-  "main": "./index.ts"
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.cjs",
+      "import": "./index.mjs"
+    },
+    "./*": "./*"
+  },
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
+  "types": "./index.d.ts"
 }
