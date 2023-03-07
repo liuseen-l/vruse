@@ -1,6 +1,6 @@
-import type { VueUseFunction } from './types'
+import type { VRuseFunction } from './types'
 
-export function getCategories(functions: VueUseFunction[]): string[] {
+export function getCategories(functions: VRuseFunction[]): string[] {
   return uniq(
     functions
       .filter((i) => !i.internal)

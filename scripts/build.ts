@@ -20,8 +20,9 @@ const FILES_COPY_LOCAL = ['README.md', 'index.json', '*.cjs', '*.mjs', '*.d.ts']
 assert(process.cwd() !== __dirname)
 
 async function buildMetaFiles() {
-  for (const { name } of packages) {
-    const packageRoot = path.resolve(__dirname, '..', 'packages', name)
+  for (const { name, dir } of packages) {
+    const packageDir = dir ? dir.split('/')[0] : 'packages'
+    const packageRoot = path.resolve(__dirname, '..', packageDir, name)
     const packageDist = path.resolve(packageRoot, 'dist')
 
     if (name === 'core')

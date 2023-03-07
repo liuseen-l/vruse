@@ -4,7 +4,7 @@ category: 业务型
 
 # usePick
 
-A hook with lottery function.
+抽奖函数
 
 ## Usage
 

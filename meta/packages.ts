@@ -24,5 +24,6 @@ export const packages: PackageManifest[] = [
     iife: false,
     utils: true,
     target: 'node14',
+    dir: 'docs/metadata',
   },
 ]

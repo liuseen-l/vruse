@@ -52,6 +52,7 @@ for (const {
   mjs,
   dts,
   target,
+  dir,
 } of packages) {
   if (build === false) continue
 
@@ -66,25 +67,26 @@ for (const {
 
   const iifeName = 'VRuse'
   const functionNames = ['index']
+  const packageDir = dir ? dir.split('/')[0] : 'packages'
 
   if (submodules)
     functionNames.push(
       ...fg
-        .sync('*/index.ts', { cwd: resolve(`packages/${name}`) })
+        .sync('*/index.ts', { cwd: resolve(`${packageDir}/${name}`) })
         .map((i) => i.split('/')[0]),
     )
 
   for (const fn of functionNames) {
     const input =
       fn === 'index'
-        ? `packages/${name}/index.ts`
-        : `packages/${name}/${fn}/index.ts`
+        ? `${packageDir}/${name}/index.ts`
+        : `${packageDir}/${name}/${fn}/index.ts`
 
     const output: OutputOptions[] = []
 
     if (mjs !== false) {
       output.push({
-        file: `packages/${name}/dist/${fn}.mjs`,
+        file: `${packageDir}/${name}/dist/${fn}.mjs`,
         format: 'es',
         plugins: [terser()],
       })
@@ -92,7 +94,7 @@ for (const {
 
     if (cjs !== false) {
       output.push({
-        file: `packages/${name}/dist/${fn}.cjs`,
+        file: `${packageDir}/${name}/dist/${fn}.cjs`,
         format: 'cjs',
       })
     }
@@ -100,7 +102,7 @@ for (const {
     if (iife !== false) {
       output.push(
         {
-          file: `packages/${name}/dist/${fn}.iife.js`,
+          file: `${packageDir}/${name}/dist/${fn}.iife.js`,
           format: 'iife',
           name: iifeName,
           extend: true,
@@ -108,7 +110,7 @@ for (const {
           plugins: [injectVueDemi],
         },
         {
-          file: `packages/${name}/dist/${fn}.iife.min.js`,
+          file: `${packageDir}/${name}/dist/${fn}.iife.min.js`,
           format: 'iife',
           name: iifeName,
           extend: true,
@@ -137,7 +139,7 @@ for (const {
       configs.push({
         input,
         output: {
-          file: `packages/${name}/dist/${fn}.d.ts`,
+          file: `${packageDir}/${name}/dist/${fn}.d.ts`,
           format: 'es',
         },
         plugins: [pluginDts],

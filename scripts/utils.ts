@@ -9,8 +9,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 export const DIR_SRC = resolve(__dirname, '../packages')
 
 export async function updatePackageJSON() {
-  for (const { name, description, author, iife } of packages) {
-    const packageDir = join(DIR_SRC, name)
+  for (const { name, description, author, iife, dir } of packages) {
+    const packageDir = dir ? resolve(__dirname, '..', dir) : join(DIR_SRC, name)
 
     const packageJSONPath = join(packageDir, 'package.pro.json')
     const packageJSON = await fs.readJSON(packageJSONPath)

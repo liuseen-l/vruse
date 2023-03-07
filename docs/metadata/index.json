@@ -27,7 +27,7 @@
       "lastUpdated": 1678078835000,
       "docs": "https://vueuse.org/vue/usePick/",
       "category": "业务型",
-      "description": "a hook with lottery function"
+      "description": "抽奖函数"
     }
   ]
 }

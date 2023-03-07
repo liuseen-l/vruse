@@ -43,7 +43,9 @@ export async function readMetadata() {
     if (info.utils) continue
 
     // packageDir
-    const dir = join(DIR_SRC, info.name)
+    const dir = info.dir
+      ? resolve(DIR_ROOT, info.dir)
+      : join(DIR_SRC, info.name)
 
     // hook dir
     const hooks = await listHooks(dir)

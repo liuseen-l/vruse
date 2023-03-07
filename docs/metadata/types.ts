@@ -17,9 +17,10 @@ export interface PackageManifest {
   target?: string
   utils?: boolean
   copy?: string[]
+  dir?: string
 }
 
-export interface VueUseFunction {
+export interface VRuseFunction {
   name: string
   package: string
   importPath?: string
@@ -36,15 +37,15 @@ export interface VueUseFunction {
   related?: string[]
 }
 
-export interface VueUsePackage extends PackageManifest {
+export interface VRusePackage extends PackageManifest {
   dir: string
   docs?: string
 }
 
 export interface PackageIndexes {
-  packages: Record<string, VueUsePackage>
+  packages: Record<string, VRusePackage>
   categories: string[]
-  functions: VueUseFunction[]
+  functions: VRuseFunction[]
 }
 
 export interface CommitInfo {
