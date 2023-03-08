@@ -18,7 +18,7 @@
     "skipDefaultLibCheck": true,
     "noUnusedLocals": true,
     "paths": {},
-    "types": ["vitest", "vitest/globals", "@types/web-bluetooth"]
+    "types": ["vitest/globals", "@types/web-bluetooth"]
   },
   "include": [
     "packages",

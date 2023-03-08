@@ -5,8 +5,8 @@ patches/
 types/
 cache/
 docs/
-scripts/
 !/.eslintrc.js
 !/rollup.config.js
 !.test
 .temp
+scripts/setupVitest.ts

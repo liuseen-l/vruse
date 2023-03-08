@@ -1,6 +1,6 @@
-import fs from 'fs-extra'
-import { join, resolve, dirname } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import fs from 'fs-extra'
 import { packages } from '../meta/packages'
 import { version } from '../package.json'
 
