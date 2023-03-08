@@ -1,4 +1,4 @@
-## 🦄 Usage in Vue3
+## 🦄 Usage in Vue CompositionAPI
 
 ```ts
 import { usePick } from '@vruse/vue'
@@ -23,39 +23,37 @@ export default {
 }
 ```
 
-## 🦄 Usage in React18
+## 🦄 Usage in React (version > 16.8)
 
 ```tsx
-import React, { useEffect, useState } from 'react'
 import { usePick } from '@vruse/react'
+import React, { useEffect, useState } from 'react'
 
 function App() {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const [r, setR] = useState(0)
 
-  const [r, useR] = useState([])
-  const n = []
-
-  const hook = usePick(
+  const { run, pickedList } = usePick(
+    [1, 2, 3, 6, 7, 8, 9, 10],
     {
-      data: arr,
       pickCount: 5,
-      previewCount: 10,
-      previewDelay: 60,
-      pickDelay: 1000,
-      excludes: 4, // [4,2]
     },
-    (v, _, l) => {
-      n[l as number] = v
-      useR([...n])
+    (v) => {
+      setR(v)
     },
   )
 
   useEffect(() => {
-    hook.run()
+    run()
   }, [])
 
-  return <div>{r}</div>
+  return (
+    <>
+      <div>{pickedList}</div>
+      <div>{r}</div>
+    </>
+  )
 }
+export default App
 ```
 
 Refer to [functions list](https://vueuse.org/functions) or [documentations](https://vueuse.org/) for more details.

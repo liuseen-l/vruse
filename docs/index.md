@@ -15,7 +15,7 @@ hero:
       link: /guide/
     - theme: alt
       text: View on github
-      link: https://github.com/code-ManL/VRuse
+      link: https://github.com/VR-use/vruse
 features:
   - icon: 💡
     title: 丰富的业务函数
