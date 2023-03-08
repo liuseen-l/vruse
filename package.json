@@ -26,7 +26,8 @@
     "check": "tsc --incremental --noEmit",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
-    "clean": "rimraf packages/*/dist"
+    "clean": "rimraf packages/*/dist",
+    "format": "eslint --fix --ext .js,.ts,.jsx,tsx,.json,.md ."
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.36.0",
@@ -43,8 +44,6 @@
     "cross-env": "^7.0.3",
     "esbuild-register": "^3.4.2",
     "eslint": "^8.35.0",
-    "eslint-config-prettier": "^8.7.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.12",
     "fs-extra": "^11.1.0",
