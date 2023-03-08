@@ -56,8 +56,6 @@ function App() {
 export default App
 ```
 
-Refer to [functions list](https://vueuse.org/functions) or [documentations](https://vueuse.org/) for more details.
-
 ## 📦 安装
 
 > 🎩 From v4.0, it works for Vue & React 18 **within a single package** by the power of [vue-demi](https://github.com/vueuse/vue-demi)!
