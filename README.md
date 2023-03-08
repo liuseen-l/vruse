@@ -58,12 +58,18 @@ export default App
 
 Refer to [functions list](https://vueuse.org/functions) or [documentations](https://vueuse.org/) for more details.
 
-## 📦 Install
+## 📦 安装
 
-> 🎩 From v4.0, it works for Vue 3 & React 18 **within a single package** by the power of [vue-demi](https://github.com/vueuse/vue-demi)!
+> 🎩 From v4.0, it works for Vue & React 18 **within a single package** by the power of [vue-demi](https://github.com/vueuse/vue-demi)!
 
-```bash
-npm i @vruse/core
+如果你是 Vue 项目，那么执行如下操作：
+```vue
+npm i @vruse/vue
+```
+
+如果你是 React 项目，那么执行如下操作：
+```react
+npm i @vruse/react
 ```
 
 [Add ons](https://vueuse.org/add-ons.html) | [Nuxt Module](https://vueuse.org/guide/index.html#nuxt)
