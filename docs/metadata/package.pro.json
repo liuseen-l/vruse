@@ -4,14 +4,14 @@
   "description": "Metadata for VRuse functions",
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
-  "homepage": "https://github.com/code-ManL/VRus",
+  "homepage": "https://github.com/VR-use/VRus",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/code-ManL/VRuse",
+    "url": "git+https://github.com/VR-use/VRuse",
     "directory": "packages/metadata"
   },
   "bugs": {
-    "url": "https://github.com/code-ManL/VRuse/issues"
+    "url": "https://github.com/VR-use/VRuse/issues"
   },
   "keywords": ["vue", "react", "vruse-use"],
   "sideEffects": false,

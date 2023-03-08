@@ -17,14 +17,14 @@ export async function updatePackageJSON() {
 
     packageJSON.version = version
     packageJSON.description = description || packageJSON.description
-    packageJSON.author = author || 'LiuSeen<https://github.com/code-ManL>'
+    packageJSON.author = author || 'LiuSeen<https://github.com/VR-use>'
     packageJSON.bugs = {
-      url: 'https://github.com/code-ManL/VRuse/issues',
+      url: 'https://github.com/VR-use/VRuse/issues',
     }
-    packageJSON.homepage = 'https://github.com/code-ManL/VRus'
+    packageJSON.homepage = 'https://github.com/VR-use/VRus'
     packageJSON.repository = {
       type: 'git',
-      url: 'git+https://github.com/code-ManL/VRuse',
+      url: 'git+https://github.com/VR-use/VRuse',
       directory: `packages/${name}`,
     }
     packageJSON.main = './index.cjs'

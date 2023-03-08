@@ -3,15 +3,15 @@
   "version": "1.0.1",
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
-  "funding": "https://github.com/code-ManL",
-  "homepage": "https://github.com/code-ManL/VRus",
+  "funding": "https://github.com/VR-use",
+  "homepage": "https://github.com/VR-use/VRus",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/code-ManL/VRuse",
+    "url": "git+https://github.com/VR-use/VRuse",
     "directory": "packages/react"
   },
   "bugs": {
-    "url": "https://github.com/code-ManL/VRuse/issues"
+    "url": "https://github.com/VR-use/VRuse/issues"
   },
   "keywords": ["vue", "react", "vr-use", "utils"],
   "sideEffects": false,

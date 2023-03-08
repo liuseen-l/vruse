@@ -62,7 +62,7 @@ const FunctionsSideBar = getFunctionsSideBar()
  *
  */
 const editLink = {
-  pattern: 'https://github.com/code-ManL/VRuse/tree/main/docs/:path',
+  pattern: 'https://github.com/VR-use/VRuse/tree/main/docs/:path',
   text: 'Suggest changes to this page',
 }
 
@@ -83,7 +83,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/code-ManL/VRuse',
+        link: 'https://github.com/VR-use/VRuse',
       },
     ],
     editLink,
