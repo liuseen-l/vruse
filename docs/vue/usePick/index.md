@@ -6,7 +6,7 @@ category: 业务型
 
 抽奖函数
 
-## Usage
+## 使用方式
 
 ```ts
 import { ref } from 'vue'

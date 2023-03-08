@@ -44,7 +44,8 @@
       "package": "react",
       "lastUpdated": 1678014236000,
       "docs": "https://vueuse.org/react/usePick/",
-      "description": ""
+      "category": "业务型",
+      "description": "抽奖函数"
     }
   ]
 }
