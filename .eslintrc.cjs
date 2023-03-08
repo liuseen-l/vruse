@@ -13,7 +13,6 @@ const restricted = [
     message: 'Use tryOnMounted and tryOnScopeDispose instead.',
   },
 ]
-
 module.exports = {
   root: true,
   env: {
