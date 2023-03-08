@@ -8,7 +8,8 @@ import { packages } from '../meta/packages'
 
 let command = 'npm publish --access public'
 
-if (version.includes('beta')) command += ' --tag beta'
+if (version.includes('beta'))
+  command += ' --tag beta'
 
 for (const { name } of packages) {
   execSync(command, {

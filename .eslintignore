@@ -9,3 +9,4 @@ docs/
 !/rollup.config.js
 !.test
 .temp
+scripts/setupVitest.ts
