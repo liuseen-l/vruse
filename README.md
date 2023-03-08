@@ -62,12 +62,12 @@ Refer to [functions list](https://vueuse.org/functions) or [documentations](http
 
 > 🎩 From v4.0, it works for Vue & React 18 **within a single package** by the power of [vue-demi](https://github.com/vueuse/vue-demi)!
 
-如果你是 Vue 项目，那么执行如下操作：
+Vue 项目：
 ```vue
 npm i @vruse/vue
 ```
 
-如果你是 React 项目，那么执行如下操作：
+React 项目：
 ```react
 npm i @vruse/react
 ```
