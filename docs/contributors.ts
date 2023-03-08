@@ -46,6 +46,15 @@ const coreTeamMembers: CoreTeam[] = [
     description: 'VRuse contributor',
     packages: ['monorepo'],
   },
+  {
+    avatar: contributorsAvatars.dongwa,
+    name: 'donglin',
+    github: 'dongwa',
+    twitter: '--',
+    sponsors: false,
+    description: 'VRuse contributor',
+    packages: ['monorepo'],
+  },
 ].sort(
   (pre, cur) =>
     contributors.findIndex((name) => name === pre.github) -

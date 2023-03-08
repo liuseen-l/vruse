@@ -1,4 +1,4 @@
-const { resolve } = require('path')
+const { resolve } = require('node:path')
 
 const restricted = [
   'vue',
@@ -73,7 +73,7 @@ module.exports = {
       },
     },
     {
-      files: ['packages/.vitepress/**/*.*', 'playgrounds/**/*.*'],
+      files: ['packages/docs/.vitepress/**/*.*', 'playgrounds/**/*.*'],
       rules: {
         'no-restricted-imports': 'off',
       },

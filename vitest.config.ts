@@ -17,7 +17,7 @@ function isUnitTest(u: string) {
 }
 
 export default defineConfig(({ mode }) => {
-  const testConfig = isUnitTest(mode) ? modeResolver[mode]() : []
+  const testConfig = isUnitTest(mode) ? modeResolver[mode]() : {}
   return {
     resolve: {
       dedupe: ['vue', 'vue-demi', '@vue/runtime-core'],

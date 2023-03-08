@@ -1,11 +1,7 @@
 import { join, relative, resolve, dirname } from 'path'
 import fs from 'fs-extra'
 import matter from 'gray-matter'
-import type {
-  PackageIndexes,
-  VueUseFunction,
-  VueUsePackage,
-} from '@vueuse/metadata'
+import type { PackageIndexes, VRuseFunction, VRusePackage } from '../types'
 import fg from 'fast-glob'
 import Git from 'simple-git'
 import { packages } from '../../../meta/packages'
@@ -50,7 +46,7 @@ export async function readMetadata() {
     // hook dir
     const hooks = await listHooks(dir)
 
-    const pkg: VueUsePackage = {
+    const pkg: VRusePackage = {
       ...info,
       dir: relative(DIR_ROOT, dir).replace(/\\/g, '/'),
       docs: info.addon ? `${DOCS_URL}/${info.name}/README.html` : undefined,
@@ -81,7 +77,7 @@ export async function readMetadata() {
         }
 
         // hook info
-        const fn: VueUseFunction = {
+        const fn: VRuseFunction = {
           name: fnName,
           package: pkg.name,
           lastUpdated:
