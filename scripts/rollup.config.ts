@@ -54,7 +54,8 @@ for (const {
   target,
   dir,
 } of packages) {
-  if (build === false) continue
+  if (build === false)
+    continue
 
   const iifeGlobals = {
     'vue-demi': 'VueDemi',
@@ -69,16 +70,17 @@ for (const {
   const functionNames = ['index']
   const packageDir = dir ? dir.split('/')[0] : 'packages'
 
-  if (submodules)
+  if (submodules) {
     functionNames.push(
       ...fg
         .sync('*/index.ts', { cwd: resolve(`${packageDir}/${name}`) })
-        .map((i) => i.split('/')[0]),
+        .map(i => i.split('/')[0]),
     )
+  }
 
   for (const fn of functionNames) {
-    const input =
-      fn === 'index'
+    const input
+      = fn === 'index'
         ? `${packageDir}/${name}/index.ts`
         : `${packageDir}/${name}/${fn}/index.ts`
 

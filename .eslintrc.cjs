@@ -20,8 +20,7 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ['@antfu', 'prettier'],
-  plugins: ['prettier'],
+  extends: ['@antfu'],
   rules: {
     'vue/no-deprecated-functional-template': 'off',
     'vue/one-component-per-file': 'off',
@@ -39,6 +38,7 @@ module.exports = {
     'import/default': 'off',
     'import/no-named-as-default': 'off',
     'import/no-named-as-default-member': 'off',
+    '@typescript-eslint/brace-style': 'off',
   },
   overrides: [
     {

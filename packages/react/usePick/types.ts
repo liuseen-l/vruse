@@ -22,10 +22,10 @@ export type Tunwrap<K> = K extends {
 
 export type Test<
   K extends
-    | any[]
-    | {
-        current: any[]
-      },
+  | any[]
+  | {
+    current: any[]
+  },
 > = K extends {
   current: infer Z
 }

@@ -74,11 +74,11 @@ class PickRef<P> {
     if (isNumber(options)) {
       this.pickCount = options
     } else {
-      if (options.excludes) {
+      if (options.excludes)
         this.excludes = normalizeExcludes<P>(options.excludes)
         // isSameArray(this.excludes, this._rawValue) &&
         //   console.error('excludes can not be the same as target, please check!')
-      }
+
       this.pickCount = options.pickCount
       this.initPreView(options)
     }
@@ -93,11 +93,11 @@ class PickRef<P> {
   }
 
   async raffle() {
-    const original =
-      (this.excludes as []).length > 0
+    const original
+      = (this.excludes as []).length > 0
         ? this._rawValue.filter(
-            (item) => !(this.excludes as []).includes(item as never),
-          )
+          item => !(this.excludes as []).includes(item as never),
+        )
         : this._rawValue
 
     let picked
@@ -152,8 +152,8 @@ export function usePick<T>(
   options: UsePickOptions<T> | number,
   cb?: UsePickCallback<T>,
 ): PickRef<T> {
-  if (cb) {
+  if (cb)
     return wrapRun(new PickRef<T>(target, options, cb))
-  }
+
   return wrapRun(new PickRef<T>(target, options))
 }
