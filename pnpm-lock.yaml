@@ -27,7 +27,6 @@ importers:
       jsdom: ^21.1.0
       lint-staged: ^13.1.2
       pnpm: ^7.29.0
-      prettier: ^2.8.4
       rimraf: ^4.3.1
       rollup: ^3.18.0
       rollup-plugin-dts: ^5.2.0
@@ -56,7 +55,7 @@ importers:
       esbuild-register: 3.4.2
       eslint: 8.35.0
       eslint-config-prettier: 8.7.0_eslint@8.35.0
-      eslint-plugin-prettier: 4.2.1_xprnzp4ul2bcpmfe73av4voica
+      eslint-plugin-prettier: 4.2.1_xjwykhm2std24aie6543kwmzbu
       esno: 0.16.3
       fast-glob: 3.2.12
       fs-extra: 11.1.0
@@ -64,7 +63,6 @@ importers:
       jsdom: 21.1.0
       lint-staged: 13.1.2
       pnpm: 7.29.0
-      prettier: 2.8.4
       rimraf: 4.3.1
       rollup: 3.18.0
       rollup-plugin-dts: 5.2.0_fn2onl6nbsljlgjr3jlzr6w7we
@@ -3058,7 +3056,7 @@ packages:
     engines: {node: '>=5.0.0'}
     dev: true
 
-  /eslint-plugin-prettier/4.2.1_xprnzp4ul2bcpmfe73av4voica:
+  /eslint-plugin-prettier/4.2.1_xjwykhm2std24aie6543kwmzbu:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -3071,7 +3069,6 @@ packages:
     dependencies:
       eslint: 8.35.0
       eslint-config-prettier: 8.7.0_eslint@8.35.0
-      prettier: 2.8.4
       prettier-linter-helpers: 1.0.0
     dev: true
 
