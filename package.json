@@ -71,11 +71,10 @@
   },
   "lint-staged": {
     "*.{js,json}": [
-      "prettier --write"
+      "eslint --cache --fix"
     ],
     "*.ts?(x)": [
-      "eslint --cache --fix",
-      "prettier --parser=typescript --write"
+      "eslint --cache --fix"
     ]
   }
 }
