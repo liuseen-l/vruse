@@ -78,7 +78,6 @@ class PickRef<P> {
         this.excludes = normalizeExcludes<P>(options.excludes)
         // isSameArray(this.excludes, this._rawValue) &&
         //   console.error('excludes can not be the same as target, please check!')
-
       this.pickCount = options.pickCount
       this.initPreView(options)
     }
