@@ -5,14 +5,14 @@
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
   "funding": "https://github.com/code-ManL",
-  "homepage": "https://github.com/code-ManL/VRuse",
+  "homepage": "https://github.com/VR-use/VRus",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/code-ManL/VRuse",
+    "url": "git+https://github.com/VR-use/VRus",
     "directory": "packages/vue"
   },
   "bugs": {
-    "url": "https://github.com/code-ManL/VRuse/issues"
+    "url": "https://github.com/VR-use/VRus/issues"
   },
   "keywords": [
     "vue",

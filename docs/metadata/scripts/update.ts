@@ -12,7 +12,7 @@ import type { PackageIndexes, VRuseFunction, VRusePackage } from '../types'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-export const DOCS_URL = 'https://vueuse.org'
+export const DOCS_URL = 'https://vruse.org'
 export const DIR_PACKAGE = resolve(__dirname, '..')
 export const DIR_ROOT = resolve(__dirname, '../../..')
 export const DIR_SRC = resolve(DIR_ROOT, 'packages')

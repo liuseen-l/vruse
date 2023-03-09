@@ -39,3 +39,4 @@ features:
 
 
 <Home />
+<PreferenceSwitch/>

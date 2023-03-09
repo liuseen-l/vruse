@@ -15,7 +15,9 @@
       "iife": true,
       "cjs": true,
       "mjs": true,
-      "external": ["@vueuse/shared"],
+      "external": [
+        "@vueuse/shared"
+      ],
       "dir": "packages/vue"
     },
     "react": {
@@ -25,25 +27,30 @@
       "iife": true,
       "cjs": true,
       "mjs": true,
-      "external": ["@vueuse/shared", "vue-demi"],
+      "external": [
+        "@vueuse/shared",
+        "vue-demi"
+      ],
       "dir": "packages/react"
     }
   },
-  "categories": ["业务型"],
+  "categories": [
+    "业务型"
+  ],
   "functions": [
     {
       "name": "usePick",
       "package": "vue",
-      "lastUpdated": 1678078835000,
-      "docs": "https://vueuse.org/vue/usePick/",
+      "lastUpdated": 1678280638000,
+      "docs": "https://vruse.org/vue/usePick/",
       "category": "业务型",
       "description": "抽奖函数"
     },
     {
       "name": "usePick",
       "package": "react",
-      "lastUpdated": 1678014236000,
-      "docs": "https://vueuse.org/react/usePick/",
+      "lastUpdated": 1678282499000,
+      "docs": "https://vruse.org/react/usePick/",
       "category": "业务型",
       "description": "抽奖函数"
     }
