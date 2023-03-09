@@ -1,12 +1,14 @@
-import { join, relative, resolve, dirname } from 'path'
 import fs from 'fs-extra'
-import matter from 'gray-matter'
-import type { PackageIndexes, VRuseFunction, VRusePackage } from '../types'
 import fg from 'fast-glob'
 import Git from 'simple-git'
-import { packages } from '../../../meta/packages'
+import matter from 'gray-matter'
+import { mkdir } from 'node:fs/promises'
+import { fileURLToPath } from 'node:url'
 import { getCategories } from '../utils'
-import { fileURLToPath } from 'url'
+import { packages } from '../../../meta/packages'
+import { join, relative, resolve, dirname } from 'node:path'
+
+import type { PackageIndexes, VRuseFunction, VRusePackage } from '../types'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -67,12 +69,9 @@ export async function readMetadata() {
         if (['vue', 'react', 'shared'].includes(pkg.name)) {
           const dirPath = resolve(DIR_ROOT, 'docs', pkg.name)
           const hookDir = resolve(dirPath, fnName)
-          if (!fs.existsSync(dirPath)) {
-            fs.mkdirSync(dirPath)
-            if (!fs.existsSync(hookDir)) {
-              fs.mkdirSync(hookDir)
-            }
-          }
+          await mkdir(hookDir,{
+            recursive:true
+          })
           await fs.copyFile(mdPath, join(hookDir, 'index.md'))
         }
 
