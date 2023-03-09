@@ -66,7 +66,7 @@ export function usePost<D>(url: string, opt: RequestConfig<D> = {}) {
   })
 }
 
-export function useAxios<D>(
+export function useAxios<D = any>(
   url: string,
   opt: RequestConfig<D> = {},
 ): RequestResponse<D> & Promise<RequestResponse<D>> {
