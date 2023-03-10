@@ -71,16 +71,16 @@ export function useAxios<D = any>(
   opt: RequestConfig<D> = {},
 ): RequestResponse<D> & Promise<RequestResponse<D>> {
   const response = ref<AxiosResponse<D>>()
-  const timerstamp = Date.now().toString()
 
   const controller = {
-    ...opt.controller,
     ...useAxiosControler<D>(),
+    ...opt.controller,
   }
 
   opt.signal = controller.cancelController.signal
 
   /** auto add timerstamp */
+  const timerstamp = Date.now().toString()
   if (opt.params)
     opt.params.timerstamp = timerstamp
   if (opt.data)
