@@ -10,7 +10,6 @@ const { run, pickedList } = usePick([1, 2, 3, 6, 7, 8, 9, 10], {
   r.value = v
 })
 
-
 run()
 </script>
 

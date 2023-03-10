@@ -35,14 +35,23 @@
     }
   },
   "categories": [
+    "网络",
     "业务型"
   ],
   "functions": [
     {
+      "name": "useAxios",
+      "package": "vue",
+      "lastUpdated": 0,
+      "docs": "https://vueuse.org/vue/useAxios/",
+      "category": "网络",
+      "description": "axios 的封装，既可以不带 await 使用，也可以带 await 使用"
+    },
+    {
       "name": "usePick",
       "package": "vue",
       "lastUpdated": 1678280638000,
-      "docs": "https://vruse.org/vue/usePick/",
+      "docs": "https://vueuse.org/vue/usePick/",
       "category": "业务型",
       "description": "抽奖函数"
     },
@@ -50,7 +59,7 @@
       "name": "usePick",
       "package": "react",
       "lastUpdated": 1678282499000,
-      "docs": "https://vruse.org/react/usePick/",
+      "docs": "https://vueuse.org/react/usePick/",
       "category": "业务型",
       "description": "抽奖函数"
     }
