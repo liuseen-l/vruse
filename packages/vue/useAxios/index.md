@@ -6,7 +6,7 @@ category: 网络
 
 Axios 的封装，既可以不带 await 使用，也可以带 await 使用
 
-如果使用 `const { data } = useAxios('url')` 则 data 为一个 vue 响应式变量，初始值为 `undefined`，等待请求完成后自动变成请求结果，在不方便使用异步函数的时候好用。
+如果使用 `const { data } = useAxios('url')` 则 data 为一个 vue 响应式变量，初始值为 `undefined`，等待请求完成后自动变成请求结果，适用于非异步函数情景。
 
 如果使用 `const { data } = await useAxios('url')` 则 data 直接为请求结果。
 
@@ -42,7 +42,7 @@ async function run() {
   res.value = data.value
   loading.value = false
 }
-fun()
+run()
 </script>
 
 <template>
@@ -72,7 +72,7 @@ async function run() {
     }
   })
 }
-fun()
+run()
 </script>
 
 <template>

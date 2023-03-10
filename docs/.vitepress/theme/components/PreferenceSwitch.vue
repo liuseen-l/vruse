@@ -63,18 +63,18 @@ function useToggleFn(
     <button class="toggle" aria-label="preference switches toggle" aria-controls="preference-switches"
       :aria-expanded="isOpen" @click="toggleOpen" @mousedown="removeOutline" @blur="restoreOutline">
       <span>API Preference</span>
-      <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" />
+      <!-- <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" /> -->
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
       <div class="switch-container">
         <label class="options-label" @click="toggleCompositionAPI(false)">Options</label>
-        <VTSwitch class="api-switch" aria-label="prefer composition api" :aria-checked="preferComposition"
+        <!-- <VTSwitch class="api-switch" aria-label="prefer composition api" :aria-checked="preferComposition" -->
           @click="toggleCompositionAPI()" />
         <label class="composition-label" @click="toggleCompositionAPI(true)">Composition</label>
       </div>
       <div class="switch-container" v-if="showSFC">
         <label class="no-sfc-label" @click="toggleSFC(false)">HTML</label>
-        <VTSwitch class="sfc-switch" aria-label="prefer single file component" :aria-checked="preferSFC"
+        <!-- <VTSwitch class="sfc-switch" aria-label="prefer single file component" :aria-checked="preferSFC" -->
           @click="toggleSFC()" />
         <label class="sfc-label" @click="toggleSFC(true)">SFC</label>
         <a class="switch-link" title="About SFC" href="/guide/scaling-up/sfc.html" @click="closeSideBar">?</a>
@@ -120,8 +120,8 @@ function useToggleFn(
   top: 1px;
 }
 
+transform: rotate(180deg);
 .vt-link-icon.open {
-  transform: rotate(180deg);
 }
 
 #preference-switches {

@@ -7,7 +7,7 @@ import 'vitepress-theme-demoblock/dist/theme/styles/index.css'
 import PreferenceSwitch from './components/PreferenceSwitch.vue'
 
 export default Object.assign({}, VPTheme, {
-  ...DefaultTheme,
+  // ...DefaultTheme,
   Layout: () => {
     return h(VPTheme.Layout, null, {
       'sidebar-top': () => h(PreferenceSwitch),

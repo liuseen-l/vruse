@@ -20,7 +20,7 @@ async function run() {
 
 /** 使用外部数据控制源的示例 */
 function runWithCustomControlSource() {
-  useGet(url.value, undefined, {
+  useGet(url.value, {
     controller: {
       data: res,
       loading,
@@ -50,6 +50,6 @@ function runAndAbord() {
     执行请求后取消
   </button>
   <pre>
-    {{ res }}
-  </pre>
+          {{ res }}
+        </pre>
 </template>
