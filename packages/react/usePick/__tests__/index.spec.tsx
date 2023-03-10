@@ -1,4 +1,4 @@
-describe('reacy', () => {
+describe('react', () => {
   test('test', () => {
     test('daw', () => {
       let apples = 0

@@ -79,6 +79,7 @@ export default defineConfig({
       '/guide/': DefaultSideBar,
       '/vue/': FunctionsSideBar,
       '/hooks': FunctionsSideBar,
+      '/react/': FunctionsSideBar
     },
     socialLinks: [
       {
