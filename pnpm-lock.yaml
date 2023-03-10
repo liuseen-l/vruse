@@ -101,9 +101,9 @@ importers:
 
   packages/react:
     specifiers:
-      '@vruse/shared': workspace:^1.0.0
+      '@vruse/shared': workspace:*
     dependencies:
-      '@vruse/shared': link:../shared/dist
+      '@vruse/shared': link:../shared
 
   packages/react/dist:
     specifiers: {}
@@ -111,23 +111,12 @@ importers:
   packages/shared:
     specifiers: {}
 
-  packages/shared/dist:
-    specifiers: {}
-
   packages/vue:
     specifiers:
       '@vruse/shared': workspace:*
       vue-demi: '*'
     dependencies:
-      '@vruse/shared': link:../shared/dist
-      vue-demi: 0.13.11
-
-  packages/vue/dist:
-    specifiers:
-      '@vruse/shared': 1.0.1
-      vue-demi: '*'
-    dependencies:
-      '@vruse/shared': link:../../shared/dist
+      '@vruse/shared': link:../shared
       vue-demi: 0.13.11
 
   playgrounds/vite:
@@ -146,7 +135,7 @@ importers:
       vue-tsc: ^1.0.24
     dependencies:
       '@vruse/react': link:../../packages/react/dist
-      '@vruse/vue': link:../../packages/vue/dist
+      '@vruse/vue': link:../../packages/vue
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       vite: 4.1.4
