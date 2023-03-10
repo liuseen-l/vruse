@@ -10,6 +10,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@vruse/shared": "workspace:^1.0.0"
+    "@vruse/shared": "workspace:*"
   }
 }
