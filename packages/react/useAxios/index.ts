@@ -71,7 +71,6 @@ export function useAxios<D = any>(
   opt: RequestConfig<D> = {},
 ): RequestResponse<D> & Promise<RequestResponse<D>> {
   const response = ref<AxiosResponse<D>>()
-  const timerstamp = Date.now().toString()
 
   const controller = {
     ...opt.controller,
@@ -81,14 +80,15 @@ export function useAxios<D = any>(
   opt.signal = controller.cancelController.signal
 
   /** auto add timerstamp */
+  const timerstamp = Date.now().toString()
   if (opt.params)
     opt.params.timerstamp = timerstamp
   if (opt.data)
     opt.data.timerstamp = timerstamp
 
-  const instance = controller.instance || globalInstance || useAxiosInstance()
+  const axiosInstance = controller.instance || globalInstance || useAxiosInstance()
 
-  const p = instance(url, opt) as AxiosPromise<D>
+  const p = axiosInstance(url, opt) as AxiosPromise<D>
 
   const result = {
     response,
@@ -101,6 +101,7 @@ export function useAxios<D = any>(
     throw e
   })
 
+  // 返回 result 的 Promise
   const rp = p.then((r) => {
     controller.loading.value = false
     controller.data.value = r.data
@@ -108,5 +109,6 @@ export function useAxios<D = any>(
     return result
   })
 
+  // 返回 Prommise
   return Object.assign(rp, result)
 }

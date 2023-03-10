@@ -50,6 +50,6 @@ function runAndAbord() {
     执行请求后取消
   </button>
   <pre>
-          {{ res }}
-        </pre>
+                {{ res }}
+              </pre>
 </template>

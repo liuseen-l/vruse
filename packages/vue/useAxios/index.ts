@@ -19,7 +19,7 @@ export function useAxiosCreate(config?: CreateAxiosDefaults) {
 }
 
 export function useAxiosInstance(config?: CreateAxiosDefaults) {
-  return axios.create(config)
+  return globalInstance || axios.create(config)
 }
 
 export interface IFetchControler<D> {
@@ -74,8 +74,8 @@ export function useAxios<D = any>(
   const timerstamp = Date.now().toString()
 
   const controller = {
-    ...opt.controller,
     ...useAxiosControler<D>(),
+    ...opt.controller,
   }
 
   opt.signal = controller.cancelController.signal

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  // eslint-disable-next-line max-statements-per-line
+  <script>
+    const rp = Promise.resolve(1).then((v) => { return v })
+    console.log(Promise.resolve(3))
+
+    const obj = Object.assign(rp, { a: 1 })
+
+    const { a } = obj
+    console.log(a, '123')
+    console.log(obj.a)
+    obj.then((v) => {
+      console.log(v)
+    })
+  </script>
+</body>
+
+</html>
