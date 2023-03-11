@@ -37,23 +37,27 @@ export interface RequestResponse<D> extends IFetchChunk<D> {
   response: AxiosResponse<D> | undefined
 }
 
-export type RequestControler<D> = ReturnType<typeof useAxiosControler<D>> & {
+export interface RequestControler<D> {
+  loading?: boolean
+  data?: D
   instance?: AxiosInstance
+  cancelController?: AbortController
 }
 
 export type RequestConfig<D = any> = AxiosRequestConfig & {
-  controller?: Partial<RequestControler<D>>
+  controller?: RequestControler<D>
 }
 
-export function useAxiosControler<D>() {
-  const [loading, setLoading] = useState(true)
-  const [data, setData] = useState<D>()
+export function useAxiosController<D>(initialController?: RequestControler<D>) {
+  const [loading, setLoading] = useState<boolean>(initialController?.loading || true)
+  const [data, setData] = useState<D | undefined>(initialController?.data)
   return {
     loading,
     setLoading,
     data,
     setData,
-    cancelController: new AbortController(),
+    instance: initialController?.instance || useAxiosInstance(),
+    cancelController: initialController?.cancelController || new AbortController(),
   }
 }
 
@@ -77,10 +81,7 @@ export function useAxios<D = any>(
 ): RequestResponse<D> & Promise<RequestResponse<D>> {
   const [response, setResponse] = useState<AxiosResponse<D>>()
 
-  const controller = {
-    ...useAxiosControler<D>(),
-    ...opt.controller,
-  }
+  const controller = useAxiosController<D>(opt.controller)
 
   opt.signal = controller.cancelController.signal
 
@@ -91,7 +92,7 @@ export function useAxios<D = any>(
   if (opt.data)
     opt.data.timerstamp = timerstamp
 
-  const instance = controller.instance || useAxiosInstance()
+  const instance = controller.instance
 
   const p = instance(url, opt) as AxiosPromise<D>
 
