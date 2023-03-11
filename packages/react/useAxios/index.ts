@@ -37,7 +37,7 @@ export interface RequestResponse<D> extends IFetchChunk<D> {
   response: AxiosResponse<D> | undefined
 }
 
-export type RequestControler<D> = ReturnType<typeof useAxiosControler<D>> & {
+export type RequestControler<D> = ReturnType<typeof useAxiosController<D>> & {
   instance?: AxiosInstance
 }
 
@@ -45,7 +45,7 @@ export type RequestConfig<D = any> = AxiosRequestConfig & {
   controller?: Partial<RequestControler<D>>
 }
 
-export function useAxiosControler<D>() {
+export function useAxiosController<D>() {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState<D>()
   return {
@@ -78,7 +78,7 @@ export function useAxios<D = any>(
   const [response, setResponse] = useState<AxiosResponse<D>>()
 
   const controller = {
-    ...useAxiosControler<D>(),
+    ...useAxiosController<D>(),
     ...opt.controller,
   }
 
