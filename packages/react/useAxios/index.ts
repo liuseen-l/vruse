@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
+import type { SetStateType, UseSateType } from '@vruse/shared'
+
 import type {
   AxiosInstance,
   AxiosPromise,
@@ -19,10 +21,6 @@ export function useAxiosCreate(config?: CreateAxiosDefaults) {
 export function useAxiosInstance(config?: CreateAxiosDefaults) {
   return globalInstance || useAxiosCreate(config)
 }
-
-// TODO: 这些工具类型移动到 util 或 shared
-export type SetStateType<D> = React.Dispatch<React.SetStateAction<D>>
-export type UseSateType<D> = [D, SetStateType<D>]
 
 export interface AxiosControler<D> {
   loadingState?: UseSateType<boolean>

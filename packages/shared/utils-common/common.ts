@@ -3,5 +3,3 @@ export function sleep(ms: number) {
 }
 
 export const NOOP = () => {}
-
-export const isNumber = (val: unknown): val is number => typeof val === 'number'
