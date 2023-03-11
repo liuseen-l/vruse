@@ -1,7 +1,5 @@
 import axios from 'axios'
-import { ref } from 'vue-demi'
-
-import type { Ref } from 'vue-demi'
+import { useState } from 'react'
 import type {
   AxiosInstance,
   AxiosPromise,
@@ -30,10 +28,10 @@ export interface IFetchControler<D> {
 }
 
 export interface RequestResponse<D> {
-  loading: Ref<boolean>
-  data: Ref<D | undefined>
+  loading: boolean
+  data: D | undefined
   abort: AbortController['abort']
-  response: Ref<AxiosResponse<D> | undefined>
+  response: AxiosResponse<D> | undefined
 }
 
 export type RequestControler<D> = ReturnType<typeof useAxiosControler<D>> & {
@@ -46,9 +44,10 @@ export type RequestConfig<D = any> = AxiosRequestConfig & {
 
 export function useAxiosControler<D>() {
   return {
-    loading: ref(true),
-    data: ref<D>(),
+    loading: useState(true),
+    data: useState<D>(),
     cancelController: new AbortController(),
+
   }
 }
 
@@ -70,17 +69,17 @@ export function useAxios<D = any>(
   url: string,
   opt: RequestConfig<D> = {},
 ): RequestResponse<D> & Promise<RequestResponse<D>> {
-  const response = ref<AxiosResponse<D>>()
-  const timerstamp = Date.now().toString()
+  const [response, setResponse] = useState<AxiosResponse<D>>()
 
   const controller = {
-    ...opt.controller,
     ...useAxiosControler<D>(),
+    ...opt.controller,
   }
 
   opt.signal = controller.cancelController.signal
 
   /** auto add timerstamp */
+  const timerstamp = Date.now().toString()
   if (opt.params)
     opt.params.timerstamp = timerstamp
   if (opt.data)
@@ -104,7 +103,7 @@ export function useAxios<D = any>(
   const rp = p.then((r) => {
     controller.loading.value = false
     controller.data.value = r.data
-    response.value = r
+    setResponse(r)
     return result
   })
 
