@@ -1,5 +1,5 @@
 import type { RawAxiosRequestConfig } from 'axios'
-import { useAxios, useAxiosCreate } from '.'
+import { useAxios, useAxiosCreate } from '../..'
 
 describe('useAxios', () => {
   const url = 'https://jsonplaceholder.typicode.com/todos/1'

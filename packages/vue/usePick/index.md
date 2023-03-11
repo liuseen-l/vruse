@@ -9,13 +9,25 @@ category: 业务型
 ## 使用方式
 
 ```ts
+import { usePick } from '@vruse/vue'
 import { ref } from 'vue'
-import { usePick } from './index'
 
-const r = ref<number>(0)
-const p = usePick([1, 2, 3, 6, 7, 8, 9, 10], 5, (v) => {
-  r.value = v
-})
+export default {
+  setup() {
+    const r = ref<number>(0)
+    const { run, pickedList } = usePick([1, 2, 3, 6, 7, 8, 9, 10], {
+      pickCount: 5,
+      excludes: 1,
+    }, (v) => {
+      r.value = v
+    })
 
-p.run()
+    run()
+
+    return {
+      r,
+      p
+    }
+  }
+}
 ```
