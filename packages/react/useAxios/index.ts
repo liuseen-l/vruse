@@ -20,26 +20,30 @@ export function useAxiosInstance(config?: CreateAxiosDefaults) {
   return globalInstance || useAxiosCreate(config)
 }
 
-interface IFetchChunk<T> {
-  loading: boolean
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>
-  data: T | undefined
-  setData: React.Dispatch<React.SetStateAction<T | undefined>>
-}
+// interface IFetchChunk<T> {
+//   loading: React.Dispatch<React.SetStateAction<boolean>>
+//   data: React.Dispatch<React.SetStateAction<T | undefined>>
+// }
 
-export interface IFetchControler<D> extends IFetchChunk<D> {
+export interface IFetchControler<D> {
+  loading: React.Dispatch<React.SetStateAction<boolean>>
+  data: React.Dispatch<React.SetStateAction<D | undefined>>
   cancelController: GenericAbortSignal
   instance?: AxiosInstance
 }
 
-export interface RequestResponse<D> extends IFetchChunk<D> {
+export interface RequestResponse<D> {
+  loading: boolean
+  data: D | undefined
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setData: React.Dispatch<React.SetStateAction<D | undefined>>
   abort: AbortController['abort']
   response: AxiosResponse<D> | undefined
 }
 
 export interface RequestControler<D> {
-  loading?: boolean
-  data?: D
+  loading?: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
+  data?: [D | undefined, React.Dispatch<React.SetStateAction<D | undefined>>]
   instance?: AxiosInstance
   cancelController?: AbortController
 }
@@ -48,9 +52,39 @@ export type RequestConfig<D = any> = AxiosRequestConfig & {
   controller?: RequestControler<D>
 }
 
+enum CONTROLLER {
+  LOADING = 1,
+  DATA = 2,
+}
+
+function unWrapState<D>(
+  state: [D, React.Dispatch<React.SetStateAction<D>>] | undefined,
+  key: CONTROLLER,
+) {
+  switch (key) {
+    case CONTROLLER.LOADING:
+      if (state) {
+        const [loading, setLoading] = state
+        return [loading, setLoading]
+      } else {
+        return useState(true)
+      }
+    case CONTROLLER.DATA:
+      if (state) {
+        const [data, setData] = state
+        return [data, setData]
+      } else {
+        return useState(undefined)
+      }
+  }
+}
+
 export function useAxiosController<D>(initialController?: RequestControler<D>) {
-  const [loading, setLoading] = useState<boolean>(initialController?.loading || true)
-  const [data, setData] = useState<D | undefined>(initialController?.data)
+  // if(!initialController?.loading){}
+  // const [loading, setLoading] = initialController?.loading ? useState<boolean>()
+  // const [data, setData] = useState<D | undefined>(initialController?.data)
+  const [loading, setLoading] = unWrapState(initialController?.loading, CONTROLLER.LOADING) as [boolean, React.Dispatch<React.SetStateAction<boolean>>]
+  const [data, setData] = unWrapState(initialController?.data, CONTROLLER.DATA) as [D | undefined, React.Dispatch<React.SetStateAction<D | undefined>>]
   return {
     loading,
     setLoading,
