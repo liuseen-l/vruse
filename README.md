@@ -77,8 +77,8 @@ npm i @vruse/react
 
 ###### Demos
 
-- [Vite + Vue 3](https://github.com/vueuse/vueuse-vite-starter)
-- [Webpack + Vue 3](https://github.com/vueuse/vueuse-vue3-example)
+- [Vite + Vue](https://github.com/vueuse/vueuse-vite-starter)
+- [Webpack + Vue](https://github.com/vueuse/vueuse-vue3-example)
 - [vite + React18](https://github.com/antfu/vitesse-nuxt-bridge)
 - [webpack + React18](https://github.com/antfu/vitesse-nuxt-bridge)
 
