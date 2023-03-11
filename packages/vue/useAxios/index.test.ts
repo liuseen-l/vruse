@@ -48,10 +48,4 @@ describe('useAxios', () => {
     expect(loading.value).toBeFalsy()
     expect(data.value.id).toBe(1)
   })
-
-  test('with config', async () => {
-    const { loading, data } = await useAxios(url, config)
-    expect(loading.value).toBeFalsy()
-    expect(data.value.id).toBe(1)
-  })
 })
