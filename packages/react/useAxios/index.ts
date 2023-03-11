@@ -20,16 +20,19 @@ export function useAxiosInstance(config?: CreateAxiosDefaults) {
   return globalInstance || axios.create(config)
 }
 
-export interface IFetchControler<D> {
+interface IFetchChunk<T> {
   loading: boolean
-  data: D
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  data: T | undefined
+  setData: React.Dispatch<React.SetStateAction<T | undefined>>
+}
+
+export interface IFetchControler<D> extends IFetchChunk<D> {
   cancelController: GenericAbortSignal
   instance?: AxiosInstance
 }
 
-export interface RequestResponse<D> {
-  loading: boolean
-  data: D | undefined
+export interface RequestResponse<D> extends IFetchChunk<D> {
   abort: AbortController['abort']
   response: AxiosResponse<D> | undefined
 }
@@ -43,11 +46,14 @@ export type RequestConfig<D = any> = AxiosRequestConfig & {
 }
 
 export function useAxiosControler<D>() {
+  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState<D>()
   return {
-    loading: useState(true),
-    data: useState<D>(),
+    loading,
+    setLoading,
+    data,
+    setData,
     cancelController: new AbortController(),
-
   }
 }
 
@@ -96,13 +102,16 @@ export function useAxios<D = any>(
   }
 
   p.catch((e) => {
-    controller.loading.value = false
+    const { setLoading } = controller
+    setLoading(false)
     throw e
   })
 
   const rp = p.then((r) => {
-    controller.loading.value = false
-    controller.data.value = r.data
+    const { setLoading } = controller
+    const { setData } = controller
+    setLoading(false)
+    setData(r.data)
     setResponse(r)
     return result
   })
