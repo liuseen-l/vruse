@@ -31,7 +31,7 @@ const DefaultSideBar = [
  * vruse目录
  */
 function getFunctionsSideBar() {
-  const links = []
+  const links: never[] = []
 
   for (const name of categoryNames) {
     if (name.startsWith('_')) continue
@@ -68,6 +68,7 @@ const editLink = {
 
 // export default config;
 export default defineConfig({
+  // extends: baseConfig,
   title: '🔨  VRuse',
   description: '一款现代化快速开发 hook 仓库',
   lang: 'en-US',
