@@ -11,7 +11,7 @@ category: 业务型
 ```vue
 <script>
 import { usePick } from '@vruse/vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 export default {
   setup() {
@@ -23,7 +23,9 @@ export default {
       r.value = v
     })
 
-    run()
+    onMounted(() => {
+      run()
+    })
 
     return {
       r,
