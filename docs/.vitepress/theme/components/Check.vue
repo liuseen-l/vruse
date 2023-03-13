@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { VTSwitch, VTIconChevronDown } from '@vue/theme'
-import { useRoute,useRouter } from 'vitepress'
-import { ref, inject, Ref } from 'vue'
+import { useRoute, useRouter } from 'vitepress'
+import { ref } from 'vue'
 
 
-const preferCompositionKey = '1'
-const preferComposition = ref(true)
+const preferComposition = ref(false)
 
 
 const router = useRouter()
@@ -25,38 +24,32 @@ const restoreOutline = (e: Event) => {
   ; (e.target as HTMLElement).classList.remove('no-outline')
 }
 
-const toggleCompositionAPI = useToggleFn(
-  preferCompositionKey,
-  preferComposition,
-  'prefer-composition'
-)
+const toggleCompositionAPI = useToggleFn('prefer-composition')
 
-function useToggleFn(
-  storageKey: string,
-  state: Ref<boolean>,
-  className: string
-) {
-  if (typeof localStorage === 'undefined') {
-    return () => { }
-  }
+function useToggleFn(className: string) {
   const classList = document.documentElement.classList
-  return (value = !state.value) => {
-    if ((state.value = value)) {
+  return () => {
+    const url = route.path.split('/')
+    const packageName = url[1]
+    const hookName = url[2]
+
+    if (packageName === 'vue') {
       classList.add(className)
+      router.go(`/react/${hookName}/`)
     } else {
       classList.remove(className)
+      const hookName = route.path.split('/')[2]
+      router.go(`/vue/${hookName}/`)
     }
-    localStorage.setItem(storageKey, String(state.value))
   }
 }
 
 function toggleCheck(to?: string) {
-  if(to){
+  if (to) {
     const hookName = route.path.split('/')[2]
     router.go(`/${to}/${hookName}/`)
   }
 }
-
 
 </script>
 
@@ -74,7 +67,7 @@ function toggleCheck(to?: string) {
           @click="toggleCompositionAPI()" />
         <label class="composition-label" @click="toggleCheck('react')">React</label>
         <!-- <a class="switch-link" title="About API preference" href="/guide/introduction.html#api-styles"
-              @click="closeSideBar">?</a> -->
+                                  @click="closeSideBar">?</a> -->
       </div>
     </div>
   </div>
