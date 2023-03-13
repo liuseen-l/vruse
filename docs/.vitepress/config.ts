@@ -18,7 +18,7 @@ const Guide = [{ text: '开始', link: '/guide/' }]
 const CoreCategories = coreCategoryNames.map((c) => ({
   text: c,
   activeMatch: '___', // never active
-  link: `/vue/usePick/`,
+  link: `/vue/usePick/`, // 默认打开vue相关hook
 }))
 // 一级目录
 const DefaultSideBar = [
