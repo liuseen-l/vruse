@@ -1,19 +1,15 @@
 <script setup lang="ts">
 import { VTSwitch, VTIconChevronDown } from '@vue/theme'
 import { useRoute,useRouter } from 'vitepress'
-import { ref, computed, inject, Ref } from 'vue'
+import { ref, inject, Ref } from 'vue'
 
 
 const preferCompositionKey = '1'
 const preferComposition = ref(true)
-const preferSFCKey = '1'
-const preferSFC = ref(true)
 
 
 const router = useRouter()
 const route = useRoute()
-
-// const showSFC = computed(() => !/^\/guide|style-guide/.test(route.path))
 
 let isOpen = ref(true)
 
@@ -34,8 +30,6 @@ const toggleCompositionAPI = useToggleFn(
   preferComposition,
   'prefer-composition'
 )
-const toggleSFC = useToggleFn(preferSFCKey, preferSFC, 'prefer-sfc')
-const closeSideBar = inject('close-sidebar') as () => void
 
 function useToggleFn(
   storageKey: string,
