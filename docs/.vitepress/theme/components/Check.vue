@@ -8,6 +8,16 @@ const preferComposition = ref(false)
 
 const className = 'prefer-composition'
 
+onBeforeUnmount(() => {
+  const classList = document.documentElement.classList
+  const url = route.path.split('/')
+  if (!['vue', 'react'].includes(url[1]))
+    classList.remove(className)
+  // } else {
+  //   classList.add(className)
+  // }
+})
+
 
 const router = useRouter()
 const route = useRoute()
@@ -71,7 +81,7 @@ function toggleCheck(to?: string) {
           @click="toggleCompositionAPI()" />
         <label class="composition-label" @click="toggleCheck('react')">React</label>
         <!-- <a class="switch-link" title="About API preference" href="/guide/introduction.html#api-styles"
-                                          @click="closeSideBar">?</a> -->
+                                            @click="closeSideBar">?</a> -->
       </div>
     </div>
   </div>
