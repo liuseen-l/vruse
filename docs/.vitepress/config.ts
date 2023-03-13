@@ -18,7 +18,7 @@ const Guide = [{ text: '开始', link: '/guide/' }]
 const CoreCategories = coreCategoryNames.map((c) => ({
   text: c,
   activeMatch: '___', // never active
-  link: `/hooks#category=${c}`,
+  link: `/vue/usePick/`,
 }))
 // 一级目录
 const DefaultSideBar = [
@@ -30,15 +30,16 @@ const DefaultSideBar = [
  *
  * vruse目录
  */
-function getFunctionsSideBar() {
+function getFunctionsSideBar(type: string) {
   const links: never[] = []
 
   for (const name of categoryNames) {
+
     if (name.startsWith('_')) continue
 
     // 获取隶属于当前目录下的函数
     const functions = metadata.functions.filter(
-      (i) => i.category === name && !i.internal,
+      (i) => i.category === name && !i.internal && i.package === type,
     )
 
     links.push({
@@ -56,7 +57,7 @@ function getFunctionsSideBar() {
   return links
 }
 
-const FunctionsSideBar = getFunctionsSideBar()
+const FunctionsSideBar = (type: string) => getFunctionsSideBar(type)
 
 /**
  *
@@ -78,9 +79,9 @@ export default defineConfig({
   themeConfig: {
     sidebar: {
       '/guide/': DefaultSideBar,
-      '/vue/': FunctionsSideBar,
-      '/hooks': FunctionsSideBar,
-      '/react/': FunctionsSideBar
+      '/vue/': FunctionsSideBar('vue'),
+      // '/hooks': FunctionsSideBar,
+      '/react/': FunctionsSideBar('react')
     },
     socialLinks: [
       {

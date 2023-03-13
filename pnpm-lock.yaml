@@ -15,6 +15,7 @@ importers:
       '@types/web-bluetooth': ^0.0.16
       '@vitest/coverage-c8': ^0.29.2
       '@vitest/ui': ^0.29.2
+      '@vue/theme': ^2.0.0
       axios: ^1.3.4
       chalk: ^5.2.0
       consola: ^2.15.3
@@ -54,6 +55,7 @@ importers:
       '@types/web-bluetooth': 0.0.16
       '@vitest/coverage-c8': 0.29.2_vitest@0.29.2
       '@vitest/ui': 0.29.2
+      '@vue/theme': 2.0.0_vue@3.2.47
       chalk: 5.2.0
       consola: 2.15.3
       cross-env: 7.0.3
@@ -1997,12 +1999,12 @@ packages:
   /@vue/shared/3.2.47:
     resolution: {integrity: sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==}
 
-  /@vue/theme/1.3.0:
-    resolution: {integrity: sha512-79XEtpERf+yeG91XNOq4Uhz1A33bt3Kz29Z2mbBnsgREpifR7saLaCiZIrgm2Php+CIeSOIhPTNUdMKeEliCdg==}
+  /@vue/theme/2.0.0_vue@3.2.47:
+    resolution: {integrity: sha512-YrYwkQ9se6oGg87suzFB6Y1487ED+DS7c+/jodfYo7J70F5D7ItLPS3zg9VVp/97j8checPUzjGIM/EHuRzoRw==}
     dependencies:
       '@docsearch/css': 3.3.3
       '@docsearch/js': 3.3.3
-      '@vueuse/core': 9.13.0
+      '@vueuse/core': 9.13.0_vue@3.2.47
       body-scroll-lock: 3.1.5
       normalize.css: 8.0.1
     transitivePeerDependencies:
@@ -2011,18 +2013,6 @@ packages:
       - '@vue/composition-api'
       - react
       - react-dom
-      - vue
-    dev: true
-
-  /@vueuse/core/9.13.0:
-    resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
-    dependencies:
-      '@types/web-bluetooth': 0.0.16
-      '@vueuse/metadata': 9.13.0
-      '@vueuse/shared': 9.13.0
-      vue-demi: 0.13.11
-    transitivePeerDependencies:
-      - '@vue/composition-api'
       - vue
     dev: true
 
@@ -2052,15 +2042,6 @@ packages:
 
   /@vueuse/metadata/9.13.0:
     resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
-    dev: true
-
-  /@vueuse/shared/9.13.0:
-    resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
-    dependencies:
-      vue-demi: 0.13.11
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
     dev: true
 
   /@vueuse/shared/9.13.0_vue@3.2.44:
@@ -6067,6 +6048,7 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
+    dev: false
 
   /vue-demi/0.13.11_vue@3.2.44:
     resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
