@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { ref } from 'vue-demi'
+import { useState } from 'react'
+import type { SetStateType, UseSateType } from '@vruse/shared'
 
-import type { Ref } from 'vue-demi'
 import type {
   AxiosInstance,
   AxiosPromise,
@@ -19,36 +19,46 @@ export function useAxiosCreate(config?: CreateAxiosDefaults) {
 }
 
 export function useAxiosInstance(config?: CreateAxiosDefaults) {
-  return axios.create(config)
+  return globalInstance || useAxiosCreate(config)
 }
 
-export interface IFetchControler<D> {
-  loading: boolean
-  data: D
-  cancelController: GenericAbortSignal
+export interface AxiosControler<D> {
+  loadingState?: UseSateType<boolean>
+  dataState?: UseSateType<D | undefined>
+  cancelController?: GenericAbortSignal
   instance?: AxiosInstance
 }
 
 export interface RequestResponse<D> {
-  loading: Ref<boolean>
-  data: Ref<D | undefined>
+  loading: boolean
+  data: D | undefined
+  setLoading: SetStateType<boolean>
+  setData: SetStateType<D | undefined>
   abort: AbortController['abort']
-  response: Ref<AxiosResponse<D> | undefined>
+  response: AxiosResponse<D> | undefined
 }
 
-export type RequestControler<D> = ReturnType<typeof useAxiosControler<D>> & {
+export interface RequestControler<D> {
+  loadingState?: UseSateType<boolean>
+  dataState?: UseSateType<D | undefined>
   instance?: AxiosInstance
+  cancelController?: AbortController
 }
 
 export type RequestConfig<D = any> = AxiosRequestConfig & {
-  controller?: Partial<RequestControler<D>>
+  controller?: RequestControler<D>
 }
 
-export function useAxiosControler<D>() {
+export function useAxiosController<D>(initialController?: RequestControler<D>) {
+  const [loading, setLoading] = initialController?.loadingState || useState<boolean>(true)
+  const [data, setData] = initialController?.dataState || useState<D>()
   return {
-    loading: ref(true),
-    data: ref<D>(),
-    cancelController: new AbortController(),
+    loading,
+    setLoading,
+    data,
+    setData,
+    instance: initialController?.instance || useAxiosInstance(),
+    cancelController: initialController?.cancelController || new AbortController(),
   }
 }
 
@@ -70,12 +80,9 @@ export function useAxios<D = any>(
   url: string,
   opt: RequestConfig<D> = {},
 ): RequestResponse<D> & Promise<RequestResponse<D>> {
-  const response = ref<AxiosResponse<D>>()
+  const [response, setResponse] = useState<AxiosResponse<D>>()
 
-  const controller = {
-    ...useAxiosControler<D>(),
-    ...opt.controller,
-  }
+  const controller = useAxiosController<D>(opt.controller)
 
   opt.signal = controller.cancelController.signal
 
@@ -86,7 +93,7 @@ export function useAxios<D = any>(
   if (opt.data)
     opt.data.timerstamp = timerstamp
 
-  const instance = controller.instance || globalInstance || useAxiosInstance()
+  const instance = controller.instance
 
   const p = instance(url, opt) as AxiosPromise<D>
 
@@ -97,14 +104,17 @@ export function useAxios<D = any>(
   }
 
   p.catch((e) => {
-    controller.loading.value = false
+    const { setLoading } = controller
+    setLoading(false)
     throw e
   })
 
   const rp = p.then((r) => {
-    controller.loading.value = false
-    controller.data.value = r.data
-    response.value = r
+    const { setLoading } = controller
+    const { setData } = controller
+    setLoading(false)
+    setData(r.data)
+    setResponse(r)
     return result
   })
 

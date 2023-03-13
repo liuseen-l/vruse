@@ -1,13 +1,5 @@
 {
   "packages": {
-    "shared": {
-      "name": "shared",
-      "display": "VRuse Shared utilities",
-      "iife": true,
-      "cjs": true,
-      "mjs": true,
-      "dir": "packages/shared"
-    },
     "vue": {
       "name": "vue",
       "display": "vue",

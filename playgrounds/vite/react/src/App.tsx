@@ -1,28 +1,21 @@
-import { usePick } from '@vruse/react'
-import React, { useEffect, useState } from 'react'
-
+import { useAxios } from '@vruse/react'
+import React, { useState } from 'react'
 function App() {
-  const [r, setR] = useState(0)
+  const url = 'https://jsonplaceholder.typicode.com/todos/1'
+  const [loade, setLoade] = useState(true)
+  async function test() {
+    const { loading, data } = await useAxios(url)
+    setLoade(loading)
+  }
+  test()
 
-  const { run, pickedList } = usePick(
-    [1, 2, 3, 6, 7, 8, 9, 10],
-    {
-      pickCount: 5,
-    },
-    (v) => {
-      // setR(v)
-    },
-  )
+  return <>
+    <div>
+      {
+        loade ? <div>finish</div> : <div>loading...</div>
+      }
 
-  useEffect(() => {
-    run()
-  }, [])
-
-  return (
-    <>
-      <div>{pickedList}</div>
-      <div>{r}</div>
-    </>
-  )
+    </div>
+  </>
 }
 export default App

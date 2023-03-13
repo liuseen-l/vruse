@@ -4,11 +4,14 @@ import IconsResolver from 'unplugin-icons/resolver'
 import UnoCSS from 'unocss/vite'
 import { presetAttributify, presetUno } from 'unocss'
 import Components from 'unplugin-vue-components/vite'
+import { MarkdownTransform } from './.vitepress/plugins/markdownTransform'
+
 
 import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [
+    MarkdownTransform(),
     Components({
       dirs: resolve(__dirname, '.vitepress/theme/components'),
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],

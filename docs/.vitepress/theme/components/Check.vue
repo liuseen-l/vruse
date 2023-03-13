@@ -1,20 +1,15 @@
 <script setup lang="ts">
 import { VTSwitch, VTIconChevronDown } from '@vue/theme'
-import { useRoute } from 'vitepress'
-import { ref, computed, inject, Ref } from 'vue'
+import { useRoute,useRouter } from 'vitepress'
+import { ref, inject, Ref } from 'vue'
+
 
 const preferCompositionKey = '1'
-const preferComposition = ref(false)
-const preferSFCKey = '1'
-const preferSFC = ref(false)
+const preferComposition = ref(true)
 
 
+const router = useRouter()
 const route = useRoute()
-const show = computed(() =>
-  /^\/(guide|tutorial|examples|style-guide)\//.test(route.path)
-)
-
-const showSFC = computed(() => !/^\/guide|style-guide/.test(route.path))
 
 let isOpen = ref(true)
 
@@ -35,8 +30,6 @@ const toggleCompositionAPI = useToggleFn(
   preferComposition,
   'prefer-composition'
 )
-const toggleSFC = useToggleFn(preferSFCKey, preferSFC, 'prefer-sfc')
-const closeSideBar = inject('close-sidebar') as () => void
 
 function useToggleFn(
   storageKey: string,
@@ -56,28 +49,32 @@ function useToggleFn(
     localStorage.setItem(storageKey, String(state.value))
   }
 }
+
+function toggleCheck(to?: string) {
+  if(to){
+    const hookName = route.path.split('/')[2]
+    router.go(`/${to}/${hookName}/`)
+  }
+}
+
+
 </script>
 
 <template>
-  <div v-if="show" class="preference-switch">
-    <button class="toggle" aria-label="preference switches toggle" aria-controls="preference-switches"
+  <div class="preference-switch">
+    <button pr-5 class="toggle" aria-label="preference switches toggle" aria-controls="preference-switches"
       :aria-expanded="isOpen" @click="toggleOpen" @mousedown="removeOutline" @blur="restoreOutline">
-      <span>API Preference</span>
-      <!-- <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" /> -->
+      <span pl-5>API Preference</span>
+      <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" />
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
       <div class="switch-container">
-        <label class="options-label" @click="toggleCompositionAPI(false)">Options</label>
-        <!-- <VTSwitch class="api-switch" aria-label="prefer composition api" :aria-checked="preferComposition" -->
+        <label class="options-label" @click="toggleCheck('vue')">Vue</label>
+        <VTSwitch class="api-switch" aria-label="prefer composition api" :aria-checked="preferComposition"
           @click="toggleCompositionAPI()" />
-        <label class="composition-label" @click="toggleCompositionAPI(true)">Composition</label>
-      </div>
-      <div class="switch-container" v-if="showSFC">
-        <label class="no-sfc-label" @click="toggleSFC(false)">HTML</label>
-        <!-- <VTSwitch class="sfc-switch" aria-label="prefer single file component" :aria-checked="preferSFC" -->
-          @click="toggleSFC()" />
-        <label class="sfc-label" @click="toggleSFC(true)">SFC</label>
-        <a class="switch-link" title="About SFC" href="/guide/scaling-up/sfc.html" @click="closeSideBar">?</a>
+        <label class="composition-label" @click="toggleCheck('react')">React</label>
+        <!-- <a class="switch-link" title="About API preference" href="/guide/introduction.html#api-styles"
+              @click="closeSideBar">?</a> -->
       </div>
     </div>
   </div>
@@ -89,16 +86,17 @@ function useToggleFn(
   border-bottom: 1px solid var(--vt-c-divider-light);
   transition: border-color 0.5s, background-color 0.5s ease;
   margin-bottom: 20px;
-  position: sticky;
   top: -0.5px;
-  background-color: var(--vt-c-bg);
   padding-top: 10px;
+  border-radius: 10px;
+  background-color: rgba(10, 31, 35, .5);
   z-index: 10;
 }
 
 .toggle {
   color: var(--vt-c-text-2);
   transition: color 0.5s;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -120,13 +118,13 @@ function useToggleFn(
   top: 1px;
 }
 
-transform: rotate(180deg);
 .vt-link-icon.open {
+  transform: rotate(180deg);
 }
 
 #preference-switches {
   padding: 12px 16px;
-  background-color: var(--vt-c-bg-soft);
+  /* background-color: var(--vt-c-bg-soft); */
   transition: background-color 0.5s;
   margin: 6px 0 12px;
   border-radius: 8px;
@@ -163,8 +161,8 @@ transform: rotate(180deg);
   height: 14px;
   line-height: 13px;
   text-align: center;
-  color: var(--vt-c-green);
-  border: 1px solid var(--vt-c-green);
+  color: #1eb2ec;
+  border: 1px solid #1eb2ec;
   border-radius: 50%;
 }
 

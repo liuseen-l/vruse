@@ -1,5 +1,6 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vitest/config'
+import React from '@vitejs/plugin-react'
 
 const modeResolver: { [key: string]: () => any } = {
   v: () => ({
@@ -29,5 +30,6 @@ export default defineConfig(({ mode }) => {
       setupFiles: [resolve(__dirname, './scripts/setupVitest.ts')],
       reporters: 'dot',
     },
+    plugins: [React()],
   }
 })

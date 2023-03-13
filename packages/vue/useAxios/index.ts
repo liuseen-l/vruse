@@ -19,7 +19,7 @@ export function useAxiosCreate(config?: CreateAxiosDefaults) {
 }
 
 export function useAxiosInstance(config?: CreateAxiosDefaults) {
-  return axios.create(config)
+  return globalInstance || useAxiosCreate(config)
 }
 
 export interface IFetchControler<D> {
@@ -86,7 +86,7 @@ export function useAxios<D = any>(
   if (opt.data)
     opt.data.timerstamp = timerstamp
 
-  const instance = controller.instance || globalInstance || useAxiosInstance()
+  const instance = controller.instance || useAxiosInstance()
 
   const p = instance(url, opt) as AxiosPromise<D>
 

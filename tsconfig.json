@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "es2017",
     "module": "esnext",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
@@ -18,16 +22,24 @@
     "skipDefaultLibCheck": true,
     "noUnusedLocals": true,
     "paths": {},
-    "types": ["vitest/globals", "@types/web-bluetooth"]
+    "types": [
+      "vitest/globals",
+      "@types/web-bluetooth"
+    ]
   },
   "include": [
     "packages",
     "docs/components/*.vue",
-    "docs/*.ts",
+    "docs/.vitepress/**/*",
     "meta",
     "vitest.config.ts",
     "playgrounds/vite/vue/**/*.vue",
     "playgrounds/vite/react/**/*.tsx"
   ],
-  "exclude": ["node_modules", "**/*.md", "**/dist", "packages/.test"]
+  "exclude": [
+    "node_modules",
+    "**/*.md",
+    "**/dist",
+    "packages/.test"
+  ]
 }
