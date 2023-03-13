@@ -1,10 +1,10 @@
 import { join, resolve } from 'node:path'
 import type { Plugin } from 'vite'
 import fs from 'fs-extra'
-import Magic from 'magic-string'
+import MagicString from 'magic-string'
 
 
-const globalMatchReg = /da/
+const globalMatchReg = /-{3}/g
 
 export function MarkdownTransform(): Plugin {
   const DIR_TYPES = resolve(__dirname, '../../../types/packages')
@@ -59,21 +59,20 @@ export function MarkdownTransform(): Plugin {
     // },
 
     async transform(code, id) {
-      if (!id.match(/\.md\b/))
+      
+      const idAry = id.split('/')
+
+      if (!id.match(/\.md\b/) || !['vue','react'].includes(idAry[idAry.length-3]))
         return null
 
-      const s = new Magic(code)
-      
-      
-      
-      
+      const s = new MagicString(code)
 
+      const match = Array.from(code.matchAll(globalMatchReg))[1]
 
+      s.appendRight(match.index! + 3, '\n\n<Check/>')
 
-
-
-
-
+      return s.toString()
+      return code
     }
   }
 }
