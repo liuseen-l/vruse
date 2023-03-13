@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { VTSwitch, VTIconChevronDown } from '@vue/theme'
 import { useRoute, useRouter } from 'vitepress'
-import { ref } from 'vue'
+import { ref, onBeforeUnmount } from 'vue'
 
 
 const preferComposition = ref(false)
+
+const className = 'prefer-composition'
 
 
 const router = useRouter()
@@ -24,9 +26,9 @@ const restoreOutline = (e: Event) => {
   ; (e.target as HTMLElement).classList.remove('no-outline')
 }
 
-const toggleCompositionAPI = useToggleFn('prefer-composition')
+const toggleCompositionAPI = useToggleFn()
 
-function useToggleFn(className: string) {
+function useToggleFn() {
   const classList = document.documentElement.classList
   return () => {
     const url = route.path.split('/')
@@ -43,6 +45,8 @@ function useToggleFn(className: string) {
     }
   }
 }
+
+
 
 function toggleCheck(to?: string) {
   if (to) {
@@ -67,7 +71,7 @@ function toggleCheck(to?: string) {
           @click="toggleCompositionAPI()" />
         <label class="composition-label" @click="toggleCheck('react')">React</label>
         <!-- <a class="switch-link" title="About API preference" href="/guide/introduction.html#api-styles"
-                                  @click="closeSideBar">?</a> -->
+                                          @click="closeSideBar">?</a> -->
       </div>
     </div>
   </div>
