@@ -2,10 +2,6 @@
 category: 业务型
 ---
 
-# 
-<Check/>
-
-
 # usePick
 
 抽奖函数

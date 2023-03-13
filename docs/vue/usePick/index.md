@@ -1,8 +1,6 @@
 ---
 category: 业务型
 ---
-# 
-<Check/>
 
 # usePick
 

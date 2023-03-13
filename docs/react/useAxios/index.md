@@ -1,7 +1,7 @@
 ---
 category: 网络
 ---
-<Check/>
+
 # useAxios
 
 Axios 的封装，既可以不带 await 使用，也可以带 await 使用

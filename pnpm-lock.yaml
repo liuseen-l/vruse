@@ -84,6 +84,7 @@ importers:
   docs:
     specifiers:
       '@iconify-json/carbon': ^1.1.16
+      magic-string: ^0.30.0
       unocss: ^0.50.4
       unplugin-icons: ^0.15.3
       unplugin-vue-components: ^0.24.1
@@ -92,6 +93,7 @@ importers:
       vitepress-theme-demoblock: ^2.0.2
     dependencies:
       '@iconify-json/carbon': 1.1.16
+      magic-string: 0.30.0
       unocss: 0.50.4_vite@4.1.4
       unplugin-icons: 0.15.3
       unplugin-vue-components: 0.24.1
