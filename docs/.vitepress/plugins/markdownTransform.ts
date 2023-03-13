@@ -31,7 +31,6 @@ export function MarkdownTransform(): Plugin {
       s.appendRight(match.index! + 3, '\n\n<Check/>')
 
       return s.toString()
-      return code
     }
   }
 }
