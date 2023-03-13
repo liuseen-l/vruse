@@ -8,7 +8,8 @@ category: 业务型
 
 ## 使用方式
 
-```ts
+```vue
+<script>
 import { usePick } from '@vruse/vue'
 import { ref } from 'vue'
 
@@ -26,8 +27,14 @@ export default {
 
     return {
       r,
-      p
+      pickedList
     }
   }
 }
+</script>
+
+<template>
+  <div>{{ pickedList }}</div>
+  <div>{{ r }}</div>
+</template>
 ```

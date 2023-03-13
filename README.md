@@ -1,6 +1,7 @@
 ## 🦄 Usage in Vue CompositionAPI
 
-```ts
+```vue
+<script>
 import { usePick } from '@vruse/vue'
 import { ref } from 'vue'
 
@@ -18,10 +19,16 @@ export default {
 
     return {
       r,
-      p
+      pickedList
     }
   }
 }
+</script>
+
+<template>
+  <div>{{ pickedList }}</div>
+  <div>{{ r }}</div>
+</template>
 ```
 
 ## 🦄 Usage in React (version > 16.8)

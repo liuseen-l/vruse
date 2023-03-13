@@ -162,7 +162,6 @@ export async function readMetadata() {
   return indexes
 }
 
-async function mkDir() {}
 
 async function run() {
   const indexes = await readMetadata()
