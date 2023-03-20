@@ -13,11 +13,11 @@ interface CountDownOptions {
  * @param options
  */
 export const useCountDown = (time: number, options?: CountDownOptions) => {
-  if (time <= 0) throw new Error('time must be greater than 0')
+  if (time <= 0)
+    throw new Error('time must be greater than 0')
 
-  if (!options) {
+  if (!options)
     options = { immediate: false }
-  }
 
   const timeRef = ref(time)
 
@@ -51,11 +51,13 @@ export const useCountDown = (time: number, options?: CountDownOptions) => {
 
   // start
   function start() {
-    if (timer) return
+    if (timer)
+      return
     timer = setInterval(countDown, 1000)
   }
 
-  if (options?.immediate) start()
+  if (options?.immediate)
+    start()
 
   return {
     days,

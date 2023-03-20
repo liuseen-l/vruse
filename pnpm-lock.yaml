@@ -101,12 +101,9 @@ importers:
 
   packages/react:
     specifiers:
-      '@vruse/shared': workspace:*
+      '@vruse/shared': workspace:^1.0.0
     dependencies:
       '@vruse/shared': link:../shared
-
-  packages/react/dist:
-    specifiers: {}
 
   packages/shared:
     specifiers: {}
@@ -134,7 +131,7 @@ importers:
       vue: ^3.2.47
       vue-tsc: ^1.0.24
     dependencies:
-      '@vruse/react': link:../../packages/react/dist
+      '@vruse/react': link:../../packages/react
       '@vruse/vue': link:../../packages/vue
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
