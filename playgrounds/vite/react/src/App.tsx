@@ -1,21 +1,14 @@
-import { useAxios } from '@vruse/react'
-import React, { useState } from 'react'
+import React from 'react'
+import { useCountDown } from '@vruse/react'
+
 function App() {
-  const url = 'https://jsonplaceholder.typicode.com/todos/1'
-  const [loade, setLoade] = useState(true)
-  async function test() {
-    const { loading, data } = await useAxios(url)
-    setLoade(loading)
-  }
-  test()
+  const { days, hours, minutes, seconds } = useCountDown(1000 * 60 * 60 * 24, { immediate: true })
 
   return <>
     <div>
-      {
-        loade ? <div>finish</div> : <div>loading...</div>
-      }
-
+      {days}天{hours}时{minutes}分{seconds}秒
     </div>
   </>
 }
+
 export default App

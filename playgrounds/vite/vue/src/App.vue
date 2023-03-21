@@ -1,19 +1,14 @@
 <script setup lang="ts">
-import { usePick } from '@vruse/vue'
-import { ref } from 'vue'
+import { useCountDown } from '@vruse/vue'
 
-const r = ref<number>(0)
-const { run, pickedList } = usePick([1, 2, 3, 6, 7, 8, 9, 10], {
-  pickCount: 5,
-  excludes: [1],
-}, (v) => {
-  r.value = v
-})
-
-run()
+const { days, hours, minutes, seconds } = useCountDown(1000 * 60 * 60 * 24, { immediate: true })
 </script>
 
 <template>
-  <div>{{ pickedList }}</div>
-  <div>{{ r }}</div>
+  <div>
+    {{ days }}天{{ hours }}时{{ minutes }}分{{ seconds }}秒
+  </div>
 </template>
+
+<style scoped>
+</style>

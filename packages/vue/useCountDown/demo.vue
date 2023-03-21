@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { useCountDown } from './index'
 
-const {days,hours, minutes, seconds } = useCountDown(1000 * 60 * 60 * 24)
-
+const { days, hours, minutes, seconds } = useCountDown(1000 * 60 * 60 * 24)
 </script>
 
 <template>
@@ -12,5 +11,4 @@ const {days,hours, minutes, seconds } = useCountDown(1000 * 60 * 60 * 24)
 </template>
 
 <style scoped>
-
 </style>
