@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 
 interface CountDownOptions {
   /**
@@ -21,16 +21,14 @@ export const useCountDown = (time: number, options?: CountDownOptions) => {
 
   const [timeRef, setTimeRef] = useState(time)
 
-  const days = useMemo(() => Math.floor(timeRef / (1000 * 60 * 60 * 24)), [timeRef])
-  const hours = useMemo(() =>
-    Math.floor((timeRef % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)), [timeRef],
-  )
-  const minutes = useMemo(() =>
-    Math.floor((timeRef % (1000 * 60 * 60)) / (1000 * 60)), [timeRef],
-  )
-  const seconds = useMemo(() =>
-    Math.floor((timeRef % (1000 * 60)) / 1000), [timeRef],
-  )
+  const days = Math.floor(timeRef / (1000 * 60 * 60 * 24))
+
+  const hours = Math.floor((timeRef % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+
+  const minutes = Math.floor((timeRef % (1000 * 60 * 60)) / (1000 * 60))
+
+  const seconds = Math.floor((timeRef % (1000 * 60)) / 1000)
+
   let timer: NodeJS.Timer | null
 
   const countDown = () => {

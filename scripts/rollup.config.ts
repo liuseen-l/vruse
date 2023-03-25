@@ -1,13 +1,13 @@
 import fs from 'node:fs'
 import { resolve } from 'node:path'
-import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
+import fg from 'fast-glob'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
 import json from '@rollup/plugin-json'
-import { PluginPure as pure } from 'rollup-plugin-pure'
-import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
-import fg from 'fast-glob'
 import terser from '@rollup/plugin-terser'
+import { PluginPure as pure } from 'rollup-plugin-pure'
+import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
+import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
 import { packages } from '../meta/packages'
 
 const VUE_DEMI_IIFE = fs.readFileSync(
@@ -100,7 +100,6 @@ for (const {
         format: 'cjs',
       })
     }
-
     if (iife !== false) {
       const doInject = name === 'react' ? [] : injectVueDemi
 
