@@ -102,7 +102,6 @@ for (const {
     }
     if (iife !== false) {
       const doInject = name === 'react' ? [] : injectVueDemi
-
       output.push(
         {
           file: `${packageDir}/${name}/dist/${fn}.iife.js`,
