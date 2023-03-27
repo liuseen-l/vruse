@@ -100,6 +100,7 @@ for (const {
         format: 'cjs',
       })
     }
+
     if (iife !== false) {
       const doInject = name === 'react' ? [] : injectVueDemi
       output.push(
