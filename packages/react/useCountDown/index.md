@@ -10,7 +10,7 @@ category: 业务型
 
 ```vue
 <script>
-import { useCountDown } from '@vruse/vue'
+import { useCountDown } from '@vruse/react'
 
 export default {
   setup() {

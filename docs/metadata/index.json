@@ -34,7 +34,7 @@
     {
       "name": "useAxios",
       "package": "vue",
-      "lastUpdated": 1678499236000,
+      "lastUpdated": 1678506284000,
       "docs": "https://vruse.org/vue/useAxios/",
       "category": "网络",
       "description": "axios 的封装，既可以不带 await 使用，也可以带 await 使用"
@@ -42,10 +42,26 @@
     {
       "name": "useAxios",
       "package": "react",
-      "lastUpdated": 1678451502000,
+      "lastUpdated": 1678521931000,
       "docs": "https://vruse.org/react/useAxios/",
       "category": "网络",
       "description": "axios 的封装，既可以不带 await 使用，也可以带 await 使用"
+    },
+    {
+      "name": "useCountDown",
+      "package": "vue",
+      "lastUpdated": 1679321091000,
+      "docs": "https://vruse.org/vue/useCountDown/",
+      "category": "业务型",
+      "description": "a hook with count down function"
+    },
+    {
+      "name": "useCountDown",
+      "package": "react",
+      "lastUpdated": 1679755549000,
+      "docs": "https://vruse.org/react/useCountDown/",
+      "category": "业务型",
+      "description": "a hook with count down function"
     },
     {
       "name": "usePick",
