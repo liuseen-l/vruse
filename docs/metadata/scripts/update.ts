@@ -74,9 +74,6 @@ export async function readMetadata() {
           })
           await fs.copyFile(mdPath, join(hookDir, 'index.md'))
 
-          
-
-
         }
 
         // hook info
