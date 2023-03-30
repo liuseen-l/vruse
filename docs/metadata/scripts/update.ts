@@ -73,6 +73,10 @@ export async function readMetadata() {
             recursive:true
           })
           await fs.copyFile(mdPath, join(hookDir, 'index.md'))
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
         }
 
         // hook info
