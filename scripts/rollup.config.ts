@@ -79,8 +79,6 @@ for (const {
   }
 
   for (const fn of functionNames) {
-    console.log(fn)
-
     const input
       = fn === 'index'
         ? `${packageDir}/${name}/index.ts`
