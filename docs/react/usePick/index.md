@@ -21,7 +21,7 @@ function App() {
       pickCount: 5,
     },
     (v) => {
-      // setR(v)
+      setR(v)
     },
   )
 
