@@ -69,21 +69,10 @@ export async function readMetadata() {
         if (['vue', 'react', 'shared'].includes(pkg.name)) {
           const dirPath = resolve(DIR_ROOT, 'docs', pkg.name)
           const hookDir = resolve(dirPath, fnName)
-          await mkdir(hookDir,{
-            recursive:true
+          await mkdir(hookDir, {
+            recursive: true
           })
-<<<<<<< HEAD
           await fs.copyFile(mdPath, join(hookDir, 'index.md'))
-=======
-          console.log(mdPath,hookDir,123);
-          try {
-            
-            await fs.copyFile(mdPath, join(hookDir, 'index.md'))
-          } catch (error) {
-              console.log(error);
-              
-          }
->>>>>>> dev
         }
 
         // hook info

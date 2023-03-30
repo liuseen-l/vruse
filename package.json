@@ -1,7 +1,7 @@
 {
   "name": "@vruse/monorepo",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@7.6.0",
   "description": "",
@@ -22,7 +22,9 @@
     "meta": "pnpm --filter @vruse/docs -w update:meta",
     "play:v": "pnpm --filter @vruse/playground dev:v",
     "play:r": "pnpm --filter @vruse/playground dev:r",
-    "publish:ci": "esno scripts/publish.ts",
+    "publish:ci": "cross-env NODE_ENV=3 esno scripts/publish.ts",
+    "publish:v": "cross-env NODE_ENV=1 esno scripts/publish.ts",
+    "publish:r": "cross-env NODE_ENV=2 esno scripts/publish.ts",
     "check": "tsc --incremental --noEmit",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
@@ -30,7 +32,6 @@
     "format": "eslint --fix --ext .js,.ts,.jsx,tsx,.json,.md ."
   },
   "dependencies": {
-    "@vitejs/plugin-vue-jsx": "^3.0.1",
     "axios": "^1.3.4"
   },
   "devDependencies": {
@@ -43,6 +44,7 @@
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.14.6",
     "@types/web-bluetooth": "^0.0.16",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vitest/coverage-c8": "^0.29.2",
     "@vitest/ui": "^0.29.2",
     "@vue/theme": "^2.0.0",
@@ -52,6 +54,7 @@
     "esbuild-register": "^3.4.2",
     "eslint": "^8.35.0",
     "esno": "^0.16.3",
+    "execa": "^4.1.0",
     "fast-glob": "^3.2.12",
     "fs-extra": "^11.1.0",
     "gray-matter": "^4.0.3",

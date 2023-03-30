@@ -1,26 +1,29 @@
 ---
-<<<<<<< HEAD
-category: Utilities
-=======
 category: 业务型
->>>>>>> dev
 ---
 
 # useCountDown
 
-A hook with count down function.
+倒计时函数
 
-## Usage
+## 使用方式
 
-<<<<<<< HEAD
-```ts
-```
-=======
 ```vue
-<script setup lang="ts">
+<script>
 import { useCountDown } from '@vruse/vue'
 
-const { days, hours, minutes, seconds } = useCountDown(1000 * 60 * 60 * 24, { immediate: true })
+export default {
+  setup() {
+    const { days, hours, minutes, seconds } = useCountDown(1000 * 60 * 60 * 24, { immediate: true })
+
+    return {
+      days,
+      hours,
+      minutes,
+      seconds
+    }
+  }
+}
 </script>
 
 <template>
@@ -28,9 +31,4 @@ const { days, hours, minutes, seconds } = useCountDown(1000 * 60 * 60 * 24, { im
     {{ days }}天{{ hours }}时{{ minutes }}分{{ seconds }}秒
   </div>
 </template>
-
-<style scoped>
-</style>
-
-``
->>>>>>> dev
+```

@@ -6,3 +6,4 @@ declare namespace jest {
     toHaveBeenWarnedTimes(n: number): R
   }
 }
+

@@ -53,7 +53,7 @@
       "lastUpdated": 1679321091000,
       "docs": "https://vruse.org/vue/useCountDown/",
       "category": "业务型",
-      "description": "a hook with count down function"
+      "description": "倒计时函数"
     },
     {
       "name": "useCountDown",
@@ -61,7 +61,7 @@
       "lastUpdated": 1679755549000,
       "docs": "https://vruse.org/react/useCountDown/",
       "category": "业务型",
-      "description": "a hook with count down function"
+      "description": "倒计时函数"
     },
     {
       "name": "usePick",

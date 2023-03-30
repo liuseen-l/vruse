@@ -20,5 +20,8 @@
     "utils"
   ],
   "sideEffects": false,
-  "main": "./index.ts"
+  "main": "./index.ts",
+  "devDependencies": {
+    "react": "^18.2.0"
+  }
 }
