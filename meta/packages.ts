@@ -24,7 +24,7 @@ export const packages: PackageManifest[] = [
     iife: true,
     cjs: true,
     mjs: true,
-    external: ['@vueuse/shared', 'vue-demi'],
+    external: ['@vueuse/shared', 'vue-demi', 'axios'],
   },
   {
     name: 'metadata',
