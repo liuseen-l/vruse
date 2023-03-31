@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "prepublish": "cross-env NODE_ENV=REPLACE_PRE esno scripts/publish.ts",
-    "publish": "pnpm run prepublish && pnpm run build && lerna publish --exact --force-publish --yes --no-git-tag-version --no-git-reset --no-push && pnpm run postpublish ",
+    "publish": "pnpm run prepublish && pnpm run build && lerna publish --exact --force-publish --yes --no-git-tag-version --no-git-reset --no-push && pnpm run postpublish",
     "postpublish": "cross-env NODE_ENV=REPLACE_POST esno scripts/publish.ts",
     "docs:dev": "pnpm --filter @vruse/docs docs:dev",
     "docs:build": "pnpm --filter @vruse/docs docs:build",

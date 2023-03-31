@@ -1,6 +1,6 @@
 {
   "name": "@vruse/vue",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "Collection of essential Vue Composition Utilities",
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
@@ -41,5 +41,5 @@
     "axios": "^1.3.4",
     "vue-demi": "*"
   },
-  "gitHead": "d3e2675bf38b0e376cbc1204b3b70e77884312fc"
+  "gitHead": "db048489cbe87fbd18391619ffb337f5c9e8da08"
 }
