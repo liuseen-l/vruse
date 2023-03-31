@@ -21,6 +21,7 @@ switch (publish_path) {
   case Publishs.PUBLISH_REACT:
     break
   case Publishs.PUBLISH_ALL:
+    await execa('pnpm run build:rollup', { stdio: 'inherit' })
     break
 }
 

@@ -1,7 +1,8 @@
 import path from 'node:path'
 import assert from 'node:assert'
 import { fileURLToPath } from 'node:url'
-import { execSync as exec } from 'node:child_process'
+// import { execSync as exec } from 'node:child_process'
+import execa from 'execa'
 import fs from 'fs-extra'
 import fg from 'fast-glob'
 import consola from 'consola'
@@ -46,6 +47,7 @@ async function buildMetaFiles() {
     const packageJSON = await fs.readJSON(
       path.join(packageRoot, 'package.pro.json'),
     )
+
     for (const key of Object.keys(packageJSON.dependencies || {})) {
       if (key.startsWith('@vruse/'))
         packageJSON.dependencies[key] = version
@@ -59,10 +61,10 @@ async function buildMetaFiles() {
 
 async function build() {
   // consola.info('Clean up')
-  // exec('pnpm run clean', { stdio: 'inherit' })
+  // execa('pnpm run clean', { stdio: 'inherit' })
 
   consola.info('Rollup')
-  exec(`pnpm run build:rollup${watch ? ' -- --watch' : ''}`, {
+  execa(`pnpm run build:rollup${watch ? ' -- --watch' : ''}`, {
     stdio: 'inherit',
   })
 
