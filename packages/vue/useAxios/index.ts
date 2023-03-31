@@ -22,7 +22,7 @@ export function useAxiosInstance(config?: CreateAxiosDefaults) {
   return globalInstance || useAxiosCreate(config)
 }
 
-export interface IFetchControler<D> {
+export interface FetchControler<D> {
   loading: boolean
   data: D
   cancelController: GenericAbortSignal
