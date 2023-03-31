@@ -15,13 +15,12 @@ const command = 'npm publish --access public'
 
 switch (publish_path) {
   case Publishs.PUBLISH_VUE:
-    await execa('pnpm run build:rollup', { stdio: 'inherit' })
-
+    await execa('pnpm run build', { stdio: 'inherit' })
     break
   case Publishs.PUBLISH_REACT:
     break
   case Publishs.PUBLISH_ALL:
-    await execa('pnpm run build:rollup', { stdio: 'inherit' })
+    await execa('pnpm run build', { stdio: 'inherit' })
     break
 }
 
