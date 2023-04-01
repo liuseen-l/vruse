@@ -22,8 +22,11 @@ async function buildMetaFiles() {
     )
 
     for (const key of Object.keys(packageJSON.dependencies || {})) {
-      if (key.startsWith('@vruse/'))
+      if (key.startsWith('@vruse/')) {
         packageJSON.main = toReplace ? './dist/index.cjs' : 'index.ts'
+        if (!toReplace)
+          packageJSON.dependencies[key] = 'workspace:*'
+      }
     }
 
     await fs.writeJSON(path.join(packageRoot, 'package.json'), packageJSON, {
