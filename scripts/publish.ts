@@ -12,7 +12,7 @@ const toReplace = process.env.NODE_ENV === 'REPLACE_PRE'
 
 assert(process.cwd() !== __dirname)
 
-async function buildMetaFiles() {
+async function updatePackageJSON() {
   for (const { name, dir } of packages) {
     const packageDir = dir ? dir.split('/')[0] : 'packages'
     const packageRoot = path.resolve(rootDir, packageDir, name)
@@ -35,4 +35,4 @@ async function buildMetaFiles() {
   }
 }
 
-buildMetaFiles()
+updatePackageJSON()

@@ -28,7 +28,7 @@
     },
     "./*": "./dist/*"
   },
-  "main": "index.ts",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "unpkg": "./dist/index.iife.min.js",
   "jsdelivr": "./dist/index.iife.min.js",
