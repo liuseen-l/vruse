@@ -99,39 +99,12 @@ for (const {
       })
     }
 
-    if (iife !== false) {
-      const doInject = name === 'react' ? [] : injectVueDemi
-      output.push(
-        {
-          file: `${packageDir}/${name}/dist/${fn === 'index' ? fn : `${fn}/index`}.iife.js`,
-          format: 'iife',
-          name: iifeName,
-          extend: true,
-          globals: iifeGlobals,
-          plugins: [doInject],
-        },
-        {
-          file: `${packageDir}/${name}/dist/${fn === 'index' ? fn : `${fn}/index`}.iife.min.js`,
-          format: 'iife',
-          name: iifeName,
-          extend: true,
-          globals: iifeGlobals,
-          plugins: [
-            doInject,
-            esbuildMinifer({
-              minify: true,
-            }),
-          ],
-        },
-      )
-    }
-
     const externalArs: string[] = []
 
-    for (const name of functionNames) {
-      if (name !== 'index') {
+    for (const fnName of functionNames) {
+      if (fnName !== 'index') {
         externalArs.push(fileURLToPath(
-          new URL(`../packages/vue/${name}`, import.meta.url)))
+          new URL(`../packages/${name}/${fnName}`, import.meta.url)))
       }
     }
 
@@ -147,6 +120,41 @@ for (const {
         ? externalArs
         : [])],
     })
+
+    if (iife !== false && fn === 'index') {
+      const doInject = name === 'react' ? [] : injectVueDemi
+      configs.push({
+        input,
+        output: [{
+          file: `${packageDir}/${name}/dist/${fn}.iife.js`,
+          format: 'iife',
+          name: iifeName,
+          extend: true,
+          globals: iifeGlobals,
+          plugins: [doInject],
+        },
+        {
+          file: `${packageDir}/${name}/dist/${fn}.iife.min.js`,
+          format: 'iife',
+          name: iifeName,
+          extend: true,
+          globals: iifeGlobals,
+          plugins: [
+            doInject,
+            esbuildMinifer({
+              minify: true,
+            }),
+          ],
+        }],
+        plugins: [
+          target ? esbuild({ target }) : pluginEsbuild,
+          json(),
+          // pluginPure,
+        ],
+        external: [...externals, ...(external || [])],
+      })
+    }
+
     if (dts !== false && fn !== 'index') {
       configs.push({
         input,
