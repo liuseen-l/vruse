@@ -6,7 +6,6 @@ import {
   coreCategoryNames,
   metadata,
 } from '../metadata/metadata'
-import { currentVersion, versions } from '../../meta/versions'
 
 // guide
 const Guide = [{ text: '开始', link: '/guide/' }]

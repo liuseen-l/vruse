@@ -1,6 +1,7 @@
 export interface PackageManifest {
   name: string
   display: string
+  packageName:string,
   addon?: boolean
   author?: string
   description?: string

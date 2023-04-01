@@ -21,7 +21,7 @@ export function MarkdownTransform(): Plugin {
       
       const idAry = id.split('/')
 
-      if (!id.match(/\.md\b/) || !['vue','react'].includes(idAry[idAry.length-3]))
+      if (!id.match(/\.md\b/) || !['vue','react','shared'].includes(idAry[idAry.length-3]))
         return null
 
       const s = new MagicString(code)
