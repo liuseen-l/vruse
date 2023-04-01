@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import fg from 'fast-glob'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
@@ -125,21 +126,32 @@ for (const {
       )
     }
 
+    const externalArs: string[] = []
+
+    for (const name of functionNames) {
+      if (name !== 'index') {
+        externalArs.push(fileURLToPath(
+          new URL(`../packages/vue/${name}`, import.meta.url)))
+      }
+    }
+
     configs.push({
       input,
       output,
       plugins: [
-        target ? esbuild({ target }) : pluginEsbuild,
+        fn === 'index' ? [] : target ? esbuild({ target }) : pluginEsbuild,
         json(),
-        pluginPure,
+        // pluginPure,
       ],
-      external: [...externals, ...(external || [])],
+      external: [...externals, ...(external || []), ...(fn === 'index'
+        ? externalArs
+        : [])],
     })
-    if (dts !== false) {
+    if (dts !== false && fn !== 'index') {
       configs.push({
         input,
         output: {
-          file: `${packageDir}/${name}/dist/${fn === 'index' ? fn : `${fn}/index`}.d.ts`,
+          file: `${packageDir}/${name}/dist/${fn}/index.d.ts`,
           format: 'es',
         },
         plugins: [pluginDts],
