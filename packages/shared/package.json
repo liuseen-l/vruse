@@ -22,14 +22,13 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./index.ts"
     },
     "./*": "./dist/*"
   },
-  "main": "index.ts",
-  "module": "index.ts",
+  "main": "./index.ts",
+  "module": "./index.ts",
   "unpkg": "./dist/index.iife.min.js",
   "jsdelivr": "./dist/index.iife.min.js",
   "files": [

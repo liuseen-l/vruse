@@ -21,8 +21,9 @@ async function toggleUpdatePackageJSON(toReplace: boolean) {
     )
 
     if (packageName.startsWith('@vruse/')) {
-      packageJSON.main = toReplace ? './dist/index.cjs' : 'index.ts'
-      packageJSON.module = toReplace ? './dist/index.mjs' : 'index.ts'
+      packageJSON.main = toReplace ? './dist/index.cjs' : './index.ts'
+      packageJSON.module = toReplace ? './dist/index.mjs' : './index.ts'
+      packageJSON.exports['.'].import = toReplace ? './dist/index.mjs' : './index.ts'
     }
 
     for (const key of Object.keys(packageJSON.dependencies || {})) {
