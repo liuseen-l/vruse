@@ -4,7 +4,6 @@ import fg from 'fast-glob'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
 import json from '@rollup/plugin-json'
-import terser from '@rollup/plugin-terser'
 import { PluginPure as pure } from 'rollup-plugin-pure'
 import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
 import type { OutputOptions, Plugin, RollupOptions } from 'rollup'
@@ -70,13 +69,11 @@ for (const {
   const functionNames = ['index']
   const packageDir = dir ? dir.split('/')[0] : 'packages'
 
-  if (submodules) {
-    functionNames.push(
-      ...fg
-        .sync('*/index.ts', { cwd: resolve(`${packageDir}/${name}`) })
-        .map(i => i.split('/')[0]),
-    )
-  }
+  functionNames.push(
+    ...fg
+      .sync('*/index.ts', { cwd: resolve(`${packageDir}/${name}`) })
+      .map(i => i.split('/')[0]),
+  )
 
   for (const fn of functionNames) {
     const input
@@ -88,15 +85,15 @@ for (const {
 
     if (mjs !== false) {
       output.push({
-        file: `${packageDir}/${name}/dist/${fn}.mjs`,
+        file: `${packageDir}/${name}/dist/${fn === 'index' ? fn : `${fn}/index`}.mjs`,
         format: 'es',
-        plugins: [terser()],
+        // plugins: [terser()],
       })
     }
 
     if (cjs !== false) {
       output.push({
-        file: `${packageDir}/${name}/dist/${fn}.cjs`,
+        file: `${packageDir}/${name}/dist/${fn === 'index' ? fn : `${fn}/index`}.cjs`,
         format: 'cjs',
       })
     }
@@ -105,7 +102,7 @@ for (const {
       const doInject = name === 'react' ? [] : injectVueDemi
       output.push(
         {
-          file: `${packageDir}/${name}/dist/${fn}.iife.js`,
+          file: `${packageDir}/${name}/dist/${fn === 'index' ? fn : `${fn}/index`}.iife.js`,
           format: 'iife',
           name: iifeName,
           extend: true,
@@ -113,7 +110,7 @@ for (const {
           plugins: [doInject],
         },
         {
-          file: `${packageDir}/${name}/dist/${fn}.iife.min.js`,
+          file: `${packageDir}/${name}/dist/${fn === 'index' ? fn : `${fn}/index`}.iife.min.js`,
           format: 'iife',
           name: iifeName,
           extend: true,
@@ -142,7 +139,7 @@ for (const {
       configs.push({
         input,
         output: {
-          file: `${packageDir}/${name}/dist/${fn}.d.ts`,
+          file: `${packageDir}/${name}/dist/${fn === 'index' ? fn : `${fn}/index`}.d.ts`,
           format: 'es',
         },
         plugins: [pluginDts],
