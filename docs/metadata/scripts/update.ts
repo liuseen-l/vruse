@@ -72,7 +72,9 @@ export async function readMetadata() {
           await mkdir(hookDir, {
             recursive: true
           })
-          await fs.copyFile(mdPath, join(hookDir, 'index.md'))
+          // fix: some dir do not have md
+          if (fs.existsSync(mdPath))
+            await fs.copyFile(mdPath, join(hookDir, 'index.md'))
         }
 
         // hook info

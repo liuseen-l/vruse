@@ -1,5 +1,13 @@
 {
   "packages": {
+    "shared": {
+      "name": "shared",
+      "display": "VRuse Shared utilities",
+      "iife": true,
+      "cjs": true,
+      "mjs": true,
+      "dir": "packages/shared"
+    },
     "vue": {
       "name": "vue",
       "display": "vue",
@@ -21,7 +29,8 @@
       "mjs": true,
       "external": [
         "@vueuse/shared",
-        "vue-demi"
+        "vue-demi",
+        "axios"
       ],
       "dir": "packages/react"
     }
@@ -34,7 +43,7 @@
     {
       "name": "useAxios",
       "package": "vue",
-      "lastUpdated": 1678506284000,
+      "lastUpdated": 1680278957000,
       "docs": "https://vruse.org/vue/useAxios/",
       "category": "网络",
       "description": "axios 的封装，既可以不带 await 使用，也可以带 await 使用"
@@ -78,6 +87,30 @@
       "docs": "https://vruse.org/react/usePick/",
       "category": "业务型",
       "description": "抽奖函数"
+    },
+    {
+      "name": "utils-common",
+      "package": "shared",
+      "lastUpdated": 1678521931000,
+      "internal": true
+    },
+    {
+      "name": "utils-react",
+      "package": "shared",
+      "lastUpdated": 1678522083000,
+      "internal": true
+    },
+    {
+      "name": "utils-types",
+      "package": "shared",
+      "lastUpdated": 1678521931000,
+      "internal": true
+    },
+    {
+      "name": "utils-vue",
+      "package": "shared",
+      "lastUpdated": 1678521931000,
+      "internal": true
     }
   ]
 }
