@@ -28,8 +28,8 @@
     },
     "./*": "./dist/*"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "main": "index.ts",
+  "module": "index.ts",
   "unpkg": "./dist/index.iife.min.js",
   "jsdelivr": "./dist/index.iife.min.js",
   "types": "./dist/index.d.ts",

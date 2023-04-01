@@ -29,10 +29,9 @@
     "./*": "./dist/*"
   },
   "main": "index.ts",
-  "module": "./dist/index.mjs",
+  "module": "index.ts",
   "unpkg": "./dist/index.iife.min.js",
   "jsdelivr": "./dist/index.iife.min.js",
-  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],

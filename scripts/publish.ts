@@ -24,6 +24,7 @@ async function updatePackageJSON() {
     for (const key of Object.keys(packageJSON.dependencies || {})) {
       if (key.startsWith('@vruse/')) {
         packageJSON.main = toReplace ? './dist/index.cjs' : 'index.ts'
+        packageJSON.module = toReplace ? './dist/index.mjs' : 'index.ts'
         if (!toReplace)
           packageJSON.dependencies[key] = 'workspace:*'
       }
