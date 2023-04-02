@@ -41,6 +41,16 @@ const esbuildMinifer = (options: ESBuildOptions) => {
   }
 }
 
+function transformImportPath() {
+  return {
+    name: 'rollup-plugin-transform-importPath',
+    tranform(code, id) {
+      console.log('走了')
+      return code
+    },
+  }
+}
+
 for (const {
   globals,
   name,
@@ -112,6 +122,7 @@ for (const {
       input,
       output,
       plugins: [
+        transformImportPath(),
         fn === 'index' ? [] : target ? esbuild({ target }) : pluginEsbuild,
         json(),
         // pluginPure,
@@ -155,11 +166,11 @@ for (const {
       })
     }
 
-    if (dts !== false && fn !== 'index') {
+    if (dts !== false) {
       configs.push({
         input,
         output: {
-          file: `${packageDir}/${name}/dist/${fn}/index.d.ts`,
+          file: `${packageDir}/${name}/dist/${fn === 'index' ? `${fn}.d.ts` : `${fn}/index.d.ts`}`,
           format: 'es',
         },
         plugins: [pluginDts],

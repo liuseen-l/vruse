@@ -1,14 +1,14 @@
 import type { PackageManifest } from '../docs/metadata'
 
 export const packages: PackageManifest[] = [
-  // {
-  //   name: 'shared',
-  //   packageName: '@vruse/shared',
-  //   display: 'VRuse Shared utilities',
-  //   iife: true,
-  //   cjs: true,
-  //   mjs: true,
-  // },
+  {
+    name: 'shared',
+    packageName: '@vruse/shared',
+    display: 'VRuse Shared utilities',
+    iife: true,
+    cjs: true,
+    mjs: true,
+  },
   {
     name: 'vue',
     display: 'vue',

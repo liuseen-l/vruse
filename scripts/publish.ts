@@ -1,6 +1,7 @@
 import path from 'node:path'
 import assert from 'node:assert'
 import { fileURLToPath } from 'node:url'
+import fg from 'fast-glob'
 import fs from 'fs-extra'
 import execa from 'execa'
 import { packages } from '../meta/packages'
@@ -24,6 +25,21 @@ async function toggleUpdatePackageJSON(toReplace: boolean) {
       packageJSON.main = toReplace ? './dist/index.cjs' : './index.ts'
       packageJSON.module = toReplace ? './dist/index.mjs' : './index.ts'
       packageJSON.exports['.'].import = toReplace ? './dist/index.mjs' : './index.ts'
+
+      const functionNames: string[] = []
+
+      functionNames.push(
+        ...fg
+          .sync('*/index.ts', { cwd: path.resolve(`${packageDir}/${name}`) })
+          .map(i => i.split('/')[0]),
+      )
+
+      for (const fnName of functionNames) {
+        packageJSON.exports[`./${fnName}`] = {}
+        packageJSON.exports[`./${fnName}`].types = `./dist/${fnName}/index.d.ts`
+        packageJSON.exports[`./${fnName}`].require = `./dist/${fnName}/index.cjs`
+        packageJSON.exports[`./${fnName}`].import = toReplace ? `./dist/${fnName}/index.mjs` : './index.ts'
+      }
     }
 
     for (const key of Object.keys(packageJSON.dependencies || {})) {

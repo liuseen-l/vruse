@@ -1,6 +1,6 @@
 {
   "name": "@vruse/vue",
-  "version": "1.1.23",
+  "version": "1.1.25",
   "description": "Collection of essential Vue Composition Utilities",
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
@@ -22,10 +22,26 @@
   "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./index.ts"
     },
-    "./*": "./dist/*"
+    "./*": "./dist/*",
+    "./useAxios": {
+      "types": "./dist/useAxios/index.d.ts",
+      "require": "./dist/useAxios/index.cjs",
+      "import": "./index.ts"
+    },
+    "./useCountDown": {
+      "types": "./dist/useCountDown/index.d.ts",
+      "require": "./dist/useCountDown/index.cjs",
+      "import": "./index.ts"
+    },
+    "./usePick": {
+      "types": "./dist/usePick/index.d.ts",
+      "require": "./dist/usePick/index.cjs",
+      "import": "./index.ts"
+    }
   },
   "main": "./index.ts",
   "module": "./index.ts",
@@ -40,5 +56,5 @@
     "axios": "^1.3.4",
     "vue-demi": "*"
   },
-  "gitHead": "639eefc552b5274cef48dcd7057ffa49691417cc"
+  "gitHead": "231c2cf84ddf3fd743e306229cb5fbdf7048e870"
 }

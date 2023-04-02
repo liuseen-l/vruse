@@ -1,6 +1,6 @@
 {
   "name": "@vruse/react",
-  "version": "1.1.23",
+  "version": "1.1.25",
   "private": true,
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
@@ -26,7 +26,22 @@
       "require": "./dist/index.cjs",
       "import": "./index.ts"
     },
-    "./*": "./dist/*"
+    "./*": "./dist/*",
+    "./useAxios": {
+      "types": "./dist/useAxios/index.d.ts",
+      "require": "./dist/useAxios/index.cjs",
+      "import": "./index.ts"
+    },
+    "./useCountDown": {
+      "types": "./dist/useCountDown/index.d.ts",
+      "require": "./dist/useCountDown/index.cjs",
+      "import": "./index.ts"
+    },
+    "./usePick": {
+      "types": "./dist/usePick/index.d.ts",
+      "require": "./dist/usePick/index.cjs",
+      "import": "./index.ts"
+    }
   },
   "main": "./index.ts",
   "module": "./index.ts",
