@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "pnpm run update:meta && vitepress dev",
+    "docs:dev": "pnpm run update:meta && vitepress dev --force",
     "docs:build": "vitepress build",
     "docs:serve": "vitepress serve",
     "update:meta": "esno metadata/scripts/update.ts"

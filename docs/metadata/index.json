@@ -2,6 +2,7 @@
   "packages": {
     "shared": {
       "name": "shared",
+      "packageName": "@vruse/shared",
       "display": "VRuse Shared utilities",
       "iife": true,
       "cjs": true,
@@ -11,6 +12,7 @@
     "vue": {
       "name": "vue",
       "display": "vue",
+      "packageName": "@vruse/vue",
       "description": "Collection of essential Vue Composition Utilities",
       "iife": true,
       "cjs": true,
@@ -23,6 +25,7 @@
     "react": {
       "name": "react",
       "display": "react",
+      "packageName": "@vruse/react",
       "description": "Collection of essential React Composition Utilities",
       "iife": true,
       "cjs": true,
