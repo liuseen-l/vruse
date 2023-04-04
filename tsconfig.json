@@ -34,7 +34,8 @@
     "meta",
     "vitest.config.ts",
     "playgrounds/vite/vue/**/*.vue",
-    "playgrounds/vite/react/**/*.tsx"
+    "playgrounds/vite/react/**/*.tsx",
+    "scripts"
   ],
   "exclude": [
     "node_modules",

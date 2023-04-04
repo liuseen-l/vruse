@@ -19,3 +19,5 @@ coverage
 .eslintcache
 .vitepress/cache
 .eslintcache
+
+__out__

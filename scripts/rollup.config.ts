@@ -44,7 +44,7 @@ const esbuildMinifer = (options: ESBuildOptions) => {
 function transformImportPath() {
   return {
     name: 'rollup-plugin-transform-importPath',
-    tranform(code, id) {
+    tranform(code: string, id: string) {
       console.log('走了')
       return code
     },

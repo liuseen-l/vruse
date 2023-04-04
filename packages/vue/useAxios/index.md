@@ -15,7 +15,7 @@ Axios 的封装，既可以不带 await 使用，也可以带 await 使用
 ### 不带 await
 ``` vue
 <script setup lang=ts>
-import { useAxios } from '@vruse/vue/useAxios'
+import { useAxios } from '@vruse/vue'
 
 const { data, loading } = useAxios('https://wwww.demo.com/api')
 </script>
@@ -110,7 +110,7 @@ setTimeOut(adbort, 1000)
 
 ### 自定义 axios 实例
 ``` ts
-import { useAxiosCreate } from '@vruse/vue/useAxios'
+import { useAxiosCreate } from '@vruse/vue'
 
 // 可接受 axios 的配置对象
 // 参考 https://axios-http.com/docs/req_config
@@ -123,7 +123,7 @@ useAxiosCreate({
 useAxios 默认使用最后一次创建的实例，如果您有维护多个 Axios 实例的需求，那么你可以多次调用 `useAxiosCreate()`，然后在调用 useAxios 时手动声明使用哪一个实例：
 
 ``` ts
-import { useAxiosCreate } from '@vruse/vue/useAxios'
+import { useAxiosCreate } from '@vruse/vue'
 
 // 可接受 axios 的配置对象
 // 参考 https://axios-http.com/docs/req_config
@@ -146,7 +146,7 @@ useAxios('/api', {
 
 ### 获取 axios 实例
 ``` ts
-import { useAxiosInstance } from '@vruse/vue/useAxios'
+import { useAxiosInstance } from '@vruse/vue'
 const instance = useAxiosInstance()
 // Alter defaults after instance has been created
 instance.defaults.headers.common.Authorization = AUTH_TOKEN
@@ -157,7 +157,7 @@ instance.defaults.headers.common.Authorization = AUTH_TOKEN
 获取实例后修改即可
 
 ``` ts
-import { useAxiosInstance } from '@vruse/vue/useAxios'
+import { useAxiosInstance } from '@vruse/vue'
 const instance = useAxiosInstance()
 // Alter defaults after instance has been created
 instance.defaults.headers.common.Authorization = AUTH_TOKEN
@@ -168,7 +168,7 @@ instance.defaults.headers.common.Authorization = AUTH_TOKEN
 参考：[Axios 文档](https://axios-http.com/docs/interceptors)
 
 ``` ts
-import { useAxiosInstance } from '@vruse/vue/useAxios'
+import { useAxiosInstance } from '@vruse/vue'
 const instance = useAxiosInstance()
 // 请求拦截
 instance.interceptors.request.use(() => { /* ...*/ })
