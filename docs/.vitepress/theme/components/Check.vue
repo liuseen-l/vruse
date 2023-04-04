@@ -80,8 +80,6 @@ function toggleCheck(to?: string) {
         <VTSwitch class="api-switch" aria-label="prefer composition api" :aria-checked="preferComposition"
           @click="toggleCompositionAPI()" />
         <label class="composition-label" @click="toggleCheck('react')">React</label>
-        <!-- <a class="switch-link" title="About API preference" href="/guide/introduction.html#api-styles"
-                                            @click="closeSideBar">?</a> -->
       </div>
     </div>
   </div>
@@ -140,7 +138,8 @@ function toggleCheck(to?: string) {
 
 .switch-container {
   display: flex;
-  align-items: center;
+  padding-left: 15px;
+  width: 110px;
 }
 
 .switch-container:nth-child(2) {
@@ -148,7 +147,7 @@ function toggleCheck(to?: string) {
 }
 
 .vt-switch {
-  margin-right: 5px;
+  margin-right: 10px;
   transform: scale(0.8);
 }
 

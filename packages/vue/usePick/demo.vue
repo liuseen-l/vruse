@@ -13,4 +13,18 @@ p.run()
 <template>
   <div>{{ p.pickedList }}</div>
   <div>{{ r }}</div>
+  <button class="btn" @click="() => p.run()">
+    重新演示
+  </button>
 </template>
+
+<style lang="css">
+.btn {
+  background-color: #24545d;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 2px;
+  font-size: 15px;
+  margin-top: 20px;
+}
+</style>
