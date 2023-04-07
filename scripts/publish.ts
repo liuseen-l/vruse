@@ -3,7 +3,7 @@ import assert from 'node:assert'
 import { fileURLToPath } from 'node:url'
 import fg from 'fast-glob'
 import fs from 'fs-extra'
-import execa from 'execa'
+import { execa } from 'execa'
 import { packages } from '../meta/packages'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -53,12 +53,33 @@ async function toggleUpdatePackageJSON(toReplace: boolean) {
   }
 }
 
+function generatorBundle() {
+  const resolveBundleName: {
+    [key: string]: RegExp
+  } = {
+    'index.mjs': /'(.*)'/g,
+    'index.cjs': /require\('(.*)'\)/g,
+  }
+  for (const { name, dir } of packages) {
+    const packageDir = dir ? dir.split('/')[0] : 'packages'
+    const packageRoot = path.resolve(rootDir, packageDir, name, 'dist')
+    for (const bundle of Object.keys(resolveBundleName)) {
+      const bundlePath = path.resolve(packageRoot, bundle)
+      const bundleCode = fs.readFileSync(bundlePath, 'utf-8')
+      const replaceCode = bundleCode.replaceAll(resolveBundleName[bundle], (match, matchItem, str) => match.replace(matchItem, `${matchItem}/${bundle}`))
+      fs.writeFileSync(bundlePath, replaceCode)
+    }
+  }
+}
+
 async function publish() {
   await toggleUpdatePackageJSON(true)
 
   await execa('pnpm run build', { stdio: 'inherit' })
 
   await execa('lerna publish --exact --force-publish --yes --no-git-tag-version --no-git-reset --no-push', { stdio: 'inherit' })
+
+  generatorBundle()
 
   await toggleUpdatePackageJSON(false)
 }
