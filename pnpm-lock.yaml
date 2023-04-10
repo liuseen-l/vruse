@@ -25,10 +25,10 @@ importers:
         version: 0.4.0(rollup@3.18.0)
       '@testing-library/react':
         specifier: ^14.0.0
-        version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
+        version: 14.0.0
       '@testing-library/react-hooks':
         specifier: ^8.0.1
-        version: 8.0.1(react-dom@18.2.0)(react@18.2.0)
+        version: 8.0.1
       '@types/fs-extra':
         specifier: ^11.0.1
         version: 11.0.1
@@ -49,7 +49,7 @@ importers:
         version: 0.29.2
       '@vue/theme':
         specifier: ^2.0.0
-        version: 2.0.0(@algolia/client-search@4.15.0)(react-dom@18.2.0)(react@18.2.0)(vue@3.2.47)
+        version: 2.0.0(vue@3.2.47)
       chalk:
         specifier: ^5.2.0
         version: 5.2.0
@@ -61,7 +61,7 @@ importers:
         version: 7.0.3
       esbuild-register:
         specifier: ^3.4.2
-        version: 3.4.2(esbuild@0.17.11)
+        version: 3.4.2
       eslint:
         specifier: ^8.35.0
         version: 8.35.0
@@ -100,7 +100,7 @@ importers:
         version: 5.2.0(rollup@3.18.0)(typescript@4.9.5)
       rollup-plugin-esbuild:
         specifier: ^5.0.0
-        version: 5.0.0(esbuild@0.17.11)(rollup@3.18.0)
+        version: 5.0.0(rollup@3.18.0)
       rollup-plugin-pure:
         specifier: ^0.0.2
         version: 0.0.2(rollup@3.18.0)
@@ -234,6 +234,16 @@ packages:
     dependencies:
       '@algolia/autocomplete-shared': 1.7.4
       '@algolia/client-search': 4.15.0
+      algoliasearch: 4.15.0
+    dev: true
+
+  /@algolia/autocomplete-preset-algolia@1.7.4(algoliasearch@4.15.0):
+    resolution: {integrity: sha512-s37hrvLEIfcmKY8VU9LsAXgm2yfmkdHT3DnA3SgHaY93yjZ2qL57wzb5QweVkYuEBZkT2PIREvRoLXC2sxTbpQ==}
+    peerDependencies:
+      '@algolia/client-search': '>= 4.9.1 < 6'
+      algoliasearch: '>= 4.9.1 < 6'
+    dependencies:
+      '@algolia/autocomplete-shared': 1.7.4
       algoliasearch: 4.15.0
     dev: true
 
@@ -775,6 +785,18 @@ packages:
     resolution: {integrity: sha512-6SCwI7P8ao+se1TUsdZ7B4XzL+gqeQZnBc+2EONZlcVa0dVrk0NjETxozFKgMv0eEGH8QzP1fkN+A1rH61l4eg==}
     dev: true
 
+  /@docsearch/js@3.3.3:
+    resolution: {integrity: sha512-2xAv2GFuHzzmG0SSZgf8wHX0qZX8n9Y1ZirKUk5Wrdc+vH9CL837x2hZIUdwcPZI9caBA+/CzxsS68O4waYjUQ==}
+    dependencies:
+      '@docsearch/react': 3.3.3
+      preact: 10.13.0
+    transitivePeerDependencies:
+      - '@algolia/client-search'
+      - '@types/react'
+      - react
+      - react-dom
+    dev: true
+
   /@docsearch/js@3.3.3(@algolia/client-search@4.15.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-2xAv2GFuHzzmG0SSZgf8wHX0qZX8n9Y1ZirKUk5Wrdc+vH9CL837x2hZIUdwcPZI9caBA+/CzxsS68O4waYjUQ==}
     dependencies:
@@ -785,6 +807,28 @@ packages:
       - '@types/react'
       - react
       - react-dom
+    dev: true
+
+  /@docsearch/react@3.3.3:
+    resolution: {integrity: sha512-pLa0cxnl+G0FuIDuYlW+EBK6Rw2jwLw9B1RHIeS4N4s2VhsfJ/wzeCi3CWcs5yVfxLd5ZK50t//TMA5e79YT7Q==}
+    peerDependencies:
+      '@types/react': '>= 16.8.0 < 19.0.0'
+      react: '>= 16.8.0 < 19.0.0'
+      react-dom: '>= 16.8.0 < 19.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@algolia/autocomplete-core': 1.7.4
+      '@algolia/autocomplete-preset-algolia': 1.7.4(algoliasearch@4.15.0)
+      '@docsearch/css': 3.3.3
+      algoliasearch: 4.15.0
+    transitivePeerDependencies:
+      - '@algolia/client-search'
     dev: true
 
   /@docsearch/react@3.3.3(@algolia/client-search@4.15.0)(react-dom@18.2.0)(react@18.2.0):
@@ -1886,7 +1930,7 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/react-hooks@8.0.1(react-dom@18.2.0)(react@18.2.0):
+  /@testing-library/react-hooks@8.0.1:
     resolution: {integrity: sha512-Aqhl2IVmLt8IovEVarNDFuJDVWVvhnr9/GCU6UUnrYXwgDFF9h2L2o2P9KBni1AST5sT6riAyoukFLyjQUgD/g==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -1903,12 +1947,10 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.21.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-error-boundary: 3.1.4(react@18.2.0)
+      react-error-boundary: 3.1.4
     dev: true
 
-  /@testing-library/react@14.0.0(react-dom@18.2.0)(react@18.2.0):
+  /@testing-library/react@14.0.0:
     resolution: {integrity: sha512-S04gSNJbYE30TlIMLTzv6QCTzt9AqIF5y6s6SzVFILNcNvbV/jU96GeiTPillGQo+Ny64M/5PV7klNYYgv5Dfg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -1918,8 +1960,6 @@ packages:
       '@babel/runtime': 7.21.0
       '@testing-library/dom': 9.0.1
       '@types/react-dom': 18.0.11
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: true
 
   /@tootallnate/once@2.0.0:
@@ -2664,11 +2704,11 @@ packages:
   /@vue/shared@3.2.47:
     resolution: {integrity: sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==}
 
-  /@vue/theme@2.0.0(@algolia/client-search@4.15.0)(react-dom@18.2.0)(react@18.2.0)(vue@3.2.47):
+  /@vue/theme@2.0.0(vue@3.2.47):
     resolution: {integrity: sha512-YrYwkQ9se6oGg87suzFB6Y1487ED+DS7c+/jodfYo7J70F5D7ItLPS3zg9VVp/97j8checPUzjGIM/EHuRzoRw==}
     dependencies:
       '@docsearch/css': 3.3.3
-      '@docsearch/js': 3.3.3(@algolia/client-search@4.15.0)(react-dom@18.2.0)(react@18.2.0)
+      '@docsearch/js': 3.3.3
       '@vueuse/core': 9.13.0(vue@3.2.47)
       body-scroll-lock: 3.1.5
       normalize.css: 8.0.1
@@ -3978,13 +4018,12 @@ packages:
       is-symbol: 1.0.4
     dev: true
 
-  /esbuild-register@3.4.2(esbuild@0.17.11):
+  /esbuild-register@3.4.2:
     resolution: {integrity: sha512-kG/XyTDyz6+YDuyfB9ZoSIOOmgyFCH+xPRtsCa8W85HLRV5Csp+o3jWVbOSHgSLfyLc5DmP+KFDNwty4mEjC+Q==}
     peerDependencies:
       esbuild: '>=0.12 <1'
     dependencies:
       debug: 4.3.4
-      esbuild: 0.17.11
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7076,14 +7115,13 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-error-boundary@3.1.4(react@18.2.0):
+  /react-error-boundary@3.1.4:
     resolution: {integrity: sha512-uM9uPzZJTF6wRQORmSrvOIgt4lJ9MC1sNgEOj2XGsDTRE4kmpWxg7ENK9EWNKJRMAOY9z0MuF4yIfl6gp4sotA==}
     engines: {node: '>=10', npm: '>=6'}
     peerDependencies:
       react: '>=16.13.1'
     dependencies:
       '@babel/runtime': 7.21.0
-      react: 18.2.0
     dev: true
 
   /react-is@17.0.2:
@@ -7320,7 +7358,7 @@ packages:
       '@babel/code-frame': 7.18.6
     dev: true
 
-  /rollup-plugin-esbuild@5.0.0(esbuild@0.17.11)(rollup@3.18.0):
+  /rollup-plugin-esbuild@5.0.0(rollup@3.18.0):
     resolution: {integrity: sha512-1cRIOHAPh8WQgdQQyyvFdeOdxuiyk+zB5zJ5+YOwrZP4cJ0MT3Fs48pQxrZeyZHcn+klFherytILVfE4aYrneg==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     peerDependencies:
@@ -7330,7 +7368,6 @@ packages:
       '@rollup/pluginutils': 5.0.2(rollup@3.18.0)
       debug: 4.3.4
       es-module-lexer: 1.2.0
-      esbuild: 0.17.11
       joycon: 3.1.1
       jsonc-parser: 3.2.0
       rollup: 3.18.0

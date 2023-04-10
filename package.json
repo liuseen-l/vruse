@@ -9,7 +9,7 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "build": "pnpm run clean && rollup -c --bundleConfigAsCjs",
+    "build": "rollup -c --bundleConfigAsCjs",
     "publish": "esno scripts/publish.ts",
     "docs:dev": "pnpm --filter @vruse/docs docs:dev",
     "docs:build": "pnpm --filter @vruse/docs docs:build",

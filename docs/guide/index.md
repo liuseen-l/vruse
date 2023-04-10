@@ -36,24 +36,36 @@ npm i @vruse/react
 从 `@vueuse/vue` 中导入所需的函数 
 
 ```vue
-<script setup lang="ts">
-import { ref } from 'vue-demi'
-import { usePick } from './index'
+<script>
+import { usePick } from '@vruse/vue'
+import { onMounted, ref } from 'vue'
 
-const r = ref<number>(0)
-const p = usePick([1, 2, 3, 6, 7, 8, 9, 10], 5, (v) => {
-  r.value = v
-})
+export default {
+  setup() {
+    const r = ref<number>(0)
+    const { run, pickedList } = usePick([1, 2, 3, 6, 7, 8, 9, 10], {
+      pickCount: 5,
+      excludes: 1,
+    }, (v) => {
+      r.value = v
+    })
 
-p.run()
+    onMounted(() => {
+      run()
+    })
+
+    return {
+      r,
+      pickedList
+    }
+  }
+}
 </script>
 
 <template>
-  <div>{{ p.pickedList }}</div>
+  <div>{{ pickedList }}</div>
   <div>{{ r }}</div>
 </template>
-
-
 ```
 
 > 🎩 React
@@ -88,8 +100,26 @@ function App() {
     </>
   )
 }
-export default App
 ```
+
+## 按需引入
+
+在引入hook时，可以通过引入指定的hook目录，这样可以得到更精准的类型提示
+
+> 🎩 Vue
+
+从 `@vueuse/vue/usePick` 目录下导入usePick 
+```ts
+import { usePick } from '@vruse/vue/usePick'
+```
+
+> 🎩 React
+
+从 `@vueuse/react/usePick` 目录下导入usePick 
+```ts
+import { usePick } from '@vruse/react/usePick'
+```
+
 
 ## 浏览器支持
 

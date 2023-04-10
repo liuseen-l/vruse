@@ -1,4 +1,4 @@
-## 🦄 Usage in Vue CompositionAPI
+## 🦄 Usage in Vue Composition API
 
 ```vue
 <script>

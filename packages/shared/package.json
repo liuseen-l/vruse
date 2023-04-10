@@ -1,6 +1,6 @@
 {
   "name": "@vruse/shared",
-  "version": "1.1.25",
+  "version": "1.1.26",
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
   "funding": "https://github.com/VR-use",
@@ -58,5 +58,5 @@
   "devDependencies": {
     "react": "^18.2.0"
   },
-  "gitHead": "231c2cf84ddf3fd743e306229cb5fbdf7048e870"
+  "gitHead": "146316904e82a1dde16a743b9693bc9f0f5e466a"
 }
