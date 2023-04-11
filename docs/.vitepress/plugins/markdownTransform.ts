@@ -4,27 +4,25 @@ import fs from 'fs-extra'
 import MagicString from 'magic-string'
 
 export function MarkdownTransform(): Plugin {
-  
+
   return {
     name: 'vruse-md-transform',
     enforce: 'pre',
 
     async transform(code, id) {
-      
       const idAry = id.split('/')
-      const pkgName= idAry[idAry.length-3]
-      const functionName = idAry[idAry.length-2]
+      const pkgName = idAry[idAry.length - 3]
+      const functionName = idAry[idAry.length - 2]
 
-      if (!id.match(/\.md\b/) || !['vue','react','shared'].includes(pkgName))
+      if (!id.match(/\.md\b/) || !['vue', 'react', 'shared'].includes(pkgName))
         return null
 
       const s = new MagicString(code)
 
-      const matchCategory = Array.from(code.matchAll( /-{3}/g))[1]
+      const matchCategory = Array.from(code.matchAll(/-{3}/g))[1]
 
-      
-      const { footer, header } = await getFunctionMarkdown(pkgName, functionName)
-      
+      const { header } = await getFunctionMarkdown(pkgName, functionName)
+
       code = s.appendRight(matchCategory.index! + 3, '\n\n<Check/>\n' + header).toString()
 
       return code
@@ -40,7 +38,7 @@ export async function getFunctionMarkdown(pkg: string, name: string) {
 
   const dirname = join(DIR_SRC, pkg, name)
   const demoPath = ['demo.vue'].find(i => fs.existsSync(join(dirname, i)))
- 
+
   const links = ([
     ['Source', `${URL}/index.ts`],
     demoPath ? ['Demo', `${URL}/${demoPath}`] : undefined,
@@ -58,7 +56,7 @@ export async function getFunctionMarkdown(pkg: string, name: string) {
   `
 
   const demoSection = demoPath ?
- `
+    `
 <script setup>
 import Demo from \'../../../packages/${pkg}/${name}/${demoPath}\'
 </script>
@@ -70,11 +68,11 @@ import Demo from \'../../../packages/${pkg}/${name}/${demoPath}\'
 <Demo/>
 </DemoContainer>
 `
-: ''
+    : ''
 
   const footer = `${sourceSection}\n${ContributorsSection}\n`
 
-  const header = demoSection 
+  const header = demoSection
 
   return {
     footer,
