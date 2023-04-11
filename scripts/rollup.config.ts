@@ -41,16 +41,6 @@ const esbuildMinifer = (options: ESBuildOptions) => {
   }
 }
 
-function transformImportPath() {
-  return {
-    name: 'rollup-plugin-transform-importPath',
-    tranform(code: string, id: string) {
-      console.log('走了')
-      return code
-    },
-  }
-}
-
 for (const {
   globals,
   name,
@@ -122,7 +112,6 @@ for (const {
       input,
       output,
       plugins: [
-        transformImportPath(),
         fn === 'index' ? [] : target ? esbuild({ target }) : pluginEsbuild,
         json(),
         // pluginPure,
