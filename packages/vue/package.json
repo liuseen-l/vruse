@@ -1,6 +1,6 @@
 {
   "name": "@vruse/vue",
-  "version": "1.1.26",
+  "version": "1.1.30",
   "description": "Collection of essential Vue Composition Utilities",
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
@@ -22,32 +22,21 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./index.ts"
     },
-    "./*": "./dist/*",
-    "./useAxios": {
-      "types": "./dist/useAxios/index.d.ts",
-      "require": "./dist/useAxios/index.cjs",
-      "import": "./index.ts"
-    },
-    "./useCountDown": {
-      "types": "./dist/useCountDown/index.d.ts",
-      "require": "./dist/useCountDown/index.cjs",
-      "import": "./index.ts"
-    },
-    "./usePick": {
-      "types": "./dist/usePick/index.d.ts",
-      "require": "./dist/usePick/index.cjs",
-      "import": "./index.ts"
+    "./*": {
+      "types": "./dist/*/index.d.ts",
+      "require": "./dist/*/index.cjs",
+      "import": "./dist/*/index.mjs"
     }
   },
   "main": "./index.ts",
   "module": "./index.ts",
   "unpkg": "./dist/index.iife.min.js",
   "jsdelivr": "./dist/index.iife.min.js",
-  "types": "./dist/index.d.ts",
+  "types": "./index.d.ts",
   "files": [
     "dist"
   ],
@@ -56,5 +45,5 @@
     "axios": "^1.3.4",
     "vue-demi": "*"
   },
-  "gitHead": "146316904e82a1dde16a743b9693bc9f0f5e466a"
+  "gitHead": "f1608e28b3bf1291f85cbd20b53262c10f0870d3"
 }

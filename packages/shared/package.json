@@ -1,6 +1,6 @@
 {
   "name": "@vruse/shared",
-  "version": "1.1.26",
+  "version": "1.1.30",
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
   "funding": "https://github.com/VR-use",
@@ -22,30 +22,14 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./index.ts"
     },
-    "./*": "./dist/*",
-    "./utils-common": {
-      "types": "./dist/utils-common/index.d.ts",
-      "require": "./dist/utils-common/index.cjs",
-      "import": "./index.ts"
-    },
-    "./utils-react": {
-      "types": "./dist/utils-react/index.d.ts",
-      "require": "./dist/utils-react/index.cjs",
-      "import": "./index.ts"
-    },
-    "./utils-types": {
-      "types": "./dist/utils-types/index.d.ts",
-      "require": "./dist/utils-types/index.cjs",
-      "import": "./index.ts"
-    },
-    "./utils-vue": {
-      "types": "./dist/utils-vue/index.d.ts",
-      "require": "./dist/utils-vue/index.cjs",
-      "import": "./index.ts"
+    "./*": {
+      "types": "./dist/*/index.d.ts",
+      "require": "./dist/*/index.cjs",
+      "import": "./dist/*/index.mjs"
     }
   },
   "main": "./index.ts",
@@ -58,5 +42,5 @@
   "devDependencies": {
     "react": "^18.2.0"
   },
-  "gitHead": "146316904e82a1dde16a743b9693bc9f0f5e466a"
+  "gitHead": "f1608e28b3bf1291f85cbd20b53262c10f0870d3"
 }

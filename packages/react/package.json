@@ -1,6 +1,6 @@
 {
   "name": "@vruse/react",
-  "version": "1.1.26",
+  "version": "1.1.30",
   "private": true,
   "author": "LiuSeen<https://github.com/code-ManL>",
   "license": "MIT",
@@ -22,32 +22,21 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./index.ts"
     },
-    "./*": "./dist/*",
-    "./useAxios": {
-      "types": "./dist/useAxios/index.d.ts",
-      "require": "./dist/useAxios/index.cjs",
-      "import": "./index.ts"
-    },
-    "./useCountDown": {
-      "types": "./dist/useCountDown/index.d.ts",
-      "require": "./dist/useCountDown/index.cjs",
-      "import": "./index.ts"
-    },
-    "./usePick": {
-      "types": "./dist/usePick/index.d.ts",
-      "require": "./dist/usePick/index.cjs",
-      "import": "./index.ts"
+    "./*": {
+      "types": "./dist/*/index.d.ts",
+      "require": "./dist/*/index.cjs",
+      "import": "./dist/*/index.mjs"
     }
   },
   "main": "./index.ts",
   "module": "./index.ts",
   "unpkg": "./dist/index.iife.min.js",
   "jsdelivr": "./dist/index.iife.min.js",
-  "types": "./dist/index.d.ts",
+  "types": "./index.d.ts",
   "files": [
     "dist"
   ],

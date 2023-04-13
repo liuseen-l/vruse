@@ -45,7 +45,6 @@ for (const {
   globals,
   name,
   external,
-  submodules,
   iife,
   build,
   cjs,
