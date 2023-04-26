@@ -164,7 +164,6 @@ export async function readMetadata() {
   return indexes
 }
 
-
 async function run() {
   const indexes = await readMetadata()
   await fs.writeJSON(join(DIR_PACKAGE, 'index.json'), indexes, { spaces: 2 })
